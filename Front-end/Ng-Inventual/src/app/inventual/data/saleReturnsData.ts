@@ -1,0 +1,123 @@
+export interface SaleReturnsInterfaceData {
+  id: number;
+  date: any;
+  reference: string | number;
+  customer: string;
+  warehouse: string;
+  biller: string;
+  total: number;
+  remark: string;
+  action: any;
+}
+export const saleReturnsData: SaleReturnsInterfaceData[] = [
+  {
+    id: 1,
+    date: '01/01/2024',
+    reference: 'S-326564580710',
+    customer: 'William Prady',
+    warehouse: 'Warehouse 8',
+    biller: 'Nancy R. Borgman',
+    total: 5250,
+    remark: 'Date Expired',
+    action: 'action',
+  },
+  {
+    id: 2,
+    date: '01/05/2024',
+    reference: 'S-987654321098',
+    customer: 'Emily Jones',
+    warehouse: 'Warehouse 3',
+    biller: 'Joseph Amarho',
+    total: 5000,
+    remark: 'N/A',
+    action: 'action',
+  },
+  {
+    id: 3,
+    date: '01/12/2024',
+    reference: 'S-456789012345',
+    customer: 'John Smith',
+    warehouse: 'Warehouse 5',
+    biller: 'Tara Redman',
+    total: 7500,
+    remark: 'N/A',
+    action: 'action',
+  },
+  {
+    id: 4,
+    date: '01/20/2024',
+    reference: 'S-123456789012',
+    customer: 'Sarah Johnson',
+    warehouse: 'Warehouse 2',
+    biller: 'Dean Richards',
+    total: 4250,
+    remark: 'Quality less',
+    action: 'action',
+  },
+  {
+    id: 5,
+    date: '01/15/2024',
+    reference: 'S-678901234567',
+    customer: 'Michael Brown',
+    warehouse: 'Warehouse 4',
+    biller: 'Peter',
+    total: 6100,
+    remark: 'Duplicate',
+    action: 'action',
+  },
+  {
+    id: 6,
+    date: '01/28/2024',
+    reference: 'S-345678901234',
+    customer: 'Jessica Miller',
+    warehouse: 'Warehouse 1',
+    biller: 'Steve',
+    total: 4000,
+    remark: 'N/A',
+    action: 'action',
+  },
+  {
+    id: 7,
+    date: '01/03/2024',
+    reference: 'S-890123456789',
+    customer: 'David Wilson',
+    warehouse: 'Warehouse 6',
+    biller: 'Dr. Banner',
+    total: 3000,
+    remark: 'N/A',
+    action: 'action',
+  },
+  {
+    id: 8,
+    date: '01/19/2024',
+    reference: 'S-567890123456',
+    customer: 'Amanda Taylor',
+    warehouse: 'Warehouse 9',
+    biller: 'Chrish',
+    total: 8000,
+    remark: 'N/A',
+    action: 'action',
+  },
+  {
+    id: 9,
+    date: '01/22/2024',
+    reference: 'S-234567890123',
+    customer: 'Daniel Martinez',
+    warehouse: 'Warehouse 7',
+    biller: 'Taylor',
+    total: 3000,
+    remark: 'Date Expired',
+    action: 'action',
+  },
+  {
+    id: 10,
+    date: '01/19/2024',
+    reference: 'S-567890128256',
+    customer: 'Taylor Swift',
+    warehouse: 'Warehouse 9',
+    biller: 'Jhonson',
+    total: 5000,
+    remark: 'Quality less',
+    action: 'action',
+  },
+];

@@ -1,0 +1,192 @@
+@use '../../../../custom-palettes.scss';
+
+//sidebar menu style
+@include custom-palettes.inventualSidebarMuneStyle;
+// Input field style
+@include custom-palettes.inventualInputFieldStyle;
+
+.inventual-notification-wrapper {
+    @media (min-width: 320px) and (max-width: 1200px) {
+        overflow-x: auto;
+    }
+}
+
+.inventual-notification-wrapper-inner {
+    @media (min-width: 320px) and (max-width: 1200px) {
+        min-width: 100%;
+        width: 830px;
+    }
+
+    @media (min-width: 320px) and (max-width: 767px) {
+        width: 100%;
+    }
+}
+
+.inventual-notification-text {
+    width: calc(100% - 90px);
+}
+
+.inventual-notification {
+    transition: all linear 0.3s;
+
+    &:hover {
+        @apply bg-white;
+    }
+}
+
+.inventual-notification-wrapper {
+    @apply p-0;
+
+    .mat-mdc-tab-header {
+        @apply me-[50px] border-0;
+
+        @media (max-width: 991px) {
+            @apply me-[25px];
+        }
+
+        @media (max-width: 767px) {
+            @apply me-0 mb-8;
+        }
+    }
+
+    .mat-mdc-tab-group {
+        @apply font-primary flex-row;
+
+        @media (max-width: 767px) {
+            @apply flex-col;
+        }
+    }
+
+    .mat-mdc-tab-labels {
+        @apply flex flex-col min-w-[340px] h-[670px] bg-[#F5F7FB] p-[15px] rounded-[5px] text-start overflow-y-scroll;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        @media (max-width: 767px) {
+            height: 300px;
+            overflow-y: scroll;
+        }
+    }
+
+    .mat-mdc-tab {
+        white-space: inherit;
+        @apply overflow-hidden min-h-[100px] p-0 opacity-100 text-start justify-start min-w-full;
+
+        &.mdc-tab--active {
+            .inventual-notification {
+                @apply bg-white;
+            }
+        }
+    }
+
+    .mdc-tab__content {
+        @apply h-auto w-full;
+    }
+
+    .mdc-tab-indicator,
+    .mdc-tab__ripple,
+    .mat-mdc-tab-ripple {
+        @apply hidden;
+    }
+
+    .mat-mdc-tab-label-container {
+        @apply w-[400px];
+
+        @media (min-width: 992px) and (max-width: 1400px) {
+            width: 440px;
+        }
+
+        @media (min-width: 768px) and (max-width: 991px) {
+            width: 640px;
+        }
+    }
+
+    .inventual-notification {
+        width: 100%;
+    }
+
+    @media (max-width: 500px) {
+        .mat-mdc-tab {
+            @apply min-h-[180px];
+        }
+
+        .mat-mdc-tab-labels {
+            @apply min-w-[100%];
+        }
+
+        .inventual-notification {
+            @apply block;
+        }
+
+        .inventual-notification-text {
+            width: calc(100% - 15px);
+
+            figure {
+                transform: translateY(-45px);
+            }
+        }
+
+        .inventual-notification-img {
+            @apply mb-[15px] me-0;
+        }
+    }
+
+    .inventual-input-field-style input.mat-mdc-input-element {
+        @apply ps-8;
+    }
+
+    .inventual-notification-search .mat-icon {
+        @apply ps-0 start-2;
+    }
+
+    .mat-mdc-tab .mdc-tab__text-label {
+        @apply w-full;
+    }
+}
+
+.inventual-notification-body {
+    @apply overflow-hidden;
+}
+
+.inventual-notification-action {
+    button {
+        @apply inline-block text-[16px] me-3 text-body last:me-0;
+    }
+}
+
+.inventual-notification-search {
+    .mat-icon {
+        @apply absolute top-[13px] ps-2.5 text-[#B8BBBF] start-0;
+    }
+
+    input.mat-input-element {
+        @apply ps-10;
+    }
+}
+
+button.mat-raised-button.mat-primary {
+    @apply bg-primary;
+}
+
+.inventual-notification-feedback {
+    .mdc-button {
+        font-size: 15px !important;
+        font-weight: 600 !important;
+        color: #616161 !important;
+        border-radius: 5px !important;
+        height: 40px !important;
+        line-height: 38px !important;
+        padding: 0 20px !important;
+        margin-inline-end: 10px !important;
+        border: 1px solid #EFF0F2;
+        background: none !important;
+        --tw-shadow: 0 0 #0000;
+        --tw-shadow-colored: 0 0 #0000;
+        box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+        transition: all linear 0.3s;
+    }
+}

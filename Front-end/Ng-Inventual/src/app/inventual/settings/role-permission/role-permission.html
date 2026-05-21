@@ -1,0 +1,77 @@
+<div class="inventual-dashboard-area">
+    <div class="inventual-dashboard-sidebar" [class.sidebar-enable]="menuSidebarActive">
+        <div class="inventual-header-bar-responsive" (click)="myfunction()">
+            <mat-icon>reorder</mat-icon>
+        </div>
+        <div
+            class="inventual-menu-wrapper bg-white border-e border-b border-solid border-border py-10 px-7 lg:px-5 lg:py-8">
+            <app-menus></app-menus>
+        </div>
+        <div class="inventual-menu-overlay" (click)="myfunction()" [class.sidebar-enable]="menuSidebarActive"></div>
+    </div>
+    <div class="inventual-dashboard-main" [class.sidebar-enable]="menuSidebarActive">
+        <div class="inventual-header-area">
+            <div class="inventual-header-wrapper custom-height-70 px-7 bg-white border-b border-solid border-border">
+                <div class="grid grid-cols-12 items-center h-full">
+                    <div class="col-span-12">
+                        <app-header></app-header>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="inventual-breadcrumb-area px-7 py-9 bg-white mb-5">
+            <div class="inventual-breadcrumb-area-inner px-0.5">
+                <h5 class="text-[20px] text-heading font-bold mb-3">Role Permission </h5>
+                <div class="inventual-breadcrumb-area-inner-wrap">
+                    <span class="text-[14px] text-body font-normal inline-block me-2">Administrative Tools</span>
+                    <span class="text-[14px] text-body font-normal inline-block me-2">></span>
+                    <span class="text-[14px] text-body font-normal inline-block me-2">Settings</span>
+                    <span class="text-[14px] text-body font-normal inline-block me-2">></span>
+                    <span class="text-[14px] text-body font-normal inline-block me-2">Role Permission</span>
+                </div>
+            </div>
+        </div>
+        <div class="inventual-content-area px-7 pb-0">
+            <div class="inventual-managesale-area bg-white p-7 custom-shadow rounded-8 mb-5">
+                <div class="grid grid-cols-12">
+                    <div class="col-span-12">
+                        <div class="flex flex-wrap gap-5 mb-5 items-end">
+                            <div class="inventual-select-field flex-grow max-w-[350px]">
+                                <h4 class="text-[15px] font-bold text-heading mb-3">Create Role</h4>
+                                <div class="inventual-input-field-style">
+                                    <mat-form-field class="w-full" [floatLabel]="'always'">
+                                        <mat-label class="hidden">Create Role</mat-label>
+                                        <input matInput [placeholder]="'Create Role'">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <button type="button" class="inventual-btn primary-btn">Create Role</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="inventual-role-area">
+                    <div class="inventual-role-inner">
+                        <div class="inventual-role-inner-wrapper border border-solid border-border border-b-0 mb-7">
+                            <app-product-permission></app-product-permission>
+
+                            <app-trading-permission></app-trading-permission>
+
+                            <app-expense-permission></app-expense-permission>
+
+                            <app-warehouse-permission></app-warehouse-permission>
+
+                            <app-people-permission></app-people-permission>
+
+                            <app-report-permission></app-report-permission>
+
+                            <app-system-permission></app-system-permission>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="inventual-copyright-area">
+            <app-footer></app-footer>
+        </div>
+    </div>
+</div>

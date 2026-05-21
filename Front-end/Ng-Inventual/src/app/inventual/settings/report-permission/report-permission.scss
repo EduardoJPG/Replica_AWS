@@ -1,0 +1,39 @@
+@use '../../../../custom-palettes.scss';
+
+//sidebar menu style
+@include custom-palettes.inventualSidebarMuneStyle;
+
+// Input field style
+@include custom-palettes.inventualInputFieldStyle;
+
+.custom-height-100 {
+    @apply h-[100px];
+}
+
+.custom-height-70 {
+    @apply h-[70px];
+}
+
+.custom-height-50 {
+    @apply h-[50px];
+}
+
+.inventual-role-checkbox-wrapper2 {
+    .inventual-role-checkbox {
+        flex-basis: 20%;
+
+        @media (min-width: 992px) and (max-width: 1200px) {
+            flex-basis: 33.33%;
+        }
+
+        @media (max-width: 991px) {
+            flex-basis: 50%;
+        }
+    }
+
+    @media (max-width: 1200px) {
+        flex-wrap: wrap;
+        justify-content: start;
+        align-self: normal;
+    }
+}

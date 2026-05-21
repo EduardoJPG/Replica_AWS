@@ -1,0 +1,11 @@
+.inventual-dashboard-user-list-left-img {
+    & img {
+        @apply rounded-[5px];
+    }
+}
+
+.inventual-dashboard-user-list-right {
+    & span {
+        @apply rounded-[100px];
+    }
+}

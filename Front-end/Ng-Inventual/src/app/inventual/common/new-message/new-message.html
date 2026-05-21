@@ -1,0 +1,96 @@
+<div class="inventual-dashboard-area">
+    <div class="inventual-dashboard-sidebar" [class.sidebar-enable]="menuSidebarActive">
+        <div class="inventual-header-bar-responsive" (click)="myfunction()">
+            <mat-icon>reorder</mat-icon>
+        </div>
+        <div
+            class="inventual-menu-wrapper bg-white border-e border-b border-solid border-border py-10 px-7 lg:px-5 lg:py-8">
+            <app-menus></app-menus>
+        </div>
+        <div class="inventual-menu-overlay" (click)="myfunction()" [class.sidebar-enable]="menuSidebarActive"></div>
+    </div>
+    <div class="inventual-dashboard-main" [class.sidebar-enable]="menuSidebarActive">
+        <div class="inventual-header-area">
+            <div class="inventual-header-wrapper custom-height-70 px-7 bg-white border-b border-solid border-border">
+                <div class="grid grid-cols-12 items-center h-full">
+                    <div class="col-span-12">
+                        <app-header></app-header>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="inventual-breadcrumb-area px-7 py-9 bg-white mb-5">
+            <div class="inventual-breadcrumb-area-inner px-0.5">
+                <h5 class="text-[20px] text-heading font-bold mb-3">Message</h5>
+                <div class="inventual-breadcrumb-area-inner-wrap">
+                    <span class="text-[14px] text-body font-normal inline-block me-2">New Message</span>
+                </div>
+            </div>
+        </div>
+        <div class="inventual-content-area px-7">
+            <div class="inventual-addsupplier-area bg-white p-7 custom-shadow rounded-8 mb-1">
+                <div class="inventual-message-inbox-main">
+                    <h5 class="text-[20px] text-heading font-bold mb-11">New Message</h5>
+                    <div class="inventual-newmessage-inbox-wrapper">
+                        <div class="inventual-newmessage-wrapper flex">
+                            <div class="inventual-newmessage-nav">
+                                <button type="button" [routerLink]="['/message']"><mat-icon>mail_outline</mat-icon>
+                                    Inbox <span>(7)</span></button>
+                                <button type="button" [routerLink]="['/message']"><mat-icon>near_me</mat-icon> Sent
+                                    <span>(5)</span></button>
+                                <button type="button" [routerLink]="['/message']"><mat-icon>drafts</mat-icon> Draft
+                                    <span>(3)</span></button>
+                                <button type="button" [routerLink]="['/message']"><mat-icon>label_important</mat-icon>
+                                    Important <span>(2)</span></button>
+                                <button type="button" [routerLink]="['/message']"><mat-icon>delete_outline</mat-icon>
+                                    Trash <span>(1)</span></button>
+                            </div>
+                            <div class="inventual-newmessage-content">
+                                <div>
+                                    <div class="grid grid-cols-12 gap-x-5 md:gap-x-0 sm:gap-x-0">
+                                        <div class="col-span-6 md:col-span-12 sm:col-span-12">
+                                            <div class="inventual-select-field mb-5">
+                                                <div class="inventual-input-field-style relative">
+                                                    <mat-form-field class="w-full" [floatLabel]="'always'">
+                                                        <mat-label class="hidden">Bdevs Technology</mat-label>
+                                                        <input matInput type="email" [placeholder]="'To'">
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-span-6 md:col-span-12 sm:col-span-12">
+                                            <div class="inventual-select-field mb-5">
+                                                <div class="inventual-input-field-style relative">
+                                                    <mat-form-field class="w-full" [floatLabel]="'always'">
+                                                        <mat-label class="hidden">Bdevs Technology</mat-label>
+                                                        <input matInput type="email" [placeholder]="'Subject'">
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-span-12">
+                                            <div class="inventual-select-field mb-5">
+                                                <div class="inventual-input-field-style relative">
+                                                    <textarea placeholder="Type text...."></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-span-12">
+                                            <div class="inventual-material-btn inventual-newmessage-send-btn">
+                                                <button mat-raised-button color="primary">Send</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="inventual-copyright-area pt-9 xl:pt-0 lg:pt-0 md:pt-0 sm:pt-0">
+            <app-footer></app-footer>
+        </div>
+    </div>
+</div>

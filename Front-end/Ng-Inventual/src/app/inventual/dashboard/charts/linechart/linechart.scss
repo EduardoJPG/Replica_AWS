@@ -1,0 +1,49 @@
+.apexcharts-legend-marker {
+	margin-inline-end: 10px !important;
+    border: none !important;
+    height: 15px !important;
+    width: 30px !important;
+    border-radius: 3px !important;
+}
+.apexcharts-legend-text {
+    color: #0D0F19 !important;
+    font-family: 'Nunito Sans', sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+}
+.apexcharts-legend-series {
+	display: inline-flex !important;
+	margin-inline-start: 20px !important;
+}
+.inventual-line-chart .apexcharts-legend {
+    top: 0px !important;
+    display: inline-flex !important;
+    padding: 0 5px !important;
+    @media (max-width: 575px) {
+        inset-inline-start: 0px !important;
+        inset-inline-end: auto !important;
+        margin: 10px 0px !important;
+        top: 13px !important;
+      }
+}
+.apexcharts-title-text {
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+    color: #0D0F19 !important;
+    font-family: 'Nunito Sans', sans-serif !important;
+    transform: translateX(12px) !important;
+    [dir="rtl"] {
+        transform: translateX(-12px) !important;
+    }
+}
+#chart {
+	width: calc(100% - 16px);
+    @apply overflow-hidden;
+}
+.apexcharts-xaxis-label,
+.apexcharts-yaxis-label {
+    @apply text-[14px];
+    @apply text-body;
+    font-family: 'Nunito Sans', sans-serif !important;
+}

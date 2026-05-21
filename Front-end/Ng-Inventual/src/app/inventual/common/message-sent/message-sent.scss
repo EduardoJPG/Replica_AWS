@@ -1,0 +1,219 @@
+@use '../../../../custom-palettes.scss';
+
+//sidebar menu style
+@include custom-palettes.inventualSidebarMuneStyle;
+// Input field style
+@include custom-palettes.inventualInputFieldStyle;
+
+.inventual-notification-text {
+    width: calc(100% - 90px);
+}
+
+.inventual-notification {
+    transition: all linear 0.3s;
+
+    &:hover {
+        @apply bg-white;
+    }
+}
+
+.inventual-notification-feedback {
+    .mat-raised-button {
+        font-size: 15px !important;
+        font-weight: 600 !important;
+        color: #616161 !important;
+        border-radius: 5px !important;
+        height: 40px !important;
+        line-height: 38px !important;
+        padding: 0px 20px !important;
+        margin-inline-end: 10px !important;
+        border: 1px solid #EFF0F2;
+        background: none !important;
+        @apply sm:mb-1;
+
+        &:hover {
+            background: #2C6AE5 !important;
+            color: #fff !important;
+            border-color: #2C6AE5 !important;
+        }
+
+        &:last-child {
+            margin-inline-end: 0px !important;
+        }
+    }
+
+    .mat-button-wrapper {
+        display: flex !important;
+        align-items: center !important;
+    }
+
+    .mat-icon {
+        width: 20px !important;
+        transform: translateX(-3px) !important;
+
+        [dir="rtl"] {
+            transform: translateX(3px) !important;
+        }
+
+        @apply me-1.5;
+        font-size: 21px;
+    }
+}
+
+.inventual-notification-wrapper {
+    padding: 0px;
+
+    .mat-tab-header {
+        border: none;
+        margin-inline-end: 50px;
+
+        @media (max-width: 991px) {
+            margin-inline-end: 25px;
+        }
+
+        @media (max-width: 767px) {
+            margin-inline-end: 0px;
+            margin-bottom: 32px;
+        }
+    }
+
+    .mat-tab-group {
+        flex-direction: row;
+        @apply font-primary;
+
+        @media (max-width: 767px) {
+            flex-direction: column;
+        }
+    }
+
+    .mat-tab-labels {
+        display: flex;
+        flex-direction: column;
+        min-width: 340px;
+        @apply text-start;
+        background: #F5F7FB;
+        padding: 15px 15px;
+        border-radius: 5px;
+
+        @media (max-width: 767px) {
+            height: 300px;
+            overflow-y: scroll;
+        }
+    }
+
+    .mat-ink-bar {
+        display: none;
+    }
+
+    .mat-tab-label {
+        overflow: hidden;
+        min-height: 100px;
+        padding: 0;
+        opacity: 1;
+        @apply text-start;
+        justify-content: start;
+        white-space: inherit;
+        min-width: 100%;
+
+        &.mat-tab-label-active {
+            .inventual-notification {
+                @apply bg-white;
+            }
+        }
+    }
+
+    .inventual-notification {
+        @apply py-5;
+        @apply px-3.5;
+        width: 100%;
+    }
+
+    .mat-tab-label .mat-tab-label-content {
+        justify-content: start;
+        white-space: inherit;
+        width: 100%;
+    }
+
+    .mat-tab-label-container {
+        width: 400px;
+
+        @media (min-width: 992px) and (max-width: 1400px) {
+            width: 440px;
+        }
+
+        @media (min-width: 768px) and (max-width: 991px) {
+            width: 640px;
+        }
+    }
+
+    @media (max-width: 500px) {
+        .mat-tab-label {
+            min-height: 150px;
+        }
+
+        .mat-tab-labels {
+            min-width: 100%;
+        }
+
+        .inventual-notification {
+            display: block;
+        }
+
+        .inventual-notification-text {
+            width: calc(100% - 15px);
+        }
+
+        .inventual-notification-img {
+            margin-inline-end: 0px;
+            margin-bottom: 15px;
+        }
+    }
+}
+
+.inventual-notification-body {
+    overflow: hidden;
+}
+
+.inventual-notification-action {
+    button {
+        @apply text-body;
+        @apply text-[16px];
+        @apply inline-block;
+        @apply me-3;
+
+        &:last-child {
+            @apply me-0;
+        }
+    }
+}
+
+.inventual-notification-search {
+    .mat-icon {
+        @apply absolute;
+        @apply top-1.5;
+        @apply ps-2.5;
+        @apply start-0;
+        color: #B8BBBF;
+    }
+
+    input.mat-input-element {
+        @apply ps-10;
+    }
+}
+
+.inventual-notification-wrapper {
+    @media (min-width: 320px) and (max-width: 1200px) {
+        overflow-x: auto;
+    }
+}
+
+.inventual-notification-wrapper-inner {
+    @media (min-width: 320px) and (max-width: 1200px) {
+        min-width: 100%;
+        width: 830px;
+    }
+
+    @media (min-width: 320px) and (max-width: 767px) {
+        width: 100%;
+    }
+}

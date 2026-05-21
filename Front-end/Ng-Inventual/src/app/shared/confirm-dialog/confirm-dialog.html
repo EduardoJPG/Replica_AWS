@@ -1,0 +1,17 @@
+<h2 mat-dialog-title class="dialog-title">
+  ⚠️ Confirmación
+</h2>
+
+<mat-dialog-content class="dialog-content">
+  {{ data.message }}
+</mat-dialog-content>
+
+<mat-dialog-actions align="end" class="dialog-actions">
+  <button mat-button mat-dialog-close class="btn-cancel">
+    Cancelar
+  </button>
+
+  <button mat-raised-button color="warn" [mat-dialog-close]="true" class="btn-confirm">
+    Sí, continuar
+  </button>
+</mat-dialog-actions>

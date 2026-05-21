@@ -1,0 +1,17 @@
+<div class="validation-dialog">
+  <div class="validation-dialog-icon">
+    <mat-icon>priority_high</mat-icon>
+  </div>
+
+  <h2 mat-dialog-title>{{ data.title || 'Validacion requerida' }}</h2>
+
+  <mat-dialog-content>
+    <p>{{ data.message }}</p>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button mat-raised-button color="primary" mat-dialog-close>
+      Entendido
+    </button>
+  </mat-dialog-actions>
+</div>

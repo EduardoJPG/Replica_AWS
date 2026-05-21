@@ -1,0 +1,218 @@
+<div class="inventual-dashboard-area">
+    <div class="inventual-dashboard-sidebar" [class.sidebar-enable]="menuSidebarActive">
+        <div class="inventual-header-bar-responsive" (click)="myfunction()">
+            <mat-icon>reorder</mat-icon>
+        </div>
+        <div
+            class="inventual-menu-wrapper bg-white border-e border-b border-solid border-border py-10 px-7 lg:px-5 lg:py-8">
+            <app-menus></app-menus>
+        </div>
+        <div class="inventual-menu-overlay" (click)="myfunction()" [class.sidebar-enable]="menuSidebarActive"></div>
+    </div>
+    <div class="inventual-dashboard-main" [class.sidebar-enable]="menuSidebarActive">
+        <div class="inventual-header-area">
+            <div class="inventual-header-wrapper custom-height-70 px-7 bg-white border-b border-solid border-border">
+                <div class="grid grid-cols-12 items-center h-full">
+                    <div class="col-span-12">
+                        <app-header></app-header>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="inventual-breadcrumb-area px-7 py-9 bg-white mb-5">
+            <div class="inventual-breadcrumb-area-inner px-0.5">
+                <h5 class="text-[20px] text-heading font-bold mb-3">Value/Unit Management</h5>
+                <div class="inventual-breadcrumb-area-inner-wrap">
+                    <span class="text-[14px] text-body font-normal inline-block me-2">Product</span>
+                    <span class="text-[14px] text-body font-normal inline-block me-2">></span>
+                    <span class="text-[14px] text-body font-normal inline-block me-2">Value/Unit</span>
+                </div>
+            </div>
+        </div>
+        <div class="inventual-content-area px-7">
+            <div class="inventual-unit-area bg-white p-7 custom-shadow rounded-8 mb-5">
+                <div class="grid grid-cols-12 gap-x-7 sm:gap-x-0">
+                    <div class="col-span-4 md:col-span-12 sm:col-span-12">
+                        <div class="inventual-unit-content">
+                            <div class="inventual-select-field mb-7">
+                                <h5 class="text-[15px] text-heading font-semibold mb-3">Name</h5>
+                                <div class="inventual-input-field-style">
+                                    <mat-form-field class="w-full" [floatLabel]="'always'">
+                                        <mat-label class="hidden">Kilogram</mat-label>
+                                        <input matInput
+                                            [(ngModel)]="unidad.nombre"
+                                            name="nombreUnidad"
+                                            [placeholder]="'Kilogram'">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="inventual-select-field mb-7">
+                                <h5 class="text-[15px] text-heading font-semibold mb-3">Short Name</h5>
+                                <div class="inventual-input-field-style">
+                                    <mat-form-field class="w-full" [floatLabel]="'always'">
+                                        <mat-label class="hidden">kg</mat-label>
+                                        <input matInput
+                                            [(ngModel)]="unidad.nombreCorto"
+                                            name="nombreCortoUnidad"
+                                            [placeholder]="'kg'">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="inventual-material-btn mb-7 flex flex-wrap gap-2">
+                            <button mat-raised-button
+                                color="primary"
+                                class="mb-1"
+                                *ngIf="editMode ? auth.hasPermission('Unidades','puede_editar') : auth.hasPermission('Unidades','puede_crear')"
+                                [disabled]="saving"
+                                (click)="guardarUnidad()">
+                                <mat-icon>{{ editMode ? 'save' : 'add_circle_outline' }}</mat-icon>
+                                {{ editMode ? 'Update Value' : 'Create Value' }}
+                            </button>
+                            <button mat-raised-button
+                                color="accent"
+                                class="mb-1"
+                                type="button"
+                                *ngIf="editMode"
+                                (click)="resetForm()">
+                                <mat-icon>close</mat-icon>
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-span-8 md:col-span-12 sm:col-span-12">
+                        <div class="inventual-table-header-search-area">
+                            <div class="grid grid-cols-12 gap-5 mb-7 pb-0.5">
+                                <div class="col-span-6 md:col-span-8 sm:col-span-12">
+                                    <div class="inventual-select-field">
+                                        <div class="inventual-input-field-style">
+                                            <mat-form-field class="w-full" [floatLabel]="'always'">
+                                                <mat-label class="hidden">Filter</mat-label>
+                                                <input matInput
+                                                    (input)="applyFilter($event)"
+                                                    placeholder="Search by unit or value"
+                                                    #input>
+                                                <button mat-icon-button
+                                                    matSuffix
+                                                    type="button"
+                                                    *ngIf="searchTerm"
+                                                    aria-label="Clear unit search"
+                                                    (click)="clearSearch(input)">
+                                                    <mat-icon>close</mat-icon>
+                                                </button>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="inventual-common-table">
+                            <table class="!min-w-full" mat-table [dataSource]="dataSource" matSort>
+
+                                <!-- Checkbox Column -->
+                                <ng-container matColumnDef="select">
+                                    <th mat-header-cell *matHeaderCellDef>
+                                        <mat-checkbox (change)="$event ? toggleAllRows() : null"
+                                            [checked]="selection.hasValue() && isAllSelected()"
+                                            [indeterminate]="selection.hasValue() && !isAllSelected()"
+                                            [aria-label]="checkboxLabel()">
+                                        </mat-checkbox>
+                                    </th>
+                                    <td mat-cell *matCellDef="let row">
+                                        <mat-checkbox (click)="$event.stopPropagation()"
+                                            (change)="$event ? selection.toggle(row) : null"
+                                            [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)">
+                                        </mat-checkbox>
+                                    </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="id">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+                                    <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="name">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+                                    <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="shortName">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Short Name </th>
+                                    <td mat-cell *matCellDef="let row">
+                                        <div class="whitespace-nowrap">{{row.shortName}}</div>
+                                    </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="status">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+                                    <td mat-cell *matCellDef="let row">
+                                        <span *ngIf="row.status === 'Activo'" class="badge-stroke badge-success">Activo</span>
+                                        <span *ngIf="row.status === 'Inactivo'" class="badge-stroke badge-warning">Inactivo</span>
+                                    </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="action">
+                                    <th mat-header-cell *matHeaderCellDef> Action </th>
+                                    <td mat-cell *matCellDef="let row">
+                                        <div class="table-action-menu-wrap">
+                                            <button mat-icon-button [matMenuTriggerFor]="beforeMenu"
+                                                class="common-action-menu-style"
+                                                aria-label="Example icon-button with a menu">
+                                                Action <mat-icon>arrow_drop_down</mat-icon>
+                                            </button>
+                                            <mat-menu #beforeMenu="matMenu" xPosition="before">
+                                                <button mat-menu-item
+                                                    *ngIf="auth.hasPermission('Unidades','puede_editar')"
+                                                    (click)="editarUnidad(row)">
+                                                    <img src="assets/img/icon/action-2.png" alt="icon not found">
+                                                    <span>Edit Unit</span>
+                                                </button>
+                                                <button mat-menu-item
+                                                    *ngIf="row.status === 'Activo' && auth.hasPermission('Unidades','puede_eliminar')"
+                                                    (click)="inactivarUnidad(row.id)">
+                                                    <img src="assets/img/icon/action-6.png" alt="icon not found">
+                                                    <span>Deactivate Unit</span>
+                                                </button>
+                                                <button mat-menu-item
+                                                    *ngIf="row.status === 'Inactivo' && auth.hasPermission('Unidades','puede_editar')"
+                                                    (click)="reactivarUnidad(row.id)">
+                                                    <img src="assets/img/icon/action-2.png" alt="icon not found">
+                                                    <span>Reactivate Unit</span>
+                                                </button>
+                                            </mat-menu>
+                                        </div>
+                                    </td>
+                                </ng-container>
+
+                                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+                                    (click)="selection.toggle(row)">
+                                </tr>
+
+                                <!-- Row shown when there is no matching data. -->
+                                <tr class="mat-row" *matNoDataRow>
+                                    <td class="mat-cell" colspan="6">
+                                        <div class="table-data-not-found">
+                                            <p>No data matching the filter "{{input.value}}"</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <mat-paginator
+                                [pageSize]="pageSize"
+                                [pageSizeOptions]="pageSizeOptions"
+                                (page)="onPageChange($event)"
+                                showFirstLastButtons
+                                aria-label="Seleccionar cantidad de unidades por pagina">
+                            </mat-paginator>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="inventual-copyright-area">
+            <app-footer></app-footer>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,285 @@
+<form #form="ngForm" (ngSubmit)="saveProduct(form)">
+<div class="inventual-dashboard-area">
+    <div class="inventual-dashboard-sidebar" [class.sidebar-enable]="menuSidebarActive">
+        <div class="inventual-header-bar-responsive" (click)="myfunction()">
+            <mat-icon>reorder</mat-icon>
+        </div>
+        <div class="inventual-menu-wrapper bg-white border-e border-b border-solid border-border py-10 px-7 lg:px-5 lg:py-8">
+            <app-menus></app-menus>
+        </div>
+        <div class="inventual-menu-overlay" (click)="myfunction()" [class.sidebar-enable]="menuSidebarActive"></div>
+    </div>
+
+    <div class="inventual-dashboard-main" [class.sidebar-enable]="menuSidebarActive">
+        <div class="inventual-header-area">
+            <div class="inventual-header-wrapper custom-height-70 px-7 bg-white border-b border-solid border-border">
+                <div class="grid grid-cols-12 items-center h-full">
+                    <div class="col-span-12">
+                        <app-header></app-header>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="inventual-breadcrumb-area px-7 py-9 bg-white mb-5">
+            <div class="inventual-breadcrumb-area-inner px-0.5">
+                <h5 class="text-[20px] text-heading font-bold mb-3">{{ isEdit ? 'Edit Product' : 'Add Products' }}</h5>
+                <div class="inventual-breadcrumb-area-inner-wrap">
+                    <span class="text-[14px] text-body font-normal inline-block me-2">Product</span>
+                    <span class="text-[14px] text-body font-normal inline-block me-2">></span>
+                    <span class="text-[14px] text-body font-normal inline-block me-2">{{ isEdit ? 'Edit Product' : 'Add Products' }}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="inventual-content-area px-7">
+            <div class="inventual-unit-area bg-white p-7 custom-shadow rounded-8 mb-5">
+                <div class="grid grid-cols-12 gap-x-7 sm:gap-x-0">
+
+                    <div class="col-span-12">
+                        <div class="product-image-field mb-6">
+                            <div class="product-image-preview"
+                                [class.product-image-preview-zoomed]="imagePreview && imageZoomActive"
+                                [ngStyle]="{ '--zoom-origin': imageZoomOrigin }"
+                                (mouseenter)="setImageZoom($event)"
+                                (mousemove)="setImageZoom($event)"
+                                (mouseleave)="clearImageZoom()">
+                                <img *ngIf="imagePreview" [src]="imagePreview" alt="Imagen del producto">
+                                <mat-icon *ngIf="!imagePreview">image</mat-icon>
+                            </div>
+                            <div class="product-image-actions">
+                                <label for="productImage">Imagen del producto</label>
+                                <div class="inventual-material-btn">
+                                    <button type="button" mat-raised-button color="accent" (click)="imageInput.click()">
+                                        <mat-icon>upload</mat-icon>
+                                        Seleccionar imagen
+                                    </button>
+                                    <button type="button"
+                                        mat-button
+                                        color="warn"
+                                        *ngIf="imagePreview"
+                                        (click)="removeImage(imageInput)">
+                                        Quitar imagen
+                                    </button>
+                                </div>
+                                <input #imageInput
+                                    id="productImage"
+                                    class="hidden"
+                                    type="file"
+                                    accept="image/*"
+                                    (change)="onImageSelected($event)">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                        <mat-form-field class="w-full">
+                            <input matInput placeholder="Nombre del producto"
+                                [(ngModel)]="product.NombreProducto"
+                                name="nombreProducto"
+                                required
+                                minlength="2"
+                                #nombreProducto="ngModel">
+                            <mat-error *ngIf="nombreProducto.errors?.['required'] && nombreProducto.touched">
+                                El nombre es obligatorio
+                            </mat-error>
+                            <mat-error *ngIf="nombreProducto.errors?.['minlength'] && nombreProducto.touched">
+                                El nombre debe tener al menos 2 caracteres
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                        <mat-form-field class="w-full">
+                            <input matInput placeholder="Codigo del producto"
+                                [(ngModel)]="product.CodigoProducto"
+                                name="codigoProducto"
+                                required
+                                minlength="2"
+                                #codigoProducto="ngModel">
+                            <mat-error *ngIf="codigoProducto.errors?.['required'] && codigoProducto.touched">
+                                El codigo es obligatorio
+                            </mat-error>
+                            <mat-error *ngIf="codigoProducto.errors?.['minlength'] && codigoProducto.touched">
+                                El codigo debe tener al menos 2 caracteres
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                        <mat-form-field class="w-full">
+                            <mat-select placeholder="Categoria"
+                                [(ngModel)]="product.IdCategoria"
+                                name="idCategoria">
+                                <mat-option [value]="null">Sin categoria</mat-option>
+                                <mat-option *ngFor="let categoria of categorias" [value]="categoria.idCategoria">
+                                    {{ categoria.nombre }}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                        <mat-form-field class="w-full">
+                            <input matInput placeholder="Marca"
+                                [(ngModel)]="product.Marca"
+                                name="marca">
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                        <mat-form-field class="w-full">
+                            <input matInput placeholder="Tipo de producto"
+                                [(ngModel)]="product.TipoProducto"
+                                name="tipoProducto">
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                        <mat-form-field class="w-full">
+                            <mat-select placeholder="Unidad del producto"
+                                [(ngModel)]="product.UnidadDeProducto"
+                                name="unidadDeProducto">
+                                <mat-option [value]="''">Sin unidad</mat-option>
+                                <mat-option *ngFor="let unidad of unidades" [value]="unidad.nombreCorto">
+                                    {{ unidad.nombre }} ({{ unidad.nombreCorto }})
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                        <mat-form-field class="w-full">
+                            <input type="number" matInput placeholder="Precio de compra"
+                                [(ngModel)]="product.PrecioDeCompra"
+                                name="precioDeCompra"
+                                required
+                                min="0.01"
+                                step="0.01"
+                                #precioDeCompra="ngModel">
+                            <mat-error *ngIf="precioDeCompra.errors?.['required'] && precioDeCompra.touched">
+                                El precio de compra es obligatorio
+                            </mat-error>
+                            <mat-error *ngIf="precioDeCompra.errors?.['min'] && precioDeCompra.touched">
+                                El precio de compra debe ser mayor que 0
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                        <mat-form-field class="w-full">
+                            <input type="number" matInput placeholder="Precio de venta"
+                                [(ngModel)]="product.PrecioDeVenta"
+                                name="precioDeVenta"
+                                required
+                                min="0.01"
+                                step="0.01"
+                                #precioDeVenta="ngModel">
+                            <mat-error *ngIf="precioDeVenta.errors?.['required'] && precioDeVenta.touched">
+                                El precio de venta es obligatorio
+                            </mat-error>
+                            <mat-error *ngIf="precioDeVenta.errors?.['min'] && precioDeVenta.touched">
+                                El precio de venta debe ser mayor que 0
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                        <mat-form-field class="w-full">
+                            <input type="number" matInput placeholder="Impuesto del producto %"
+                                [(ngModel)]="product.ImpuestoSobreProducto"
+                                name="impuestoSobreProducto"
+                                min="0"
+                                max="100"
+                                #impuestoSobreProducto="ngModel">
+                            <mat-error *ngIf="impuestoSobreProducto.invalid && impuestoSobreProducto.touched">
+                                El impuesto debe estar entre 0 y 100
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                        <mat-form-field class="w-full">
+                            <input type="number" matInput placeholder="Descuento %"
+                                [(ngModel)]="product.Descuento"
+                                name="descuento"
+                                min="0"
+                                max="100"
+                                #descuento="ngModel">
+                            <mat-error *ngIf="descuento.invalid && descuento.touched">
+                                El descuento debe estar entre 0 y 100
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                        <mat-form-field class="w-full">
+                            <input type="number" matInput placeholder="Stock actual"
+                                [(ngModel)]="product.StockActual"
+                                name="stockActual"
+                                required
+                                min="1"
+                                step="1"
+                                #stockActual="ngModel">
+                            <mat-error *ngIf="stockActual.errors?.['required'] && stockActual.touched">
+                                El stock actual es obligatorio
+                            </mat-error>
+                            <mat-error *ngIf="stockActual.errors?.['min'] && stockActual.touched">
+                                El stock actual debe ser mayor que 0
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                        <mat-form-field class="w-full">
+                            <input type="number" matInput placeholder="Stock minimo"
+                                [(ngModel)]="product.StockMinimo"
+                                name="stockMinimo"
+                                min="0"
+                                step="1"
+                                #stockMinimo="ngModel">
+                            <mat-error *ngIf="stockMinimo.invalid && stockMinimo.touched">
+                                El stock minimo no puede ser negativo
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                        <mat-form-field class="w-full">
+                            <mat-select placeholder="Proveedor"
+                                [(ngModel)]="product.IdProveedor"
+                                name="idProveedor">
+                                <mat-option [value]="null">Sin proveedor</mat-option>
+                                <mat-option *ngFor="let proveedor of proveedores" [value]="proveedor.idProveedor">
+                                    {{ proveedor.nombre }}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-span-12">
+                        <div class="inventual-material-btn justify-end pt-2.5 flex flex-wrap gap-2">
+                            <button type="button"
+                                mat-raised-button
+                                color="accent"
+                                [routerLink]="['/product/productlist']">
+                                <mat-icon>list</mat-icon>
+                                Ver lista
+                            </button>
+                            <button type="submit"
+                                mat-raised-button
+                                color="primary">
+                                {{ isEdit ? 'Update Product' : 'Create Product' }}
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="inventual-copyright-area">
+                <app-footer></app-footer>
+            </div>
+        </div>
+    </div>
+</div>
+</form>

@@ -1,0 +1,47 @@
+@use '../../../../custom-palettes.scss';
+
+//sidebar menu style
+@include custom-palettes.inventualSidebarMuneStyle;
+// Select field style
+@include custom-palettes.inventualSelectFieldStyle;
+// Input field style
+@include custom-palettes.inventualInputFieldStyle;
+@include custom-palettes.inventualInputFieldEyeStyle;
+@include custom-palettes.inventualMaterialBtn;
+
+.inventual-profile-info-btn {
+    button {
+        @apply h-12 inline-block text-[16px] font-bold px-6 border border-solid border-border rounded-[5px] transition-all duration-300;
+        &:hover {
+            @apply bg-primary border-primary text-white;
+        }
+    }
+}
+
+.custom-height-70 {
+    @apply h-[70px] min-h-[70px];
+}
+
+.inventual-profile-info-img {
+    @apply h-[88px] w-[88px] rounded-[8px] overflow-hidden bg-lightest flex items-center justify-center shrink-0;
+
+    img {
+        @apply h-full w-full object-cover;
+    }
+}
+
+.profile-edit-photo-preview {
+    @apply h-[72px] w-[72px] rounded-[8px] p-1.5 bg-lightest overflow-hidden flex items-center justify-center shrink-0;
+
+    img {
+        @apply h-full w-full object-cover rounded-[6px];
+    }
+}
+
+.inventual-input-field-styles input,
+.inventual-input-field-style input {
+	&::-moz-placeholder,
+	&::placeholder {
+		@apply text-body opacity-100 font-primary font-normal;
+	}
+}

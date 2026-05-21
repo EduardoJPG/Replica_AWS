@@ -1,0 +1,112 @@
+.inventual-menu-wrapper {
+    @apply fixed top-0 start-0 h-screen w-[315px] min-w-[315px] overflow-y-auto z-[91];
+    transition: all linear 0.3s;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    @media (max-width: 1900px) {
+        @apply start-[-320px];
+    }
+    @media (max-width: 1199px) {
+        @apply w-[300px] min-w-[300px];
+	}
+}
+.inventual-dashboard-sidebar.sidebar-enable .inventual-menu-wrapper {
+	@apply start-[-315px];
+    @media (max-width: 1900px) {
+        @apply start-0;
+    }
+}
+
+.sidenav-nav {
+    @apply list-none m-0 flex flex-col items-center cursor-pointer;
+    .sidenav-nav-item {
+       @apply w-full;
+        .sidenav-nav-link {
+            transition: all linear 0.3s;
+            @apply flex items-center text-[15px] font-semibold text-heading w-full px-5 py-4 rounded;
+
+            .sidenav-link-icon {
+                @apply text-[18px] w-8 min-w-[32px] m-0 text-start text-primary;
+            }
+            .sidenav-link-text {
+                @apply ms-2;
+            }
+            &.active {
+                @apply bg-primary/10;
+                .menu-collapse-icon,
+                .sidenav-link-icon,
+                .sidenav-link-text {
+                    @apply text-primary;
+                }
+            }
+        }
+        .sidenav-nav-link:hover {
+            @apply bg-primary/10 text-primary;
+            .menu-collapse-icon {
+                @apply text-primary;
+            }
+        }
+    }
+}
+
+.menu-collapse-icon {
+    @apply text-heading text-end m-auto me-0 min-w-[16px] text-[18px] w-4;
+}
+
+.sublevel-nav {
+    @apply list-none ms-0 ps-5;
+    .sublevel-nav-item {
+        .sublevel-nav-link {
+            transition: all linear 0.3s;
+            width: calc(100% - 20px);
+            @apply text-body no-underline rounded flex items-center h-12;
+            .sublevel-link-icon {
+                @apply text-[4px] w-4 min-w-[16px] m-0 text-start;
+            }
+            .sublevel-link-text {
+                @apply ms-1;
+            }
+            &.active-sublevel {
+                @apply text-primary;
+            }
+        }
+        .sublevel-nav-link:hover {
+            @apply text-primary;
+        }
+    }
+}
+
+//scrollbar and visibility on hover and focus
+
+.sidenav-nav,
+.scrollwrap:hover,
+.scrollwrap:focus {
+    @apply visible;
+}
+
+.scrollwrap_delayed {
+    transition: visibility 0.5s 0.2s;
+}
+
+.scrollwrap_delayed:hover {
+    transition: visibility 0.2s 0.2s;
+}
+
+// works on chrome, edge and safari
+.scrollwrap::-webkit-scrollbar {
+    @apply hidden w-2.5;
+}
+
+.scrollwrap::-webkit-scrollbar-track {
+    @apply bg-transparent;
+}
+
+.scrollwrap::-webkit-scrollbar-thumb {
+    @apply bg-[#556268] rounded-[20px];
+}
+
+// works on firefox
+.scrollwrap {
+    scrollbar-width: thin;
+    scrollbar-color: #556268 transparent;
+}

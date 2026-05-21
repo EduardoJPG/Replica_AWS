@@ -1,0 +1,135 @@
+<div class="inventual-dashboard-area">
+    <div class="inventual-dashboard-sidebar" [class.sidebar-enable]="menuSidebarActive">
+        <div class="inventual-header-bar-responsive" (click)="myfunction()">
+            <mat-icon>reorder</mat-icon>
+        </div>
+        <div
+            class="inventual-menu-wrapper bg-white border-e border-b border-solid border-border py-10 px-7 lg:px-5 lg:py-8">
+            <app-menus></app-menus>
+        </div>
+        <div class="inventual-menu-overlay" (click)="myfunction()" [class.sidebar-enable]="menuSidebarActive"></div>
+    </div>
+    <div class="inventual-dashboard-main" [class.sidebar-enable]="menuSidebarActive">
+        <div class="inventual-header-area">
+            <div class="inventual-header-wrapper custom-height-70 px-7 bg-white border-b border-solid border-border">
+                <div class="grid grid-cols-12 items-center h-full">
+                    <div class="col-span-12">
+                        <app-header></app-header>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="inventual-breadcrumb-area px-7 py-9 bg-white mb-5">
+            <div class="inventual-breadcrumb-area-inner px-0.5">
+                <h5 class="text-[20px] text-heading font-bold mb-3">Add Expense</h5>
+                <div class="inventual-breadcrumb-area-inner-wrap">
+                    <span class="text-[14px] text-body font-normal inline-block me-2">Expense</span>
+                    <span class="text-[14px] text-body font-normal inline-block me-2">></span>
+                    <span class="text-[14px] text-body font-normal inline-block me-2">Add Expense</span>
+                </div>
+            </div>
+        </div>
+        <div class="inventual-content-area px-7">
+            <div class="inventual-addsupplier-area bg-white p-7 custom-shadow rounded-8 mb-5">
+                <div class="grid grid-cols-12 gap-x-7 sm:gap-x-0">
+                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                        <div class="inventual-calender-field mb-5">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">Date</h5>
+                            <div class="inventual-calender-field-style">
+                                <mat-form-field appearance="fill" floatLabel="always">
+                                    <mat-label class="hidden">Choose a date</mat-label>
+                                    <input matInput [matDatepicker]="picker" [placeholder]="'MM/DD/YYYY'">
+                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                        <div class="inventual-select-field mb-5">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">Select Warehouse</h5>
+                            <div class="inventual-select-field-style">
+                                <mat-form-field>
+                                    <mat-select class="block" [placeholder]="'Warehouse'">
+                                        <mat-option value="language-1">United States</mat-option>
+                                        <mat-option value="language-2">Canada</mat-option>
+                                        <mat-option value="language-3">Mexico</mat-option>
+                                        <mat-option value="language-4">France</mat-option>
+                                        <mat-option value="language-5">Germany</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                        <div class="inventual-select-field mb-5">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">Expense Type</h5>
+                            <div class="inventual-select-field-style">
+                                <mat-form-field>
+                                    <mat-select class="block" [placeholder]="'Direct Expense'">
+                                        <mat-option value="language-1">Direct Expense</mat-option>
+                                        <mat-option value="language-2">Draft Expense</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                        <div class="inventual-select-field mb-5">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">Category</h5>
+                            <div class="inventual-select-field-style">
+                                <mat-form-field>
+                                    <mat-select class="block" [placeholder]="'Electrics'">
+                                        <mat-option value="language-1">Shoe</mat-option>
+                                        <mat-option value="language-2">Cloth</mat-option>
+                                        <mat-option value="language-3">Bag</mat-option>
+                                        <mat-option value="language-4">Computer</mat-option>
+                                        <mat-option value="language-5">laptop</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                        <div class="inventual-select-field mb-5">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">Voucher No</h5>
+                            <div class="inventual-input-field-style">
+                                <mat-form-field class="w-full" [floatLabel]="'always'">
+                                    <mat-label class="hidden">Bdevs Technology</mat-label>
+                                    <input matInput [placeholder]="'748'">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                        <div class="inventual-select-field mb-5">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">Amount</h5>
+                            <div class="inventual-input-field-style">
+                                <mat-form-field class="w-full" [floatLabel]="'always'">
+                                    <mat-label class="hidden">Supplier Code</mat-label>
+                                    <input type="number" matInput [placeholder]="'4,470'">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-12">
+                        <div class="inventual-select-field mb-5">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">Purchase Note:</h5>
+                            <div class="inventual-input-field-style relative">
+                                <textarea placeholder="Type text...."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-12">
+                        <div class="inventual-material-btn pt-2.5 justify-end">
+                            <button mat-raised-button color="primary">Create Expense</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="inventual-copyright-area pt-9 xl:pt-0 lg:pt-0 md:pt-0 sm:pt-0">
+            <app-footer></app-footer>
+        </div>
+    </div>
+</div>

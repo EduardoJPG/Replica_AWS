@@ -1,0 +1,67 @@
+@use '../../../../../../../custom-palettes.scss';
+
+@include custom-palettes.inventualBtnStyle;
+@include custom-palettes.popupCommonStyle;
+
+.inventual-popup-inner {
+    width: 700px;
+    @apply p-7;
+
+    @media (min-width: 768px) and (max-width: 991px) {
+        width: 600px;
+    }
+
+    @media (min-width: 576px) and (max-width: 767px) {
+        width: 440px;
+    }
+
+    @media (min-width: 450px) and (max-width: 575px) {
+        width: 350px;
+    }
+
+    @media (max-width: 449px) {
+        width: 100%;
+    }
+}
+
+.thanks-message {
+    @apply py-6;
+
+    i {
+        @apply h-[60px] w-[60px] rounded-[50%] leading-[58px] text-[30px] border border-success inline-flex justify-center items-center;
+
+        &:before {
+            @apply text-success;
+        }
+
+        .mat-icon {
+            @apply text-success;
+        }
+    }
+
+    h4 {
+        @apply text-[24px] text-heading font-semibold mt-5 mb-1;
+    }
+
+    p {
+        @apply text-[15px] text-body;
+    }
+}
+
+.error-content {
+    h3 {
+        @apply text-[32px] font-semibold text-heading mb-2.5;
+    }
+
+    p {
+        @apply text-body text-[18px] mb-5;
+    }
+}
+
+.pos-action-btn {
+    .inventual-btn.primary-btn {
+        &:hover {
+            @apply bg-primary;
+        }
+    }
+}

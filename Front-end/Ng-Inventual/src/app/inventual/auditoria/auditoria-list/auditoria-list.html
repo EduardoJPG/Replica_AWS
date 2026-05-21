@@ -1,0 +1,185 @@
+<div class="inventual-dashboard-area">
+    <div class="inventual-dashboard-sidebar" [class.sidebar-enable]="menuSidebarActive">
+        <div class="inventual-header-bar-responsive" (click)="myfunction()">
+            <mat-icon>reorder</mat-icon>
+        </div>
+        <div class="inventual-menu-wrapper bg-white border-e border-b border-solid border-border py-10 px-7 lg:px-5 lg:py-8">
+            <app-menus></app-menus>
+        </div>
+        <div class="inventual-menu-overlay" (click)="myfunction()" [class.sidebar-enable]="menuSidebarActive"></div>
+    </div>
+
+    <div class="inventual-dashboard-main" [class.sidebar-enable]="menuSidebarActive">
+        <div class="inventual-header-area">
+            <div class="inventual-header-wrapper custom-height-70 px-7 bg-white border-b border-solid border-border">
+                <div class="grid grid-cols-12 items-center h-full">
+                    <div class="col-span-12">
+                        <app-header></app-header>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="inventual-breadcrumb-area px-7 py-9 bg-white mb-5">
+            <div class="inventual-breadcrumb-area-inner px-0.5">
+                <h5 class="text-[20px] text-heading font-bold mb-3">Audit Logs</h5>
+                <div class="inventual-breadcrumb-area-inner-wrap">
+                    <span class="text-[14px] text-body font-normal inline-block me-2">System</span>
+                    <span class="text-[14px] text-body font-normal inline-block me-2">></span>
+                    <span class="text-[14px] text-body font-normal inline-block me-2">Audit Logs</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="inventual-content-area px-7">
+            <div class="inventual-common-material-table bg-white p-7 custom-shadow rounded-8 mb-5">
+                <div class="audit-filter-grid mb-7">
+                    <mat-form-field class="w-full">
+                        <input matInput type="date" placeholder="From date" [(ngModel)]="filtros.fechaDesde">
+                    </mat-form-field>
+
+                    <mat-form-field class="w-full">
+                        <input matInput type="date" placeholder="To date" [(ngModel)]="filtros.fechaHasta">
+                    </mat-form-field>
+
+                    <mat-form-field class="w-full">
+                        <mat-select placeholder="Category" [(ngModel)]="filtros.modulo">
+                            <mat-option value="">All categories</mat-option>
+                            <mat-option *ngFor="let categoria of categorias" [value]="categoria">
+                                {{ categoria }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field class="w-full">
+                        <mat-select placeholder="Action" [(ngModel)]="filtros.accion">
+                            <mat-option value="">All actions</mat-option>
+                            <mat-option *ngFor="let accion of acciones" [value]="accion">
+                                {{ accion }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field class="w-full">
+                        <input matInput type="number" placeholder="User ID" [(ngModel)]="filtros.idUsuario">
+                    </mat-form-field>
+
+                    <div class="audit-filter-actions">
+                        <button type="button" mat-raised-button color="primary" (click)="applyFilters()">
+                            <mat-icon>filter_alt</mat-icon>
+                            Filter
+                        </button>
+                        <button type="button" mat-button color="warn" (click)="clearFilters(searchInput)">
+                            <mat-icon>restart_alt</mat-icon>
+                            Clear
+                        </button>
+                    </div>
+                </div>
+
+                <div class="inventual-table-header-search-area">
+                    <div class="grid grid-cols-12 gap-5 mb-7 pb-0.5">
+                        <div class="col-span-5 md:col-span-6 sm:col-span-12">
+                            <div class="inventual-select-field">
+                                <div class="inventual-input-field-style">
+                                    <mat-form-field class="w-full" [floatLabel]="'always'">
+                                        <mat-label class="hidden">Search here</mat-label>
+                                        <input matInput (keyup)="applySearch($event)" placeholder="Search here" #searchInput>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-span-7 md:col-span-6 sm:col-span-12">
+                            <div class="audit-table-count">
+                                <mat-icon>{{ loading ? 'hourglass_top' : 'receipt_long' }}</mat-icon>
+                                <span>{{ dataSource.filteredData.length }} records</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="inventual-common-table audit-table-wrap">
+                    <table mat-table [dataSource]="dataSource" matSort>
+                        <ng-container matColumnDef="fecha">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
+                            <td mat-cell *matCellDef="let row"> {{ formatDate(row.fechaUtc) }} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="usuario">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> User </th>
+                            <td mat-cell *matCellDef="let row">
+                                <div class="audit-user-cell">
+                                    <span>{{ row.nombreUsuario || 'System' }}</span>
+                                    <small *ngIf="row.idUsuario">ID {{ row.idUsuario }}</small>
+                                </div>
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="accion">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+                            <td mat-cell *matCellDef="let row"> {{ row.accion }} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="modulo">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Category </th>
+                            <td mat-cell *matCellDef="let row"> {{ row.modulo }} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="metodo">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Method </th>
+                            <td mat-cell *matCellDef="let row">
+                                <span class="audit-method">{{ row.metodo }}</span>
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="ruta">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Route </th>
+                            <td mat-cell *matCellDef="let row" class="audit-route-cell"> {{ row.ruta }} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="estado">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+                            <td mat-cell *matCellDef="let row">
+                                <span class="audit-status" [ngClass]="getStatusClass(row.estadoHttp)">
+                                    {{ row.estadoHttp }}
+                                </span>
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="ip">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> IP </th>
+                            <td mat-cell *matCellDef="let row"> {{ row.ip || '-' }} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="detalle">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Detail </th>
+                            <td mat-cell *matCellDef="let row"> {{ row.detalle || '-' }} </td>
+                        </ng-container>
+
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                        <tr class="mat-row" *matNoDataRow>
+                            <td class="mat-cell" [attr.colspan]="displayedColumns.length">
+                                <div class="table-data-not-found">
+                                    <p>No data found</p>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <mat-paginator
+                        [pageSize]="pageSize"
+                        [pageSizeOptions]="pageSizeOptions"
+                        (page)="onPageChange($event)"
+                        showFirstLastButtons
+                        aria-label="Select audit page size">
+                    </mat-paginator>
+                </div>
+            </div>
+
+            <div class="inventual-copyright-area">
+                <app-footer></app-footer>
+            </div>
+        </div>
+    </div>
+</div>

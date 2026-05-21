@@ -1,0 +1,9 @@
+.env
+DataProtection-Keys/
+
+# .NET
+**/bin/
+**/obj/
+*.dll
+*.exe
+*.pdb

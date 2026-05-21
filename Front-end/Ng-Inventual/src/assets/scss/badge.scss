@@ -1,0 +1,49 @@
+//badge styles
+.badge {
+    @apply min-h-[20px] px-2.5 leading-5 font-semibold text-[12px] text-lightest inline-block rounded;
+    &.badge-primary {
+        @apply bg-primary/80;
+    }
+    &.badge-success {
+        @apply bg-success/80;
+    }
+    &.badge-danger {
+        @apply bg-danger/80;
+    }
+    &.badge-warning {
+        @apply bg-warning/80;
+    }
+    &.badge-teal {
+        @apply bg-teal/80;
+    }
+    &.badge-gray {
+        @apply bg-border/80 text-heading;
+    }
+    &.badge-dark {
+        @apply bg-heading/80;
+    }
+  }
+  .badge-stroke {
+    @apply min-h-[20px] px-2.5 border border-solid leading-[18px] font-semibold text-[12px] text-lightest inline-block rounded-[100px];
+    &.badge-primary {
+        @apply border-primary text-primary;
+    }
+    &.badge-success {
+        @apply border-success text-success;
+    }
+    &.badge-danger {
+        @apply border-danger text-danger;
+    }
+    &.badge-warning {
+        @apply border-warning text-warning;
+    }
+    &.badge-teal {
+        @apply border-teal text-teal;
+    }
+    &.badge-gray {
+        @apply border-border text-border;
+    }
+    &.badge-dark {
+        @apply border-heading text-heading;
+    }
+  }

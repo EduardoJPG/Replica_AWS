@@ -1,0 +1,630 @@
+//select field
+@mixin inventualSelectFieldStyle {
+  .inventual-select-field-style {
+    .mat-mdc-form-field-appearance-legacy.mat-mdc-form-field-can-float.mat-mdc-form-field-should-float .mat-mdc-form-field-label {
+      @apply hidden;
+    }
+    .mat-mdc-form-field-hide-placeholder .mat-mdc-select-placeholder {
+      @apply text-body opacity-70;
+      -webkit-text-fill-color: #616161;
+    }
+    .mat-mdc-form-field-appearance-legacy .mat-mdc-form-field-underline {
+      @apply hidden;
+    }
+    .mat-mdc-form-field-flex {
+      @apply h-12 leading-[46px] border border-solid border-border px-5 rounded-[3px] outline-none text-[14px] text-body font-primary font-normal w-full bg-gray flex items-center;
+    }
+    .mat-mdc-text-field-wrapper:not(.mdc-text-field--outlined) .mat-mdc-form-field-infix {
+      @apply p-0 w-full;
+    }
+    .mat-mdc-form-field-infix {
+      @apply w-full border-t-0 flex items-center min-h-0;
+    }
+    .mat-form-field-hide-placeholder .mat-mdc-select-placeholder,
+    .mat-mdc-select {
+      @apply opacity-100 text-[14px] text-body font-primary;
+      -webkit-text-fill-color: #616161;
+    }
+    .mat-form-field-appearance-fill .mat-mdc-select-arrow-wrapper {
+      transform: translateY(0px);
+    }
+    .mat-mdc-text-field-wrapper .mat-mdc-form-field-infix .mat-mdc-floating-label {
+      @apply hidden;
+    }
+    .mat-mdc-form-field-subscript-wrapper,
+    .mdc-line-ripple {
+      @apply hidden;
+    }
+    .mat-mdc-select-value-text {
+      @apply text-body font-primary;
+    }
+    .mdc-text-field {
+      @apply p-0 rounded-none;
+    }
+    .mat-mdc-form-field {
+      @apply font-primary w-full;
+    }
+    .mat-mdc-text-field-wrapper {
+      @apply min-w-[100px] rounded-none;
+    }
+    .mat-mdc-select-arrow {
+      color: #616161 !important;
+    }
+  }
+  .mat-mdc-option span.mdc-list-item__primary-text {
+    @apply text-[14px] font-primary text-heading;
+  }
+}
+
+//input field
+@mixin inventualInputFieldStyle {
+.inventual-input-field-style {
+    .mdc-text-field {
+      @apply rounded-none p-0 bg-transparent;
+    }
+    .mat-mdc-form-field, .mat-mdc-floating-label {
+      @apply font-primary text-[14px] text-body no-underline leading-none normal-case;
+    }
+    .mat-mdc-text-field-wrapper:not(.mdc-text-field--outlined) .mat-mdc-form-field-infix {
+      @apply p-0;
+    }
+    & .mat-mdc-form-field-infix {
+        @apply p-0 min-h-0;
+    }
+    & input.mat-mdc-input-element {
+        @apply m-0 h-12 leading-[46px] border border-solid border-border px-5 rounded-[3px] outline-none block text-[14px] text-body font-primary font-normal w-full bg-gray focus:bg-white box-border; 
+    }
+    .mat-mdc-form-field-subscript-wrapper, .mdc-line-ripple {
+      @apply hidden;
+    }
+  }
+}
+
+//input field file
+@mixin inventualInputFieldFileStyle {
+  .inventual-input-field-file-choose {
+    input {
+      @apply text-heading cursor-pointer px-5 opacity-100 h-12 leading-[46px] border border-solid border-border bg-gray rounded outline-none block text-[14px] font-normal w-full focus:bg-white box-border;
+    }
+    input::file-selector-button {
+      @apply px-2.5 bg-border rounded border border-solid border-transparent p-0 translate-x-[-2px] text-body text-[14px] font-primary font-semibold me-2 cursor-pointer;
+    }
+  }
+}
+
+//input field file
+@mixin inventualTextareaFieldStyle {
+  .inventual-input-field-style {
+    textarea {
+      @apply text-heading cursor-pointer px-5 opacity-100 h-[120px] leading-tight border border-solid border-border bg-gray rounded outline-none block text-[14px] font-normal w-full focus:bg-white box-border py-2.5;
+    }
+  }
+}
+
+//input field eye
+@mixin inventualInputFieldEyeStyle {
+  .inventual-input-field-style-eye {
+    .mat-mdc-form-field {
+      @apply w-full;
+    }
+    .mat-mdc-form-field-flex {
+      @apply p-0 rounded-[3px] bg-transparent w-full;
+    }
+    .mat-mdc-form-field-wrapper {
+      @apply w-full p-0;
+    }
+    .mat-mdc-form-field-underline {
+      @apply hidden;
+    }
+    .mat-mdc-form-field-infix {
+      @apply p-0;
+    }
+    .mat-mdc-form-field-suffix {
+      @apply absolute top-1.5 end-2;
+    }
+    .mat-mdc-icon {
+      @apply text-body;
+    }
+    .mat-icon {
+      line-height: 1 !important;
+      transform: translateY(11px);
+    }
+    .mat-mdc-form-field-icon-suffix,
+    [dir="rtl"] .mat-mdc-form-field-icon-prefix {
+      @apply bg-gray p-0 text-body border border-solid border-border h-[48px];
+    }
+    .mat-mdc-icon-button.mat-mdc-button-base {
+      padding: 0px !important;
+    }
+    .mat-mdc-icon-button .mat-mdc-button-ripple,
+    .mat-mdc-icon-button .mat-mdc-button-touch-target,
+    .mat-mdc-icon-button .mat-mdc-focus-indicator,
+    .mat-mdc-icon-button .mat-mdc-button-persistent-ripple::before {
+      @apply hidden;
+    }
+    input.mat-mdc-input-element {
+      @apply border-e-0;
+    }
+  }
+}
+
+//product counter style
+@mixin productCounter {
+  .inventual-addsale-product-qty {
+    & p {
+      @apply px-3 text-body text-[14px] font-normal;
+    }
+    & button {
+      @apply h-[30px] w-[30px] border border-solid border-[#C1D5FE] text-primary rounded-[3px] leading-[26px] text-center inline-block;
+      & .material-icons {
+        @apply text-[16px] leading-[26px] translate-x-[-2px];
+      }
+      &.active {
+        @apply bg-primary text-white border-primary;
+      }
+    }
+  }
+}
+
+//product delete btn
+@mixin productDeleteBtn {
+  .product-delete-btn {
+    @apply border-danger rounded-[3px] border-solid border inline-block text-center leading-[23px] w-6 h-6;
+    & .material-icons {
+        @apply text-[16px] leading-[22px] text-danger translate-x-[-1px];
+        
+    }
+    [dir="rtl"] {
+      .material-icons {
+        @apply translate-x-[1px];
+      }
+    }
+  }
+}
+
+@mixin inventualCalenderFieldStyle {
+  .inventual-calender-field-style {
+    .mat-mdc-form-field-has-icon-suffix .mat-mdc-text-field-wrapper {
+      @apply p-0;
+    }
+    .mat-mdc-form-field-flex {
+      @apply h-12 leading-[46px] border border-solid border-border ps-5 rounded-[3px] outline-none inline-flex text-[14px] text-body font-primary font-normal w-full bg-gray focus:bg-white box-border;
+    }
+    .mat-mdc-form-field-subscript-wrapper {
+      @apply hidden;
+    }
+    .mat-mdc-form-field {
+        @apply block w-full;
+    }
+    .mat-mdc-text-field-wrapper:not(.mdc-text-field--outlined) .mat-mdc-form-field-infix {
+      @apply p-0;
+    }
+    .mat-mdc-form-field-infix {
+      @apply min-h-0 w-full;
+    }
+    .mdc-line-ripple {
+      @apply hidden;
+    }
+  }
+  abbr[title] {
+    text-decoration:  none !important;
+  }
+}
+
+//checkbox design
+@mixin inventualCheckboxFieldStyle {
+    .inventual-manageproduct-table-checkbox1,
+    .inventual-managesale-table-checkbox,
+    .inventual-addbrand-table-checkbox,
+    .inventual-checkbox-field-style,
+    .inventual-managesale-table-checkbox2,
+    .inventual-salereturns-table-checkbox,
+    .inventual-managesale-table-checkbox4,
+    .inventual-supplierlist-table-checkbox,
+    .inventual-role-checkbox {
+      .mdc-checkbox {
+        flex: 0 0 16px;
+        @apply w-4 h-4 p-0 m-0;
+      }
+      .mdc-checkbox__background {
+        @apply w-4 h-4 border-2 border-border;
+      }
+      .mdc-checkbox .mdc-checkbox__native-control:enabled:focus:focus:not(:checked):not(:indeterminate)~.mdc-checkbox__background {
+        @apply border-border;
+      }
+      .mdc-checkbox .mdc-checkbox__native-control:focus:checked~.mdc-checkbox__ripple {
+        @apply bg-primary;
+      }
+      .mdc-checkbox .mdc-checkbox__native-control:enabled:not(:checked):not(:indeterminate):not([data-indeterminate="true"])~.mdc-checkbox__background {
+        @apply border-border;
+      }
+      .mat-mdc-checkbox-ripple, .mdc-checkbox__ripple,
+      .mat-mdc-checkbox .mdc-checkbox__ripple,
+      .mat-mdc-checkbox-touch-target {
+        @apply hidden;
+      }
+      .mdc-checkbox .mdc-checkbox__background {
+        @apply top-0 start-4;
+      }
+      .mdc-checkbox .mdc-checkbox__native-control:enabled:checked ~ .mdc-checkbox__background {
+        @apply bg-primary border-primary;
+      }
+    }
+}
+
+//inventual material btn style
+@mixin inventualMaterialBtn {
+  .inventual-material-btn {
+    @apply flex gap-5 flex-wrap;
+    .mdc-button {
+      @apply text-[16px] font-semibold rounded-[5px] h-12 leading-[48px] mb-0 py-0 px-7 sm:px-4  min-w-0 transition-colors font-primary;
+    }
+    .mat-mdc-raised-button.mat-primary {
+      @apply bg-primary text-white hover:bg-success;
+    }
+    .mat-mdc-raised-button.mat-accent {
+      @apply bg-success text-white hover:bg-primary hover:text-white;
+    }
+    .mat-mdc-raised-button.mat-warn {
+      @apply bg-warning text-white hover:bg-success hover:text-white;
+    }
+    .mat-icon {
+      @apply text-white;
+      font-size: 22px !important
+    }
+    .inventual-input-field-file {
+      label {
+        @apply text-[16px] font-semibold cursor-pointer rounded-[5px] h-12 leading-[48px] py-0 px-7 sm:px-4 inline-flex gap-1.5 text-white  min-w-0 transition-colors font-primary bg-primary;
+        .mat-icon {
+          @apply text-white;
+          font-size: 22px !important
+        }
+      }
+    }
+  }
+}
+
+//popup close icon
+@mixin inventualPopupClose {
+  .inventual-popup-header-close a {
+    @apply h-9 w-9 leading-[35px] text-center inline-block border border-solid rounded border-danger;
+    & .material-icons {
+        @apply text-[20px] leading-[34px] text-danger translate-x-[-1px];
+    }
+    [dir="rtl"] {
+      .material-icons {
+        @apply translate-x-[1px];
+      }
+    }
+  }
+}
+
+//popup material-btn
+@mixin materialPopupBtn {
+  .mat-raised-button {
+      font-size: 16px !important;
+      font-weight: 700 !important;
+      color: #fff !important;
+      border-radius: 5px !important;
+      height: 48px !important;
+      line-height: 48px !important;
+      padding: 0px 16px !important;
+      width: 100% !important;
+      @apply text-center;
+	}
+}
+
+//popup common style
+@mixin popupCommonStyle {
+  .mat-dialog-container {
+    padding: 0px !important;
+    border-radius: 10px !important;
+    overflow: hidden !important;
+  }
+  .cdk-overlay-dark-backdrop {
+    background: rgba(0, 0, 0, 0.5);
+  }
+  .mat-dialog-content {
+    max-height: 90vh;
+    max-width: 90vw;
+  }
+  
+}
+
+//common action menu style
+@mixin commonActionMenuStyle {
+  .mat-mdc-menu-item img {
+    @apply w-4 me-2;
+  }
+  .mat-mdc-menu-item span {
+    @apply text-heading text-sm font-primary;
+  }
+  .mat-mdc-menu-item {
+    height: 40px !important;
+    line-height: 40px !important;
+  }
+  .common-action-menu-style.mat-mdc-icon-button {
+    @apply border border-solid border-[#C1D5FE] h-9 rounded text-primary w-auto min-w-[85px] text-sm leading-3 inline-flex font-primary;
+  }
+  button.mat-mdc-icon-button .mat-mdc-button-touch-target {
+    @apply h-auto w-auto;
+  }
+  button.mat-mdc-icon-button .mat-mdc-button-persistent-ripple::before {
+    @apply hidden;
+  }
+  .common-action-menu-style {
+    .mat-icon {
+      width: 18px !important;
+    }
+    i {
+      @apply ms-2;
+    }
+  }
+  [dir="rtl"] {
+    .common-action-menu-style {
+      .mat-icon {
+        transform: translateX(-5px);
+      }
+    }
+  }
+}
+
+//inventual header searchbar
+@mixin inventualHeaderSearch {
+  .inventual-table-header-search {
+    & input {
+      @apply h-10 w-full block rounded-[3px] border border-solid border-border pe-11 ps-4 text-[14px] font-normal font-primary text-body;
+      &:focus-visible {
+        @apply outline-none;
+      }
+    }
+    & span {
+      @apply inline-block text-[20px] text-[#B7B7B7] top-[3px] end-3.5 absolute;
+    }
+  }
+  .inventual-input-field-file label {
+    line-height: 48px !important;
+    @apply cursor-pointer transition duration-300 bg-transparent w-full block outline-none rounded-none border-0 h-12;
+    &:focus {
+      @apply bg-white;
+    }
+  }
+  .inventual-input-field-file input {
+    @apply hidden;
+  }
+}
+
+//inventual header searchbar action
+@mixin inventualHeaderSearchAction {
+  .inventual-table-header-search-action-btn {
+    @apply flex flex-wrap gap-2.5 justify-end sm:justify-start;
+    & button {
+      @apply h-12 w-10 inline-block rounded-[3px] border border-solid p-0 text-[14px] leading-[46px] font-normal font-primary text-center;
+      & svg {
+        @apply inline-block;
+      }
+      &.filter {
+        width: inherit;
+        @apply border-teal px-5 text-teal sm:px-4;
+        & svg {
+          @apply me-1.5;
+        }
+      }
+      &.pdf {
+        @apply border-warning;
+      }
+      &.csv {
+        @apply border-success;
+      }
+      &.printer {
+        @apply border-primary;
+      }
+    }
+  }
+}
+
+//sidebar menu style
+@mixin inventualSidebarMuneStyle {
+  .inventual-dashboard-area {
+    @apply flex;
+  }
+  .inventual-dashboard-sidebar {
+    transition: all linear 0.3s;
+    @apply z-10 bg-white ms-0 relative w-[315px] min-w-[315px];
+
+    @media (min-width: 320px) and (max-width: 1900px) {
+      @apply ms-[-315px];
+    }
+    .inventual-header-bar-responsive {
+      @apply absolute top-[19px] z-[11] end-[-60px] inline-block cursor-pointer text-primary text-center h-8 w-8 leading-[47px] bg-border;
+      .mat-icon {
+        @apply leading-none translate-y-[4px];
+      }
+    }
+  }
+  .inventual-dashboard-main {
+    width: calc(100% - 315px);
+    transition: all linear 0.3s;
+    @media (min-width: 1201px) and (max-width: 1900px) {
+      @apply w-full;
+    }
+    @media (max-width: 1200px) {
+      @apply w-full;
+    }
+  }
+  .inventual-dashboard-sidebar.sidebar-enable {
+    @apply ms-[-315px];
+    @media (min-width: 320px) and (max-width: 1900px) {
+      @apply fixed top-0 start-0 bottom-0;
+    }
+  }
+  .inventual-dashboard-main.sidebar-enable {
+      @apply ms-0 w-full;
+  }
+  .inventual-menu-overlay.sidebar-enable {
+    @media (max-width: 1900px) {
+      @apply fixed top-0 start-0 end-0 bottom-0 bg-black/60 z-[10];
+    }
+  }
+}
+
+
+//material table styles
+@mixin inventualMaterialTableStyle {
+  .inventual-common-table {
+    @apply overflow-x-auto cursor-grab;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    table.mdc-data-table__table {
+        @apply border bg-white border-border border-solid xxl:min-w-[1290px] w-full;
+        th {
+            @apply text-[15px] font-semibold text-heading font-primary bg-lightest;
+        }
+        td {
+            @apply text-[14px] font-normal text-body font-primary;
+        }
+        .mat-mdc-footer-row {
+          @apply border-t border-border;
+          td  {
+            @apply text-[15px] font-semibold text-heading font-primary;
+          }
+        }
+    }
+    .mat-mdc-header-cell,
+    .mat-mdc-cell {
+        @apply border-border px-2.5 leading-none py-1;
+    }
+    .mat-mdc-paginator-container {
+        @apply justify-between gap-5 p-0 flex-wrap mt-5;
+    }
+    .mat-mdc-paginator-page-size-label,
+    .mat-mdc-paginator-range-label {
+        @apply text-[14px] font-primary text-body;
+    }
+    .mdc-notched-outline {
+        @apply outline-border outline-0 focus:outline-border;
+        &:focus-visible {
+            @apply outline-border outline-0;
+        }
+    }
+    .mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover .mdc-notched-outline .mdc-notched-outline__leading, .mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover .mdc-notched-outline .mdc-notched-outline__notch, .mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover .mdc-notched-outline .mdc-notched-outline__trailing {
+        @apply border-border;
+    }
+    .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__leading,
+    .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline .mdc-notched-outline__trailing,
+    .mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__leading {
+        @apply border-border outline-border;
+    }
+    .mat-mdc-paginator-container {
+        @apply min-h-0;
+    }
+    .mat-mdc-row,
+    .mat-mdc-header-row,
+    .mat-mdc-footer-row {
+        @apply h-12 leading-[0px];
+    }
+    .table-data-not-found {
+        @apply h-12 flex justify-center items-center;
+        p {
+            @apply text-[14px] font-normal text-body font-primary;
+        }
+    }
+    .mat-mdc-checkbox-ripple, .mdc-checkbox__ripple,
+    .mat-mdc-checkbox-touch-target {
+        @apply hidden;
+    }
+    .mdc-checkbox .mdc-checkbox__native-control:enabled:checked ~ .mdc-checkbox__background,
+    .mdc-checkbox .mdc-checkbox__native-control:enabled:focus:checked ~ .mdc-checkbox__background, 
+    .mdc-checkbox .mdc-checkbox__native-control:enabled:focus:indeterminate ~ .mdc-checkbox__background,
+    .mdc-checkbox .mdc-checkbox__native-control:enabled:checked ~ .mdc-checkbox__background, 
+    .mdc-checkbox .mdc-checkbox__native-control:enabled:indeterminate ~ .mdc-checkbox__background, 
+    .mdc-checkbox .mdc-checkbox__native-control[data-indeterminate="true"]:enabled ~ .mdc-checkbox__background,
+    .mdc-checkbox:hover .mdc-checkbox__native-control:enabled:checked ~ .mdc-checkbox__background, 
+    .mdc-checkbox:hover .mdc-checkbox__native-control:enabled:indeterminate ~ .mdc-checkbox__background, 
+    .mdc-checkbox:hover .mdc-checkbox__native-control[data-indeterminate="true"]:enabled ~ .mdc-checkbox__background,
+    .mdc-checkbox:not(:disabled):active .mdc-checkbox__native-control:enabled:checked ~ .mdc-checkbox__background, 
+    .mdc-checkbox:not(:disabled):active .mdc-checkbox__native-control:enabled:indeterminate ~ .mdc-checkbox__background, 
+    .mdc-checkbox:not(:disabled):active .mdc-checkbox__native-control[data-indeterminate="true"]:enabled ~ .mdc-checkbox__background {
+        @apply bg-primary border-primary;
+    }
+    .mdc-checkbox .mdc-checkbox__native-control:enabled:not(:checked):not(:indeterminate):not([data-indeterminate="true"]) ~ .mdc-checkbox__background,
+    .mdc-checkbox:hover .mdc-checkbox__native-control:enabled:not(:checked):not(:indeterminate):not([data-indeterminate="true"]) ~ .mdc-checkbox__background,
+    .mdc-checkbox .mdc-checkbox__native-control:enabled:focus:focus:not(:checked):not(:indeterminate) ~ .mdc-checkbox__background,
+    .mdc-checkbox__background {
+        @apply border-body/30;
+    }
+    .mdc-checkbox:hover .mdc-checkbox__native-control:checked ~ .mdc-checkbox__ripple {
+        @apply bg-primary;
+    }
+    .mat-mdc-checkbox .mdc-form-field {
+        @apply translate-y-[-10px];
+    }
+    .mat-sort-header-content {
+      @apply whitespace-nowrap;
+    }
+    .mdc-data-table__cell, .mdc-data-table__header-cell {
+      @apply px-4;
+    }
+    .mat-mdc-paginator {
+      .mat-mdc-text-field-wrapper {
+        @apply px-2.5;
+      }
+    }
+}
+}
+
+//btn styles
+@mixin inventualBtnStyle {
+  .inventual-btn {
+    @apply h-12 px-[30px] inline-flex items-center justify-center gap-[6px] text-white transition duration-300 font-semibold capitalize text-[15px] rounded-[5px] font-primary;
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+    &.primary-btn {
+      @apply bg-primary text-white;
+      &:hover {
+        @apply bg-success;
+      }
+      &.disabled,
+      &[disabled] {
+        @apply bg-primary/70 cursor-not-allowed;
+      }
+    }
+    &.secondary-btn {
+      @apply bg-success text-white;
+      &:hover {
+        @apply bg-primary;
+      }
+    }
+    &.danger-btn {
+      @apply bg-danger/80 text-white;
+      &:hover {
+        @apply bg-primary;
+      }
+    }
+    &.gray-btn {
+      @apply bg-lightest text-body;
+      &:hover {
+        @apply bg-primary text-white;
+      }
+    }
+    &.warning-btn {
+      @apply bg-warning text-white;
+      &:hover {
+        @apply bg-primary;
+      }
+    }
+    &.teal-btn {
+      @apply bg-teal text-white;
+      &:hover {
+        @apply bg-primary;
+      }
+    }
+    &.has-icon {
+      i {
+        @apply text-white text-[16px];
+      }
+    }
+  }
+}

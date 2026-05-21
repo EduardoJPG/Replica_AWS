@@ -1,0 +1,84 @@
+@use '../../../../../../custom-palettes.scss';
+
+.inventual-popup-inner {
+    width: 830px;
+    @apply p-7;
+    @media (min-width: 992px) and (max-width: 1200px) {
+        width: 790px;
+    }
+    @media (min-width: 768px) and (max-width: 991px) {
+        width: 615px;
+    }
+    @media (max-width: 767px) {
+        width: 100%;
+    }
+}
+
+//popup close btn
+@include custom-palettes.inventualPopupClose;
+
+//popup common style
+@include custom-palettes.popupCommonStyle;
+
+.inventual-viewpayment-list {
+    @apply flex items-center border-b border-solid border-border;
+}
+.inventual-viewpayment-products,
+.inventual-viewpayment-code,
+.inventual-viewpayment-unit,
+.inventual-viewpayment-qty,
+.inventual-viewpayment-amount,
+.inventual-viewpayment-type {
+    @apply flex justify-center flex-col ps-5 pe-2 border-e border-solid border-border h-full;
+    h5 {
+        @apply text-[15px] font-semibold text-heading;
+    }
+    span {
+        @apply text-[15px] font-normal text-body;
+    }
+}
+.inventual-viewpayment-type {
+    @apply border-e-0;
+}
+.inventual-viewpayment-products {
+    min-width: 170px;
+    width: 170px;
+    @media (min-width: 992px) and (max-width: 1200px) {
+        min-width: 150px;
+        width: 150px;
+    }
+}
+.inventual-viewpayment-code {
+    min-width: 130px;
+    width: 130px;
+}
+.inventual-viewpayment-unit {
+    min-width: 150px;
+    width: 150px;
+    @media (max-width: 991px) {
+        min-width: 135px;
+        width: 135px;
+    }
+}
+.inventual-viewpayment-qty {
+    min-width: 90px;
+    width: 90px;
+}
+.inventual-viewpayment-amount {
+    min-width: 115px;
+    width: 115px;
+}
+
+.inventual-viewpayment-table-inner {
+	@media (max-width: 991px) {
+		overflow-x: auto;
+		scrollbar-height: thin;
+	}
+}
+.inventual-viewpayment-table-inner-wrapper {
+	@media (max-width: 991px) {
+		min-width: 100%;
+        width: 740px;
+		scrollbar-height: thin;
+	}
+}

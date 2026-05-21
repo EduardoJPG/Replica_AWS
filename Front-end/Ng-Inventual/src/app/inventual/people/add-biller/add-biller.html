@@ -1,0 +1,356 @@
+<div class="inventual-dashboard-area">
+    <div class="inventual-dashboard-sidebar" [class.sidebar-enable]="menuSidebarActive">
+        <div class="inventual-header-bar-responsive" (click)="myfunction()">
+            <mat-icon>reorder</mat-icon>
+        </div>
+
+        <div
+            class="inventual-menu-wrapper bg-white border-e border-b border-solid border-border py-10 px-7 lg:px-5 lg:py-8">
+
+            <app-menus></app-menus>
+
+        </div>
+
+        <div class="inventual-menu-overlay"
+            (click)="myfunction()"
+            [class.sidebar-enable]="menuSidebarActive">
+        </div>
+    </div>
+
+    <div class="inventual-dashboard-main" [class.sidebar-enable]="menuSidebarActive">
+
+        <!-- HEADER -->
+        <div class="inventual-header-area">
+            <div class="inventual-header-wrapper custom-height-70 px-7 bg-white border-b border-solid border-border">
+
+                <div class="grid grid-cols-12 items-center h-full">
+
+                    <div class="col-span-12">
+                        <app-header></app-header>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <!-- BREADCRUMB -->
+        <div class="inventual-breadcrumb-area px-7 py-9 bg-white mb-5">
+
+            <div class="inventual-breadcrumb-area-inner px-0.5">
+
+                <h5 class="text-[20px] text-heading font-bold mb-3">
+                    {{ translationService.translateText('Add Biller / Seller') }}
+                </h5>
+
+                <div class="inventual-breadcrumb-area-inner-wrap">
+
+                    <span class="text-[14px] text-body font-normal inline-block me-2">
+                        {{ translationService.translateText('Biller') }}
+                    </span>
+
+                    <span class="text-[14px] text-body font-normal inline-block me-2">
+                        >
+                    </span>
+
+                    <span class="text-[14px] text-body font-normal inline-block me-2">
+                        {{ translationService.translateText('Add Biller / Seller') }}
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- CONTENT -->
+        <div class="inventual-content-area px-7">
+
+            <div class="inventual-addsupplier-area bg-white p-7 custom-shadow rounded-8 mb-5">
+
+                <div class="grid grid-cols-12 gap-x-7 sm:gap-x-0">
+
+                    <!-- NOMBRE -->
+                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
+
+                        <div class="inventual-select-field mb-5">
+
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">
+                                {{ translationService.translateText('Name') }}
+                            </h5>
+
+                            <div class="inventual-input-field-style">
+
+                                <mat-form-field class="w-full" [floatLabel]="'always'">
+
+                                    <mat-label class="hidden">
+                                        Nombre
+                                    </mat-label>
+
+                                    <input
+                                        matInput
+                                        [placeholder]="translationService.translateText('Name')"
+                                        [(ngModel)]="facturador.nombreFacturador">
+
+                                </mat-form-field>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- COMPAÑIA -->
+                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
+
+                        <div class="inventual-select-field mb-5">
+
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">
+                                {{ translationService.translateText('Company') }}
+                            </h5>
+
+                            <div class="inventual-input-field-style">
+
+                                <mat-form-field class="w-full" [floatLabel]="'always'">
+
+                                    <input
+                                        matInput
+                                        [placeholder]="translationService.translateText('Company')"
+                                        [(ngModel)]="facturador.compania">
+
+                                </mat-form-field>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- TELEFONO -->
+                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
+
+                        <div class="inventual-select-field mb-5">
+
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">
+                                {{ translationService.translateText('Phone') }}
+                            </h5>
+
+                            <div class="inventual-input-field-style">
+
+                                <mat-form-field class="w-full" [floatLabel]="'always'">
+
+                                    <input
+                                        matInput
+                                        [placeholder]="translationService.translateText('Phone')"
+                                        [(ngModel)]="facturador.telefono">
+
+                                </mat-form-field>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- EMAIL -->
+                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
+
+                        <div class="inventual-select-field mb-5">
+
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">
+                                {{ translationService.translateText('Email') }}
+                            </h5>
+
+                            <div class="inventual-input-field-style">
+
+                                <mat-form-field class="w-full" [floatLabel]="'always'">
+
+                                    <input
+                                        type="email"
+                                        matInput
+                                        [placeholder]="translationService.translateText('Email')"
+                                        [(ngModel)]="facturador.email">
+
+                                </mat-form-field>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- NIT -->
+                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
+
+                        <div class="inventual-select-field mb-5">
+
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">
+                                {{ translationService.translateText('NIT / RUC') }}
+                            </h5>
+
+                            <div class="inventual-input-field-style">
+
+                                <mat-form-field class="w-full" [floatLabel]="'always'">
+
+                                    <input
+                                        matInput
+                                        [placeholder]="translationService.translateText('NIT / RUC')"
+                                        [(ngModel)]="facturador.nitRuc">
+
+                                </mat-form-field>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- CIUDAD -->
+                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
+
+                        <div class="inventual-select-field mb-5">
+
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">
+                                {{ translationService.translateText('City') }}
+                            </h5>
+
+                            <div class="inventual-input-field-style">
+
+                                <mat-form-field class="w-full" [floatLabel]="'always'">
+
+                                    <input
+                                        matInput
+                                        [placeholder]="translationService.translateText('City')"
+                                        [(ngModel)]="facturador.ciudad">
+
+                                </mat-form-field>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- DIRECCION -->
+                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
+
+                        <div class="inventual-select-field mb-5">
+
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">
+                                {{ translationService.translateText('Address') }}
+                            </h5>
+
+                            <div class="inventual-input-field-style">
+
+                                <mat-form-field class="w-full" [floatLabel]="'always'">
+
+                                    <input
+                                        matInput
+                                        [placeholder]="translationService.translateText('Address')"
+                                        [(ngModel)]="facturador.direccion">
+
+                                </mat-form-field>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- PAIS -->
+                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
+
+                        <div class="inventual-select-field mb-5">
+
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">
+                                {{ translationService.translateText('Country') }}
+                            </h5>
+
+                            <div class="inventual-input-field-style">
+
+                                <mat-form-field class="w-full" [floatLabel]="'always'">
+
+                                    <input
+                                        matInput
+                                        [placeholder]="translationService.translateText('Country')"
+                                        [(ngModel)]="facturador.pais">
+
+                                </mat-form-field>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- CODIGO -->
+                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
+
+                        <div class="inventual-select-field mb-5">
+
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">
+                                {{ translationService.translateText('Biller Code') }}
+                            </h5>
+
+                            <div class="inventual-input-field-style">
+
+                                <mat-form-field class="w-full" [floatLabel]="'always'">
+
+                                    <input
+                                        type="text"
+                                        matInput
+                                        [placeholder]="translationService.translateText('Biller Code')"
+                                        [(ngModel)]="facturador.codigoFacturador">
+
+                                </mat-form-field>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- BOTON -->
+                    <div class="col-span-12">
+
+                        <div class="inventual-material-btn pt-2.5 justify-end flex flex-wrap gap-2">
+
+                            <button
+                                type="button"
+                                mat-raised-button
+                                color="accent"
+                                [routerLink]="['/people/billerlist']">
+
+                                <mat-icon>list</mat-icon>
+                                {{ translationService.translateText('View List') }}
+
+                            </button>
+
+                            <button
+                                mat-raised-button
+                                color="primary"
+                                (click)="guardarFacturador()">
+
+                                {{ translationService.translateText(modoEdicion ? 'Update Biller' : 'Create Biller') }}
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- FOOTER -->
+        <div class="inventual-copyright-area pt-28 xl:pt-0 lg:pt-0 md:pt-0 sm:pt-0">
+
+            <app-footer></app-footer>
+
+        </div>
+
+    </div>
+</div>

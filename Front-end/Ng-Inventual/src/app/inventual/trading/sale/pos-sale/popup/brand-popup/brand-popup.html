@@ -1,0 +1,41 @@
+<mat-dialog-content>
+    <div class="popup-body">
+        <div class="inventual-popup-inner">
+            <div class="inventual-popup-header relative mb-6">
+                <div class="inventual-popup-header-title">
+                    <h4 class="text-[20px] text-heading font-bold">Select Brands</h4>
+                </div>
+                <div
+                    class="inventual-popup-header-close absolute -top-4 ltr:-right-2.5 ltr:left-auto rtl:left-0 rtl:right-auto">
+                    <mat-dialog-actions>
+                        <div class="default-light-theme">
+                            <a href="javascript:void(0)" mat-dialog-close>
+                                <mat-icon>clear</mat-icon>
+                            </a>
+                        </div>
+                    </mat-dialog-actions>
+                </div>
+            </div>
+            <div class="pos-brands pt-5 border-t border-border">
+                <div class="grid grid-cols-12 gap-5 xs:gap-x-0">
+                    <div class="col-span-3 sm:col-span-12" *ngFor="let brand of brands" (click)="selectBrand(brand)">
+                        <div class="pos-product-item" [class.selected]="brand.selected">
+                            <div class="pos-product-item-img">
+                                <img [src]="brand.image" alt="img not found">
+                            </div>
+                            <div class="pos-product-item-text">
+                                <h5>{{ brand.name }}</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-12">
+                        <div class="pt-1.5 text-end">
+                            <button type="submit" class="inventual-btn primary-btn" (click)="closeDialogBrand()">Select
+                                Brands</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</mat-dialog-content>

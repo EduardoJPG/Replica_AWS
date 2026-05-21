@@ -1,0 +1,96 @@
+@use '../../../../../custom-palettes.scss';
+
+.inventual-popup-inner {
+    @apply p-7 w-[830px];
+
+    @media (min-width: 992px) and (max-width: 1200px) {
+        @apply w-[790px];
+    }
+
+    @media (min-width: 768px) and (max-width: 991px) {
+        @apply w-[615px];
+    }
+
+    @media (max-width: 767px) {
+        @apply w-full;
+    }
+}
+
+//popup close btn
+@include custom-palettes.inventualPopupClose;
+
+//popup common style
+@include custom-palettes.popupCommonStyle;
+
+.inventual-viewpayment-list {
+    @apply flex items-center border-b border-solid border-border;
+}
+
+.inventual-viewpayment-date,
+.inventual-viewpayment-reference,
+.inventual-viewpayment-payment,
+.inventual-viewpayment-amount,
+.inventual-viewpayment-action {
+    @apply flex justify-center flex-col ps-5 pe-2 border-e border-solid border-border h-full;
+
+    h5 {
+        @apply text-[15px] font-semibold text-heading;
+    }
+
+    span {
+        @apply text-[15px] font-normal text-body;
+    }
+}
+
+.inventual-viewpayment-action {
+    @apply border-e-0;
+
+    span {
+        @apply text-primary;
+    }
+}
+
+.inventual-viewpayment-date {
+    min-width: 150px;
+    width: 150px;
+
+    @media (min-width: 992px) and (max-width: 1200px) {
+        min-width: 130px;
+        width: 130px;
+    }
+}
+
+.inventual-viewpayment-reference {
+    min-width: 180px;
+    width: 180px;
+
+    @media (min-width: 992px) and (max-width: 1200px) {
+        min-width: 160px;
+        width: 160px;
+    }
+}
+
+.inventual-viewpayment-payment {
+    min-width: 160px;
+    width: 160px;
+}
+
+.inventual-viewpayment-amount {
+    min-width: 150px;
+    width: 150px;
+}
+
+.inventual-viewpayment-table-inner {
+    @media (max-width: 991px) {
+        overflow-x: auto;
+        scrollbar-height: thin;
+    }
+}
+
+.inventual-viewpayment-table-inner-wrapper {
+    @media (max-width: 991px) {
+        min-width: 100%;
+        width: 740px;
+        scrollbar-height: thin;
+    }
+}

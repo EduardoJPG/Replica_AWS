@@ -1,0 +1,35 @@
+@use '../../../../../../../custom-palettes.scss';
+
+.inventual-popup-inner {
+    width: 700px;
+    @apply p-7;
+
+    @media (min-width: 768px) and (max-width: 991px) {
+        width: 600px;
+    }
+
+    @media (min-width: 576px) and (max-width: 767px) {
+        width: 440px;
+    }
+
+    @media (min-width: 450px) and (max-width: 575px) {
+        width: 350px;
+    }
+
+    @media (max-width: 449px) {
+        width: 100%;
+    }
+}
+
+//popup close btn
+@include custom-palettes.inventualPopupClose;
+
+//popup btn
+@include custom-palettes.inventualMaterialBtn;
+
+//popup common style
+@include custom-palettes.popupCommonStyle;
+@include custom-palettes.inventualInputFieldStyle;
+@include custom-palettes.inventualSelectFieldStyle;
+@include custom-palettes.inventualCalenderFieldStyle;
+@include custom-palettes.inventualTextareaFieldStyle;

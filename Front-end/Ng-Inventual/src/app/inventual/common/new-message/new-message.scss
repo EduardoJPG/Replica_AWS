@@ -1,0 +1,114 @@
+@use '../../../../custom-palettes.scss';
+
+//sidebar menu style
+@include custom-palettes.inventualSidebarMuneStyle;
+// Input field style
+@include custom-palettes.inventualInputFieldStyle;
+@include custom-palettes.inventualMaterialBtn;
+
+.inventual-notification-text {
+    width: calc(100% - 90px);
+}
+
+.inventual-notification {
+    transition: all linear 0.3s;
+
+    &:hover {
+        @apply bg-white;
+    }
+}
+
+.inventual-newmessage-wrapper {
+    button {
+        @apply text-heading block relative w-full text-[16px] font-semibold text-start leading-[45px] h-12 py-0 rounded-[5px] px-3.5;
+
+        .mat-icon {
+            height: 20px !important;
+            width: 20px !important;
+            font-size: 20px !important;
+            line-height: 1 !important;
+            margin-inline-end: 5px;
+            @apply inline-block translate-y-1 text-[#B8C1CF] me-2;
+        }
+
+        span {
+            @apply float-end;
+        }
+
+        &:hover {
+            @apply bg-border;
+            @apply text-primary;
+
+            .mat-icon {
+                @apply text-primary;
+            }
+        }
+    }
+
+    .inventual-input-field-style textarea,
+    .NgxEditor__Content {
+        @apply border;
+        @apply border-solid;
+        @apply border-border;
+        @apply px-5;
+        @apply py-2.5;
+        @apply rounded-[3px];
+        @apply outline-none;
+        @apply block;
+        @apply text-[14px];
+        @apply leading-6;
+        @apply text-body;
+        @apply font-primary;
+        @apply font-normal;
+        @apply w-full;
+        @apply bg-gray;
+        transition: all linear 0.3s;
+        height: 400px;
+
+        &:focus {
+            @apply bg-white;
+        }
+    }
+
+    .inventual-input-field-style textarea,
+    .NgxEditor__Content,
+    .NgxEditor__Content p {
+
+        &::-moz-placeholder,
+        &::placeholder {
+            @apply text-body;
+            @apply opacity-70;
+            @apply font-primary;
+            @apply font-normal;
+        }
+    }
+}
+
+.inventual-newmessage-wrapper {
+    .inventual-newmessage-nav {
+        width: 210px;
+        margin-inline-end: 50px;
+
+        @media (max-width: 767px) {
+            @apply w-full;
+            @apply me-0;
+            @apply mb-8;
+        }
+    }
+
+    .inventual-newmessage-content {
+        width: calc(100% - 260px);
+
+        @media (max-width: 767px) {
+            @apply w-full;
+        }
+    }
+
+    @media (max-width: 767px) {
+        @apply block;
+    }
+}
+
+.inventual-newmessage-send-btn button {
+    width: inherit !important;
+}

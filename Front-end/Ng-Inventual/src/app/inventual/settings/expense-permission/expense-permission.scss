@@ -1,0 +1,15 @@
+@use '../../../../custom-palettes.scss';
+
+//sidebar menu style
+@include custom-palettes.inventualSidebarMuneStyle;
+
+// Input field style
+@include custom-palettes.inventualInputFieldStyle;
+
+.custom-height-100 {
+    @apply h-[100px];
+}
+
+.custom-height-70 {
+    @apply h-[70px];
+}

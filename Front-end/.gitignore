@@ -1,0 +1,19 @@
+# Node
+node_modules/
+dist/
+.angular/
+
+# Logs
+npm-debug.log*
+
+# Laravel
+/vendor/
+/.env
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/

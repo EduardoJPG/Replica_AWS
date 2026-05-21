@@ -1,0 +1,103 @@
+@use '../../../../../custom-palettes.scss';
+
+//sidebar menu style
+@include custom-palettes.inventualSidebarMuneStyle;
+@include custom-palettes.inventualSelectFieldStyle;
+@include custom-palettes.inventualInputFieldStyle;
+@include custom-palettes.inventualMaterialBtn;
+@include custom-palettes.inventualBtnStyle;
+@include custom-palettes.commonActionMenuStyle;
+@include custom-palettes.inventualMaterialTableStyle;
+@include custom-palettes.productCounter;
+
+
+.inventual-addsale-product-cost {
+    @apply border-x border-border;
+	ul {
+		@apply inline-block max-w-[400px] w-[480px] text-start xs:w-full;
+		li {
+			@apply flex justify-between items-center;
+			span.w-40 {
+				@apply sm:w-24;
+			}
+		}
+	}
+}
+.inventual-search-filter-result {
+    @apply absolute z-10 top-[84px] w-full left-0 bg-white max-h-[250px] overflow-y-auto p-4 shadow;
+    .single-search-item {
+        @apply w-full border-b my-1 cursor-pointer border-border last:border-0 flex items-center gap-5 sm:flex-wrap;
+        span {
+            @apply text-[15px] font-semibold text-heading font-primary;
+        }
+        &.selected {
+            @apply bg-primary/5;
+            .single-search-item-img {
+				@apply bg-primary/10;
+            }
+        }
+    }
+}
+.search-delete-icon {
+    @apply absolute bottom-[9px] end-2.5 leading-[30px] cursor-pointer h-[30px] w-[30px] bg-primary/10 inline-flex justify-center rounded-[50%] items-center;
+	.material-icons {
+		@apply text-heading text-[16px];
+	}
+}
+.inventual-select-field {
+    & .plus-btn {
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+    }
+}
+.inventual-possale-area,
+.inventual-possale-tab-area {
+    box-shadow: 0px 20px 40px rgba(18,42,91,0.05);
+    @apply min-h-full;
+}
+.inventual-possale-tab-product-text {
+    h5 {
+        @apply text-[15px] font-bold text-heading mb-2;
+    }
+    span {
+        @apply text-[14px] font-normal text-body inline-block;
+    }
+}
+.inventual-possale-tab-product-img {
+    @apply h-[130px] flex-col flex justify-center items-center;
+}
+.inventual-possale-tab-product {
+    @apply border border-solid border-border pb-4 px-2 rounded-[5px];
+    min-height: calc(100% - 10px);
+    transition: all linear 0.3s;
+    &:hover,
+    &.selected {
+        @apply border-primary;
+    }
+}
+.inventual-possale-tab-menu-pagination {
+    & a {
+        @apply mx-2.5 inline-block;
+        transition: all linear 0.3s;
+        & .material-icons {
+            @apply text-[18px] leading-[33px];
+            transform: translateX(-1px);
+            [dir="rtl"] {
+                transform: translateX(1px);
+            }
+        }
+        &:hover {
+            @apply bg-primary text-white;
+        }
+    }
+}
+
+.inventual-material-btn.pos {
+    .mat-mdc-raised-button.mat-mdc-button-base {
+        @apply h-auto w-full;
+    }
+    .mdc-button {
+        @apply xl:px-0 md:px-0;
+    }
+}
+

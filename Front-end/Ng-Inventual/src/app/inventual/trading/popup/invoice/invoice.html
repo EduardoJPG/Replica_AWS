@@ -1,0 +1,316 @@
+<mat-dialog-content>
+    <div class="popup-body">
+        <div class="inventual-popup-inner">
+            <div class="inventual-popup-header relative mb-7">
+                <div class="inventual-popup-header-title">
+                    <h4 class="text-[20px] text-heading font-bold"></h4>
+                </div>
+                <div
+                    class="inventual-popup-header-close absolute -top-4 ltr:-right-2.5 ltr:left-auto rtl:left-0 rtl:right-auto">
+                    <mat-dialog-actions>
+                        <div class="default-light-theme">
+                            <a href="javascript:void(0)" mat-dialog-close>
+                                <mat-icon>clear</mat-icon>
+                            </a>
+                        </div>
+                    </mat-dialog-actions>
+                </div>
+            </div>
+            <div class="inventual-invoice-popup-area invoice-print-area">
+                <div class="inventual-invoice-popup-logo text-center mb-12">
+                    <img src="assets/img/logo/logo.png" alt="logo not found">
+                </div>
+                <div class="inventual-invoice-popup-heading mb-11">
+                    <ul
+                        class="bg-primary rounded flex gap-2.5 justify-between items-center px-4 sm:flex-wrap sm:h-full sm:py-3">
+                        <li class="pe-4 border-e border-solid border-primary-lightTwo m-0 py-2.5 sm:border-e-0">
+                            <span class="text-[14px] text-white font-bold inline-block">Fecha : </span>
+                            <span class="text-[14px] text-white font-normal inline-block ms-1"> {{sale.date || sale.fecha | date:'yyyy-MM-dd'}}</span>
+                        </li>
+                        <li class="pe-4 border-e border-solid border-primary-lightTwo m-0 py-2.5 sm:border-e-0">
+                            <span class="text-[14px] text-white font-bold inline-block">Referencia : </span>
+                            <span class="text-[14px] text-white font-normal inline-block ms-1"> {{sale.reference || sale.referencia}}</span>
+                        </li>
+                        <li class="pe-4 border-e border-solid border-primary-lightTwo m-0 py-2.5 sm:border-e-0">
+                            <span class="text-[14px] text-white font-bold inline-block">Bodega : </span>
+                            <span class="text-[14px] text-white font-normal inline-block ms-1"> {{sale.warehouse || sale.bodega || 'Sin bodega'}}</span>
+                        </li>
+                        <li>
+                            <span class="text-[14px] text-white font-bold inline-block m-0 py-2.5 sm:border-e-0">Estado : </span>
+                            <span class="text-[14px] text-white font-normal inline-block ms-1"> {{sale.estadoVenta || sale.status}}</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="inventual-invoice-popup-address-area flex justify-between mb-9 pb-0.5 sm:block">
+                    <div class="inventual-invoice-popup-address sm:mb-7">
+                        <div class="inventual-invoice-popup-address-inner text-start">
+                            <h5>De</h5>
+                            <ul>
+                                <li>Nombre : <span>{{sale.biller || sale.facturador || 'Sistema Inventario Ferreteria'}}</span></li>
+                                <li>Email : <span>info&#64;example.com</span></li>
+                                <li>Telefono : <span>N/A</span></li>
+                                <li>Direccion : <span>{{sale.warehouse || sale.bodega || 'N/A'}}</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="inventual-invoice-popup-address">
+                        <div class="inventual-invoice-popup-address-inner text-start">
+                            <h5>Para</h5>
+                            <ul>
+                                <li>Nombre : <span>{{sale.customer || sale.cliente || 'Cliente general'}}</span></li>
+                                <li>Email : <span>N/A</span></li>
+                                <li>Telefono : <span>N/A</span></li>
+                                <li>Direccion : <span>N/A</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="inventual-invoice-table-area">
+                    <div class="inventual-invoice-table-inner border border-solid border-border border-b-0">
+                        <div class="inventual-invoice-table-inner-wrapper">
+                            <div class="inventual-invoice-table-list h-12 bg-gray">
+                                <div class="inventual-invoice-table-sl border-e border-solid border-border">
+                                    <h5>SL</h5>
+                                </div>
+                                <div class="inventual-invoice-table-product border-e border-solid border-border">
+                                    <h5>Producto</h5>
+                                </div>
+                                <div class="inventual-invoice-table-batch border-e border-solid border-border">
+                                    <h5>Codigo</h5>
+                                </div>
+                                <div class="inventual-invoice-table-unit border-e border-solid border-border">
+                                    <h5>Unidad</h5>
+                                </div>
+                                <div class="inventual-invoice-table-price border-e border-solid border-border">
+                                    <h5>Precio</h5>
+                                </div>
+                                <div class="inventual-invoice-table-qty border-e border-solid border-border">
+                                    <h5>Cant.</h5>
+                                </div>
+                                <div class="inventual-invoice-table-tax border-e border-solid border-border">
+                                    <h5>Imp.</h5>
+                                </div>
+                                <div class="inventual-invoice-table-discount border-e border-solid border-border">
+                                    <h5>Desc.</h5>
+                                </div>
+                                <div class="inventual-invoice-table-total">
+                                    <h5>Subtotal</h5>
+                                </div>
+                            </div>
+                            <div class="inventual-invoice-table-list custom-height-70" *ngFor="let detail of details; let index = index">
+                                <div class="inventual-invoice-table-sl border-e border-solid border-border">
+                                    <span>{{index + 1}}</span>
+                                </div>
+                                <div class="inventual-invoice-table-product border-e border-solid border-border">
+                                    <span>{{detail.name || detail.nombreProducto}}</span>
+                                </div>
+                                <div class="inventual-invoice-table-batch border-e border-solid border-border">
+                                    <span>{{detail.code || detail.codigoProducto}}</span>
+                                </div>
+                                <div class="inventual-invoice-table-unit border-e border-solid border-border">
+                                    <span>{{detail.unit || detail.unidad}}</span>
+                                </div>
+                                <div class="inventual-invoice-table-price border-e border-solid border-border">
+                                    <span>{{(detail.price || detail.precioUnitario) | number:'1.2-2'}}</span>
+                                </div>
+                                <div class="inventual-invoice-table-qty border-e border-solid border-border">
+                                    <span>{{detail.quantity || detail.cantidad}}</span>
+                                </div>
+                                <div class="inventual-invoice-table-tax border-e border-solid border-border">
+                                    <span>{{detail.tax || detail.impuesto || 0}}%</span>
+                                </div>
+                                <div class="inventual-invoice-table-discount border-e border-solid border-border">
+                                    <span>{{detail.discount || detail.descuento || 0}}%</span>
+                                </div>
+                                <div class="inventual-invoice-table-total">
+                                    <span>{{(detail.subtotal || detail.subTotal) | number:'1.2-2'}}</span>
+                                </div>
+                            </div>
+                            <div class="inventual-invoice-table-list h-10">
+                                <div class="inventual-invoice-table-sll">
+                                    <h5>Total =</h5>
+                                </div>
+                                <div class="inventual-invoice-table-batch"></div>
+                                <div class="inventual-invoice-table-unit"></div>
+                                <div class="inventual-invoice-table-price"></div>
+                                <div class="inventual-invoice-table-qty"></div>
+                                <div class="inventual-invoice-table-tax border-s border-solid border-border">
+                                    <h5>{{sale.impuesto | number:'1.2-2'}}</h5>
+                                </div>
+                                <div class="inventual-invoice-table-discount border-s border-solid border-border">
+                                    <h5>{{sale.descuento | number:'1.2-2'}}</h5>
+                                </div>
+                                <div class="inventual-invoice-table-total border-s border-solid border-border">
+                                    <h5>{{sale.subtotal | number:'1.2-2'}}</h5>
+                                </div>
+                            </div>
+                            <div class="inventual-invoice-table-list h-10">
+                                <div class="inventual-invoice-table-sll">
+                                    <span>Descuento :</span>
+                                </div>
+                                <div class="inventual-invoice-table-batch"></div>
+                                <div class="inventual-invoice-table-unit"></div>
+                                <div class="inventual-invoice-table-price"></div>
+                                <div class="inventual-invoice-table-qty"></div>
+                                <div class="inventual-invoice-table-tax"></div>
+                                <div class="inventual-invoice-table-discount"></div>
+                                <div class="inventual-invoice-table-total border-s border-solid border-border">
+                                    <span>-{{sale.descuento | number:'1.2-2'}}</span>
+                                </div>
+                            </div>
+                            <div class="inventual-invoice-table-list h-10">
+                                <div class="inventual-invoice-table-sll">
+                                    <span>Impuesto :</span>
+                                </div>
+                                <div class="inventual-invoice-table-batch"></div>
+                                <div class="inventual-invoice-table-unit"></div>
+                                <div class="inventual-invoice-table-price"></div>
+                                <div class="inventual-invoice-table-qty"></div>
+                                <div class="inventual-invoice-table-tax"></div>
+                                <div class="inventual-invoice-table-discount"></div>
+                                <div class="inventual-invoice-table-total border-s border-solid border-border">
+                                    <span>+{{sale.impuesto | number:'1.2-2'}}</span>
+                                </div>
+                            </div>
+                            <div class="inventual-invoice-table-list h-10">
+                                <div class="inventual-invoice-table-sll">
+                                    <span>Envio :</span>
+                                </div>
+                                <div class="inventual-invoice-table-batch"></div>
+                                <div class="inventual-invoice-table-unit"></div>
+                                <div class="inventual-invoice-table-price"></div>
+                                <div class="inventual-invoice-table-qty"></div>
+                                <div class="inventual-invoice-table-tax"></div>
+                                <div class="inventual-invoice-table-discount"></div>
+                                <div class="inventual-invoice-table-total border-s border-solid border-border">
+                                    <span>+{{sale.envio | number:'1.2-2'}}</span>
+                                </div>
+                            </div>
+                            <div class="inventual-invoice-table-list h-10">
+                                <div class="inventual-invoice-table-sll">
+                                    <h5>Total :</h5>
+                                </div>
+                                <div class="inventual-invoice-table-batch"></div>
+                                <div class="inventual-invoice-table-unit"></div>
+                                <div class="inventual-invoice-table-price"></div>
+                                <div class="inventual-invoice-table-qty"></div>
+                                <div class="inventual-invoice-table-tax"></div>
+                                <div class="inventual-invoice-table-discount"></div>
+                                <div class="inventual-invoice-table-total border-s border-solid border-border">
+                                    <h5>{{sale.total | number:'1.2-2'}}</h5>
+                                </div>
+                            </div>
+                            <div class="inventual-invoice-table-list h-10">
+                                <div class="inventual-invoice-table-sll">
+                                    <span>Pagado :</span>
+                                </div>
+                                <div class="inventual-invoice-table-batch"></div>
+                                <div class="inventual-invoice-table-unit"></div>
+                                <div class="inventual-invoice-table-price"></div>
+                                <div class="inventual-invoice-table-qty"></div>
+                                <div class="inventual-invoice-table-tax"></div>
+                                <div class="inventual-invoice-table-discount"></div>
+                                <div class="inventual-invoice-table-total border-s border-solid border-border">
+                                    <span>{{paidAmount | number:'1.2-2'}}</span>
+                                </div>
+                            </div>
+                            <div class="inventual-invoice-table-list h-10">
+                                <div class="inventual-invoice-table-sll">
+                                    <span>Pendiente :</span>
+                                </div>
+                                <div class="inventual-invoice-table-batch"></div>
+                                <div class="inventual-invoice-table-unit"></div>
+                                <div class="inventual-invoice-table-price"></div>
+                                <div class="inventual-invoice-table-qty"></div>
+                                <div class="inventual-invoice-table-tax"></div>
+                                <div class="inventual-invoice-table-discount"></div>
+                                <div class="inventual-invoice-table-total border-s border-solid border-border">
+                                    <span>{{dueAmount | number:'1.2-2'}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="inventual-invoice-popup-address pt-7 pb-1 mb-12">
+                    <div class="inventual-invoice-popup-address-inner text-start">
+                        <ul>
+                            <li>Nota de venta : <span>{{sale.nota || 'N/A'}}</span></li>
+                            <li class="pb-5">Observaciones : <span>{{sale.observaciones || 'N/A'}}</span></li>
+                            <li>Creado por : <span>{{sale.biller || sale.facturador || 'Sistema'}}</span></li>
+                            <li><span>info&#64;example.com</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="inventual-invoice-popup-btn inventual-table-header-search-action-btn">
+                    <button type="button" class="printer sm:mb-2.5" (click)="printInvoice()"><app-printer-icon></app-printer-icon> Imprimir
+                    </button>
+                    <button type="button" class="pdf sm:mb-2.5" (click)="emailInvoice()" [disabled]="isSendingEmail"><app-email-icon></app-email-icon> Correo
+                    </button>
+                </div>
+            </div>
+            <div class="invoice-print-document">
+                <div class="invoice-print-header">
+                    <img src="assets/img/logo/logo.png" alt="logo">
+                    <div>
+                        <h1>Factura</h1>
+                        <p>{{sale.reference || sale.referencia}}</p>
+                    </div>
+                </div>
+                <div class="invoice-print-meta">
+                    <div><strong>Fecha:</strong> {{sale.date || sale.fecha | date:'yyyy-MM-dd'}}</div>
+                    <div><strong>Estado:</strong> {{sale.estadoVenta || sale.status}}</div>
+                    <div><strong>Bodega:</strong> {{sale.warehouse || sale.bodega || 'Sin bodega'}}</div>
+                    <div><strong>Pago:</strong> {{sale.estadoPago || sale.payment}}</div>
+                </div>
+                <div class="invoice-print-parties">
+                    <section>
+                        <h3>De</h3>
+                        <p>{{sale.biller || sale.facturador || 'Sistema Inventario Ferreteria'}}</p>
+                        <p>{{sale.warehouse || sale.bodega || 'N/A'}}</p>
+                    </section>
+                    <section>
+                        <h3>Para</h3>
+                        <p>{{sale.customer || sale.cliente || 'Cliente general'}}</p>
+                    </section>
+                </div>
+                <table class="invoice-print-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Producto</th>
+                            <th>Codigo</th>
+                            <th>Unidad</th>
+                            <th class="num">Precio</th>
+                            <th class="num">Cant.</th>
+                            <th class="num">Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let detail of details; let index = index">
+                            <td>{{index + 1}}</td>
+                            <td>{{detail.name || detail.nombreProducto}}</td>
+                            <td>{{detail.code || detail.codigoProducto}}</td>
+                            <td>{{detail.unit || detail.unidad}}</td>
+                            <td class="num">{{(detail.price || detail.precioUnitario) | number:'1.2-2'}}</td>
+                            <td class="num">{{detail.quantity || detail.cantidad}}</td>
+                            <td class="num">{{(detail.subtotal || detail.subTotal) | number:'1.2-2'}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="invoice-print-totals">
+                    <p><span>Subtotal</span><strong>{{sale.subtotal | number:'1.2-2'}}</strong></p>
+                    <p><span>Descuento</span><strong>-{{sale.descuento | number:'1.2-2'}}</strong></p>
+                    <p><span>Impuesto</span><strong>{{sale.impuesto | number:'1.2-2'}}</strong></p>
+                    <p><span>Envio</span><strong>{{sale.envio | number:'1.2-2'}}</strong></p>
+                    <p class="grand"><span>Total</span><strong>{{sale.total | number:'1.2-2'}}</strong></p>
+                    <p><span>Pagado</span><strong>{{paidAmount | number:'1.2-2'}}</strong></p>
+                    <p><span>Pendiente</span><strong>{{dueAmount | number:'1.2-2'}}</strong></p>
+                </div>
+                <div class="invoice-print-notes">
+                    <p><strong>Nota:</strong> {{sale.nota || 'N/A'}}</p>
+                    <p><strong>Observaciones:</strong> {{sale.observaciones || 'N/A'}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</mat-dialog-content>

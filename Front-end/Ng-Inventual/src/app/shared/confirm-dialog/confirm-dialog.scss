@@ -1,0 +1,28 @@
+.dialog-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: bold;
+}
+
+.dialog-content {
+  margin-top: 10px;
+  font-size: 15px;
+}
+
+.dialog-actions {
+  margin-top: 15px;
+}
+
+.btn-cancel {
+  color: #555;
+  margin-right: 10px;
+}
+
+.btn-confirm {
+  min-width: 120px;
+}
+
+::ng-deep .mat-mdc-dialog-container {
+  border-radius: 12px;
+}

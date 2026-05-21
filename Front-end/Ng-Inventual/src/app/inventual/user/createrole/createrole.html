@@ -1,0 +1,155 @@
+<div class="inventual-dashboard-area">
+  <div class="inventual-dashboard-sidebar" [class.sidebar-enable]="menuSidebarActive">
+    <div class="inventual-header-bar-responsive" (click)="myfunction()">
+      <mat-icon>reorder</mat-icon>
+    </div>
+
+    <div class="inventual-menu-wrapper bg-white border-e border-b border-solid border-border py-10 px-7 lg:px-5 lg:py-8">
+      <app-menus></app-menus>
+    </div>
+
+    <div class="inventual-menu-overlay" (click)="myfunction()" [class.sidebar-enable]="menuSidebarActive"></div>
+  </div>
+
+  <div class="inventual-dashboard-main" [class.sidebar-enable]="menuSidebarActive">
+    <div class="inventual-header-area">
+      <div class="inventual-header-wrapper custom-height-70 px-7 bg-white border-b border-solid border-border">
+        <div class="grid grid-cols-12 items-center h-full">
+          <div class="col-span-12">
+            <app-header></app-header>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="inventual-breadcrumb-area px-7 py-9 bg-white mb-5">
+      <div class="inventual-breadcrumb-area-inner px-0.5">
+        <h5 class="text-[20px] text-heading font-bold mb-3">Create Role</h5>
+
+        <div class="inventual-breadcrumb-area-inner-wrap">
+          <span class="text-[14px] text-body font-normal inline-block me-2">User Management</span>
+          <span class="text-[14px] text-body font-normal inline-block me-2">></span>
+          <span class="text-[14px] text-body font-normal inline-block me-2">Create Role</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="inventual-content-area px-7">
+      <div class="inventual-unit-area bg-white p-7 custom-shadow rounded-8 mb-5">
+        <div class="grid grid-cols-12 gap-x-7 sm:gap-x-0">
+
+          <div class="col-span-4 md:col-span-12 sm:col-span-12">
+            <div class="inventual-unit-content">
+
+              <div class="inventual-select-field mb-7">
+                <h5 class="text-[15px] text-heading font-semibold mb-3">Role</h5>
+                <div class="inventual-input-field-style">
+                  <mat-form-field class="w-full" [floatLabel]="'always'">
+                    <mat-label class="hidden">Role</mat-label>
+                    <input
+                      matInput
+                      [(ngModel)]="role.nombre"
+                      placeholder="Admin">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="inventual-select-field mb-7">
+                <h5 class="text-[15px] text-heading font-semibold mb-3">Description</h5>
+                <div class="inventual-input-field-style">
+                  <mat-form-field class="w-full" [floatLabel]="'always'">
+                    <mat-label class="hidden">Description</mat-label>
+                    <input
+                      matInput
+                      [(ngModel)]="role.descripcion"
+                      placeholder="The admin can control all the access">
+                  </mat-form-field>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="inventual-material-btn mb-7">
+              <button
+                    mat-raised-button
+                    color="primary"
+                    class="mb-1"
+                    (click)="saveRole()">
+
+                    {{ isEditMode ? 'Update Role' : 'Create Role' }}
+
+                </button>
+            </div>
+          </div>
+
+          <div class="col-span-8 md:col-span-12 sm:col-span-12">
+            <div class="inventual-common-table">
+              <table class="!min-w-full" mat-table [dataSource]="permisos">
+
+                <ng-container matColumnDef="nombre">
+                  <th mat-header-cell *matHeaderCellDef>Permiso</th>
+                  <td mat-cell *matCellDef="let p">
+                    {{ p.nombre }}
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="ver">
+                  <th mat-header-cell *matHeaderCellDef>Ver</th>
+                  <td mat-cell *matCellDef="let p">
+                    <mat-checkbox
+                      [(ngModel)]="p.puede_ver"
+                      (change)="togglePermiso(p, 'puede_ver', $event)">
+                    </mat-checkbox>
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="crear">
+                  <th mat-header-cell *matHeaderCellDef>Crear</th>
+                  <td mat-cell *matCellDef="let p">
+                    <mat-checkbox
+                      [(ngModel)]="p.puede_crear"
+                      (change)="togglePermiso(p, 'puede_crear', $event)">
+                    </mat-checkbox>
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="editar">
+                  <th mat-header-cell *matHeaderCellDef>Editar</th>
+                  <td mat-cell *matCellDef="let p">
+                    <mat-checkbox
+                      [(ngModel)]="p.puede_editar"
+                      (change)="togglePermiso(p, 'puede_editar', $event)">
+                    </mat-checkbox>
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="eliminar">
+                  <th mat-header-cell *matHeaderCellDef>Eliminar</th>
+                  <td mat-cell *matCellDef="let p">
+                    <mat-checkbox
+                      [(ngModel)]="p.puede_eliminar"
+                      (change)="togglePermiso(p, 'puede_eliminar', $event)">
+                    </mat-checkbox>
+                  </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+              </table>
+
+              <div *ngIf="permisos.length === 0" class="text-center py-5">
+                No hay permisos registrados.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="inventual-copyright-area">
+      <app-footer></app-footer>
+    </div>
+  </div>
+</div>

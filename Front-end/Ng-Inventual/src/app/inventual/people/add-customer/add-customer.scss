@@ -1,0 +1,13 @@
+@use '../../../../custom-palettes.scss';
+
+//sidebar menu style
+@include custom-palettes.inventualSidebarMuneStyle;
+// Select field style
+@include custom-palettes.inventualSelectFieldStyle;
+// Input field style
+@include custom-palettes.inventualInputFieldStyle;
+@include custom-palettes.inventualMaterialBtn;
+
+.custom-height-70 {
+    @apply h-[70px] min-h-[70px];
+}

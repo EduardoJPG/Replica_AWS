@@ -1,0 +1,288 @@
+<div class="inventual-dashboard-area">
+    <div class="inventual-dashboard-sidebar" [class.sidebar-enable]="menuSidebarActive">
+        <div class="inventual-header-bar-responsive" (click)="myfunction()">
+            <mat-icon>reorder</mat-icon>
+        </div>
+        <div
+            class="inventual-menu-wrapper bg-white border-e border-b border-solid border-border py-10 px-7 lg:px-5 lg:py-8">
+            <app-menus></app-menus>
+        </div>
+        <div class="inventual-menu-overlay" (click)="myfunction()" [class.sidebar-enable]="menuSidebarActive"></div>
+    </div>
+    <div class="inventual-dashboard-main" [class.sidebar-enable]="menuSidebarActive">
+        <div class="inventual-header-area">
+            <div class="inventual-header-wrapper custom-height-70 px-7 bg-white border-b border-solid border-border">
+                <div class="grid grid-cols-12 items-center h-full">
+                    <div class="col-span-12">
+                        <app-header></app-header>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="inventual-breadcrumb-area px-7 py-9 bg-white mb-5">
+            <div class="inventual-breadcrumb-area-inner px-0.5">
+                <h5 class="text-[20px] text-heading font-bold mb-3">Sale Invoice</h5>
+                <div class="inventual-breadcrumb-area-inner-wrap">
+                    <span class="text-[14px] text-body font-normal inline-block me-2">Trading</span>
+                    <span class="text-[14px] text-body font-normal inline-block me-2">></span>
+                    <span class="text-[14px] text-body font-normal inline-block me-2">Invoice</span>
+                    <span class="text-[14px] text-body font-normal inline-block me-2">></span>
+                    <span class="text-[14px] text-body font-normal inline-block me-2">Sale Invoice</span>
+                </div>
+            </div>
+        </div>
+        <div class="inventual-content-area px-7">
+            <div class="inventual-addsale-area bg-white p-7 custom-shadow rounded-8 mb-5">
+                <div class="grid grid-cols-12 gap-x-7 sm:gap-x-0">
+                    <div class="col-span-4 md:col-span-4 sm:col-span-12">
+                        <div class="inventual-calender-field mb-5">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">Date</h5>
+                            <div class="inventual-calender-field-style">
+                                <mat-form-field appearance="fill" floatLabel="always">
+                                    <mat-label class="hidden">Choose a date</mat-label>
+                                    <input matInput [matDatepicker]="picker" [placeholder]="'MM/DD/YYYY'">
+                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-4 md:col-span-4 sm:col-span-12">
+                        <div class="inventual-select-field mb-5">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">Select Warehouse</h5>
+                            <div class="inventual-select-field-style">
+                                <mat-form-field>
+                                    <mat-select class="block" [placeholder]="'Warehouse'">
+                                        <mat-option value="language-1">United States</mat-option>
+                                        <mat-option value="language-2">Canada</mat-option>
+                                        <mat-option value="language-3">Mexico</mat-option>
+                                        <mat-option value="language-4">France</mat-option>
+                                        <mat-option value="language-5">Germany</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-4 md:col-span-4 sm:col-span-12">
+                        <div class="inventual-select-field mb-5">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">Select Supplier</h5>
+                            <div class="inventual-select-field-style">
+                                <mat-form-field>
+                                    <mat-select class="block" [placeholder]="'Select Supplier'">
+                                        <mat-option value="language-1">Shane Watson</mat-option>
+                                        <mat-option value="language-2">David Warner</mat-option>
+                                        <mat-option value="language-3">David Miller</mat-option>
+                                        <mat-option value="language-4">Hashim Amla</mat-option>
+                                        <mat-option value="language-5">Imran Tahir</mat-option>
+                                        <mat-option value="language-6">JP Duminy</mat-option>
+                                        <mat-option value="language-6">Kagiso Rabada</mat-option>
+                                        <mat-option value="language-6">Stuart Broad</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-12">
+                        <div class="relative inventual-search-filter">
+                            <div class="inventual-select-field mb-5">
+                                <h5 class="text-[15px] text-heading font-semibold mb-3">Select Product</h5>
+                                <div class="inventual-input-field-style">
+                                    <mat-form-field class="w-full" [floatLabel]="'always'">
+                                        <mat-label class="hidden">Filter</mat-label>
+                                        <input matInput (keyup)="applyFilter($event); updateSearchResults($event)"
+                                            placeholder="Scan / search products by name" #input>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <!-- Add a section to display search results -->
+                            <div class="inventual-search-filter-result" *ngIf="searchResults.length > 0">
+                                <ul>
+                                    <li class="single-search-item" [class.selected]="result.selected"
+                                        *ngFor="let result of searchResults" (click)="toggleSelected(result)">
+                                        <div
+                                            class="single-search-item-img h-[50px] w-[50px] p-2 rounded block bg-lightest">
+                                            <img src={{result.image}} alt="">
+                                        </div>
+                                        <div class="single-search-item-title">
+                                            <span>{{ result.name }}</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <button class="search-delete-icon" *ngIf="searchResults.length > 0"
+                                (click)="hideSearchResults()"><mat-icon>clear</mat-icon></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="inventual-common-table mb-14 mt-10">
+                    <div>
+                        <table mat-table [dataSource]="dataSource" matSort>
+
+                            <ng-container matColumnDef="image">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Image </th>
+                                <td mat-cell *matCellDef="let row">
+                                    <div
+                                        class="inline-flex justify-center items-center h-12 w-12 rounded p-2 bg-lightest my-1">
+                                        <img src={{row.image}} alt="img not found">
+                                    </div>
+                                </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="name">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Product </th>
+                                <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="code">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Batch No. </th>
+                                <td mat-cell *matCellDef="let row"> {{row.code}} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="unit">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Unit </th>
+                                <td mat-cell *matCellDef="let row"> {{row.unit}} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="price">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Price </th>
+                                <td mat-cell *matCellDef="let row"> ${{row.price}} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="quantity">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Quantity </th>
+                                <td mat-cell *matCellDef="let row">
+                                    <div class="inventual-addsale-product-qty">
+                                        <span class="text-body flex items-center">
+                                            <button type="button"
+                                                (click)="decreaseQuantity(row)"><mat-icon>remove</mat-icon></button>
+                                            <p>{{ row.quantity }}</p>
+                                            <button type="button" class="active"
+                                                (click)="increaseQuantity(row)"><mat-icon>add</mat-icon></button>
+                                        </span>
+                                    </div>
+                                </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="tax">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Tax </th>
+                                <td mat-cell *matCellDef="let row"> {{row.tax}}% </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="discount">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Discount </th>
+                                <td mat-cell *matCellDef="let row"> {{row.discount}}% </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="subTotal">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> SubTotal </th>
+                                <td mat-cell *matCellDef="let row"> ${{row.subTotal | number:'1.0-0'}} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="action">
+                                <th mat-header-cell *matHeaderCellDef> Action </th>
+                                <td mat-cell *matCellDef="let row">
+                                    <div class="sm-delete-btn">
+                                        <button class="product-delete-btn" type="button"
+                                            (click)="removeProduct(row)"><mat-icon>clear</mat-icon></button>
+                                    </div>
+                                </td>
+                            </ng-container>
+
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                            <!-- Row shown when there is no matching data. -->
+                            <tr class="mat-row" *matNoDataRow>
+                                <td class="mat-cell" colspan="10">
+                                    <div class="table-data-not-found">
+                                        <p>No data found!</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="inventual-addsale-product-cost text-end pt-9 pb-9 border-b border-solid border-border mb-7"
+                            *ngIf="dataSource.data.length > 0">
+                            <ul>
+                                <li class="px-4 py-2.5 border-b border-solid border-border">
+                                    <span class="text-[15px] font-normal text-heading w-40 inline-block">Total Amount
+                                        <span class="float-end">:</span></span>
+                                    <span class="text-[15px] font-normal text-heading inline-block">${{ totalAmount |
+                                        number:'1.0-0' }}</span>
+                                </li>
+                                <li class="px-4 py-2.5 border-b border-solid border-border bg-gray">
+                                    <span class="text-[15px] font-normal text-heading w-40 inline-block">Order Tax <span
+                                            class="float-end">:</span></span>
+                                    <span class="text-[15px] font-normal text-heading inline-block">${{ totalTax |
+                                        number:'1.0-0' }}</span>
+                                </li>
+                                <li class="px-4 py-2.5 border-b border-solid border-border">
+                                    <span class="text-[15px] font-normal text-heading w-40 inline-block">Discount <span
+                                            class="float-end">:</span></span>
+                                    <span class="text-[15px] font-normal text-heading inline-block">${{ totalDiscount |
+                                        number:'1.0-0' }}</span>
+                                </li>
+                                <li class="px-4 py-2.5 border-b border-solid border-border bg-gray">
+                                    <span class="text-[15px] font-normal text-heading w-40 inline-block">Shipping <span
+                                            class="float-end">:</span></span>
+                                    <span
+                                        class="text-[15px] font-normal text-heading inline-block">${{shippingValue}}</span>
+                                </li>
+                                <li class="px-4 py-2.5">
+                                    <span class="text-[15px] font-semibold text-heading w-40 inline-block">Grand Total
+                                        <span class="float-end font-normal">:</span></span>
+                                    <span class="text-[15px] font-semibold text-heading inline-block">${{ totalAmount -
+                                        totalDiscount + totalTax + shippingValue | number:'1.0-0' }}</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-12 gap-x-7 sm:gap-x-0">
+                    <div class="col-span-6 sm:col-span-12">
+                        <div class="inventual-select-field mb-5">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">Shipping</h5>
+                            <div class="inventual-input-field-style relative">
+                                <mat-form-field class="w-full" [floatLabel]="'always'">
+                                    <mat-label class="hidden">0</mat-label>
+                                    <input type="number" matInput [placeholder]="'0'" [(ngModel)]="shippingValue">
+                                </mat-form-field>
+                                <figure
+                                    class="h-12 w-12 text-[15px] text-body bg-gray text-center leading-[46px] border border-solid border-border absolute top-0 end-0 inline-block">
+                                    $</figure>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-6 sm:col-span-12">
+                        <div class="inventual-select-field mb-5">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">Sale Status</h5>
+                            <div class="inventual-select-field-style">
+                                <mat-form-field>
+                                    <mat-select class="block" [placeholder]="'Sale Status'">
+                                        <mat-option value="language-1">Complete</mat-option>
+                                        <mat-option value="language-2">Incomplete</mat-option>
+                                        <mat-option value="language-3">Drafts</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-12">
+                        <div class="inventual-select-field mb-5">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">Sale Note:</h5>
+                            <div class="inventual-input-field-style relative">
+                                <textarea placeholder="Type text...."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="inventual-material-btn pt-2 justify-end">
+                    <button mat-raised-button color="primary">Create Invoice</button>
+                </div>
+            </div>
+        </div>
+        <div class="inventual-copyright-area">
+            <app-footer></app-footer>
+        </div>
+    </div>
+</div>

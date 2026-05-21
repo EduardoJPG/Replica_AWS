@@ -1,0 +1,16 @@
+# Secrets
+.env
+
+# MySQL — no subir volcados ni datos de replicación inicial
+mysql/*.sql
+
+# Respaldos automáticos
+backups/
+
+# .NET build artifacts
+Back-end/**/bin/
+Back-end/**/obj/
+
+# Angular cache
+Front-end/**/.angular/
+Front-end/**/node_modules/

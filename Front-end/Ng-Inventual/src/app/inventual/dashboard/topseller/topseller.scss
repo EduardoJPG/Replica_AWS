@@ -1,0 +1,19 @@
+.inventual-dashboard-supplier-list-sl {
+    @apply text-center w-10 min-w-[40px] flex justify-center items-center flex-col h-full;
+}
+
+.inventual-dashboard-supplier-list-name {
+    @apply w-[215px] min-w-[215px] flex justify-center flex-col h-full;
+
+    @media (max-width: 767px) {
+        @apply ps-2.5 w-[140px] min-w-[140px];
+    }
+
+    @media (max-width: 359px) {
+        @apply w-[115px] min-w-[115px] ps-2;
+    }
+}
+
+.inventual-dashboard-supplier-list-amount {
+    @apply text-center w-[50px] min-w-[50px] flex justify-center items-center flex-col h-full;
+}

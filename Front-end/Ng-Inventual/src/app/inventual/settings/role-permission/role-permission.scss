@@ -1,0 +1,112 @@
+@use '../../../../custom-palettes.scss';
+
+//sidebar menu style
+@include custom-palettes.inventualSidebarMuneStyle;
+// Input field style
+@include custom-palettes.inventualInputFieldStyle;
+@include custom-palettes.inventualCheckboxFieldStyle;
+@include custom-palettes.inventualBtnStyle;
+
+.inventual-role-category h5 {
+    @apply text-[15px] font-semibold text-heading;
+}
+
+.inventual-role-left {
+    @apply min-w-[250px] w-[250px] ps-7 h-full;
+
+    @media (min-width: 1201px) and (max-width: 1600px) {
+        min-width: 210px;
+        width: 210px;
+    }
+
+    @media (min-width: 992px) and (max-width: 1200px) {
+        @apply min-w-[180px] w-[180px] ps-4;
+    }
+
+    @media (max-width: 991px) {
+        @apply min-w-[180px] w-[180px] ps-4;
+    }
+}
+
+.inventual-role-checkbox {
+    .mdc-form-field {
+        @apply flex gap-5;
+
+        label {
+            @apply text-[15px] font-semibold font-primary cursor-pointer;
+        }
+    }
+}
+
+.inventual-role-category {
+    @apply min-w-[250px] w-[250px] ps-7 border-e border-solid border-border h-full flex flex-col justify-center;
+
+    @media (min-width: 1201px) and (max-width: 1600px) {
+        min-width: 210px;
+        width: 210px;
+    }
+
+    @media (min-width: 992px) and (max-width: 1200px) {
+        @apply min-w-[180px] w-[180px] ps-4;
+    }
+
+    @media (min-width: 768px) and (max-width: 991px) {
+        @apply min-w-[180px] w-[180px] ps-4;
+    }
+
+    @media (max-width: 991px) {
+        @apply border-e-0 ps-4 w-full min-w-full h-auto;
+    }
+}
+
+.inventual-role-checkbox-wrapper {
+    @apply flex items-center w-full px-7 justify-between;
+
+    @media (max-width: 1200px) {
+        @apply ps-4;
+    }
+
+    .mat-checkbox-layout .mat-checkbox-label {
+        @apply text-[15px] font-semibold font-primary cursor-pointer;
+    }
+}
+
+.custom-height-100 {
+    @apply h-[100px];
+}
+
+.custom-height-70 {
+    @apply h-[70px];
+}
+
+.inventual-role-category-list.custom-height-50 {
+    @media (max-width: 1200px) {
+        @apply h-[100px];
+    }
+}
+
+.inventual-role-category-list {
+    @media (max-width: 991px) {
+        display: inherit;
+        @apply flex flex-col justify-center;
+
+        & h5 {
+            @apply mb-2.5;
+        }
+    }
+}
+
+.inventual-role-inner {
+    @media (max-width: 1199px) {
+        overflow-x: auto;
+        scrollbar-height: thin;
+    }
+}
+
+.inventual-role-inner-wrapper {
+    @media (max-width: 767px) {
+        width: 650px;
+        min-width: 100%;
+        scrollbar-height: thin;
+    }
+}

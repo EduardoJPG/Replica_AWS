@@ -1,0 +1,41 @@
+.validation-dialog {
+  padding: 10px 4px 4px;
+  min-width: 320px;
+  max-width: 460px;
+}
+
+.validation-dialog-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff4e5;
+  color: #c77700;
+  margin-bottom: 12px;
+}
+
+.validation-dialog-icon mat-icon {
+  width: 28px;
+  height: 28px;
+  font-size: 28px;
+}
+
+h2 {
+  margin: 0 0 8px;
+  color: #1f2937;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+p {
+  margin: 0;
+  color: #4b5563;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+mat-dialog-actions {
+  padding: 20px 0 0;
+}

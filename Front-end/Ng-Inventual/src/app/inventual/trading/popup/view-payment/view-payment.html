@@ -1,0 +1,59 @@
+<mat-dialog-content>
+    <div class="popup-body">
+        <div class="inventual-popup-inner">
+            <div class="inventual-popup-header relative mb-11">
+                <div class="inventual-popup-header-title">
+                    <h4 class="text-[20px] text-heading font-bold">Ver pago</h4>
+                </div>
+                <div
+                    class="inventual-popup-header-close absolute -top-4 ltr:-right-2.5 ltr:left-auto rtl:left-0 rtl:right-auto">
+                    <mat-dialog-actions>
+                        <div class="default-light-theme">
+                            <a href="javascript:void(0)" mat-dialog-close><mat-icon>clear</mat-icon></a>
+                        </div>
+                    </mat-dialog-actions>
+                </div>
+            </div>
+            <div class="inventual-viewpayment-table border border-solid border-border">
+                <div class="inventual-viewpayment-table-inner">
+                    <div class="inventual-viewpayment-table-inner-wrapper">
+                        <div class="inventual-viewpayment-list h-10">
+                            <div class="inventual-viewpayment-date">
+                                <h5>Fecha</h5>
+                            </div>
+                            <div class="inventual-viewpayment-reference">
+                                <h5>Referencia</h5>
+                            </div>
+                            <div class="inventual-viewpayment-payment">
+                                <h5>Metodo</h5>
+                            </div>
+                            <div class="inventual-viewpayment-amount">
+                                <h5>Monto</h5>
+                            </div>
+                            <div class="inventual-viewpayment-action">
+                                <h5>Estado</h5>
+                            </div>
+                        </div>
+                        <div class="inventual-viewpayment-list h-12">
+                            <div class="inventual-viewpayment-date">
+                                <span>{{sale.date}}</span>
+                            </div>
+                            <div class="inventual-viewpayment-reference">
+                                <span>{{sale.reference}}</span>
+                            </div>
+                            <div class="inventual-viewpayment-payment">
+                                <span>{{sale.payment === 'paid' ? 'Venta pagada' : 'Pendiente'}}</span>
+                            </div>
+                            <div class="inventual-viewpayment-amount">
+                                <span>${{sale.paid | number:'1.2-2'}}</span>
+                            </div>
+                            <div class="inventual-viewpayment-action">
+                                <span>{{sale.payment === 'paid' ? 'Pagado' : 'Pendiente'}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</mat-dialog-content>

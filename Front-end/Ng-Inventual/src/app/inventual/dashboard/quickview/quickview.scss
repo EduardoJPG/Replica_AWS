@@ -1,0 +1,61 @@
+.invention-quickreport {
+    box-shadow: 0px 20px 40px rgba(18, 42, 91, 0.05);
+
+    &-icon {
+        & span {
+            @apply h-[70px] w-[70px] min-w-[70px] leading-[66px] text-center rounded-[50%] inline-block;
+
+            & svg {
+                @apply inline-block;
+            }
+
+            &.invention-quickreport-icon1 {
+                background: #F2F6FF;
+
+                & path {
+                    fill: #235ED2;
+                }
+            }
+
+            &.invention-quickreport-icon2 {
+                background: #F6F1FF;
+
+                & path {
+                    fill: #6625C7;
+                }
+            }
+
+            &.invention-quickreport-icon3 {
+                background: #FBF5EA;
+
+                & path {
+                    fill: #BF8818;
+                }
+            }
+
+            &.invention-quickreport-icon4 {
+                background: #ECFEF7;
+
+                & path {
+                    fill: #14C281;
+                }
+            }
+
+            &.invention-quickreport-icon5 {
+                background: #FCF2F6;
+
+                & path {
+                    fill: #C4346A;
+                }
+            }
+
+            &.invention-quickreport-icon6 {
+                background: #F1FBFE;
+
+                & path {
+                    fill: #239ECC;
+                }
+            }
+        }
+    }
+}

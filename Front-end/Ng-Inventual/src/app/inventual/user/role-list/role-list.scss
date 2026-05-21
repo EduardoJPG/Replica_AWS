@@ -1,0 +1,19 @@
+@use '../../../../custom-palettes.scss';
+
+@include custom-palettes.inventualSidebarMuneStyle;
+@include custom-palettes.inventualInputFieldStyle;
+@include custom-palettes.inventualHeaderSearchAction;
+@include custom-palettes.inventualMaterialBtn;
+@include custom-palettes.commonActionMenuStyle;
+@include custom-palettes.inventualMaterialTableStyle;
+
+.success-snackbar {
+  background: #4caf50;
+  color: white;
+  font-weight: bold;
+}
+
+.error-snackbar {
+  background: #f44336;
+  color: white;
+}

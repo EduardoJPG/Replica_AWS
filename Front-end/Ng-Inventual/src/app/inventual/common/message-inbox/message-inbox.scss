@@ -1,0 +1,115 @@
+@use '../../../../custom-palettes.scss';
+
+@include custom-palettes.inventualSidebarMuneStyle;
+// Input field style
+@include custom-palettes.inventualInputFieldStyle;
+@include custom-palettes.inventualMaterialBtn;
+
+.inventual-notification-text {
+    width: calc(100% - 90px);
+}
+
+.inventual-notification {
+    transition: all linear 0.3s;
+
+    &:hover {
+        @apply bg-white;
+    }
+}
+
+.inventual-message-inbox-wrapper {
+    .mat-mdc-tab-group {
+        max-width: inherit;
+        @apply flex-row;
+
+        @media (min-width: 320px) and (max-width: 991px) {
+            @apply max-w-full flex-col;
+        }
+    }
+
+    .mat-mdc-tab-labels {
+        @apply flex flex-col min-w-[260px] bg-white rounded-[5px] text-start;
+    }
+
+    .mat-mdc-ink-bar {
+        @apply hidden;
+    }
+
+    .mat-mdc-tab {
+        white-space: inherit;
+        @apply font-primary overflow-hidden min-h-[40px] p-0 opacity-100 text-start justify-start max-w-[210px];
+
+        @media (min-width: 320px) and (max-width: 991px) {
+            @apply max-w-full;
+        }
+
+        button {
+            @apply block relative w-full text-[16px] font-semibold text-heading text-start h-12 leading-[45px] py-0 rounded-none px-3.5;
+
+            .mat-icon {
+                height: 20px !important;
+                width: 20px !important;
+                font-size: 20px !important;
+                line-height: 1 !important;
+                margin-inline-end: 5px;
+                @apply text-[#B8C1CF] me-2 translate-y-1 inline-block;
+            }
+
+            span {
+                @apply float-end;
+            }
+        }
+
+        &.mdc-tab--active {
+            button {
+                @apply bg-border text-primary;
+
+                .mat-icon {
+                    @apply text-primary;
+                }
+            }
+        }
+    }
+
+    .mat-mdc-tab .mdc-tab__text-label {
+        @apply flex w-full;
+    }
+
+    .mat-mdc-tab-header {
+        flex-shrink: inherit;
+        @apply border-transparent font-primary;
+    }
+
+    .mat-mdc-tab-body-wrapper {
+        width: calc(100% - 260px);
+        @apply bg-white;
+
+        @media (min-width: 320px) and (max-width: 991px) {
+            @apply w-full;
+        }
+    }
+
+    .mat-mdc-tab .mdc-tab__content {
+        @apply w-full;
+    }
+
+    .mat-mdc-tab-header-pagination-controls-enabled .mat-mdc-tab-header-pagination {
+        display: none !important;
+    }
+}
+
+.inventual-message-inbox-body {
+    @apply overflow-hidden;
+
+    @media (min-width: 320px) and (max-width: 991px) {
+        margin-top: 24px;
+    }
+}
+
+.mat-tab-labels {
+    @apply font-primary;
+}
+
+.inventual-notification-body {
+    @apply pb-2.5;
+}

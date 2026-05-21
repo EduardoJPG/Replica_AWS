@@ -1,0 +1,429 @@
+@use '../../../../../custom-palettes.scss';
+
+.inventual-popup-inner {
+    width: 830px;
+    @apply p-7;
+    @media (min-width: 992px) and (max-width: 1200px) {
+        width: 805px;
+    }
+    @media (min-width: 768px) and (max-width: 991px) {
+        width: 615px;
+    }
+    @media (max-width: 767px) {
+        width: 100%;
+    }
+}
+//popup close btn
+@include custom-palettes.inventualPopupClose;
+//popup common style
+@include custom-palettes.popupCommonStyle;
+@include custom-palettes.inventualHeaderSearchAction;
+
+.inventual-invoice-popup-address {
+    h5 {
+        @apply text-[16px];
+        @apply font-bold;
+        @apply text-heading;
+        @apply mb-4;
+    }
+    ul {
+        li {
+            @apply text-[14px];
+            @apply font-bold;
+            @apply text-heading;
+            @apply mb-2;
+            &:last-child {
+                @apply mb-0;
+            }
+            span {
+                @apply text-[14px];
+                @apply font-normal;
+                @apply text-body;
+            }
+        }
+    }
+}
+
+.inventual-invoice-table-list {
+    @apply flex;
+    @apply items-center;
+    @apply border-b;
+    @apply border-solid;
+    @apply border-border;
+}
+.inventual-invoice-table-sl,
+.inventual-invoice-table-sll,
+.inventual-invoice-table-product,
+.inventual-invoice-table-batch,
+.inventual-invoice-table-unit,
+.inventual-invoice-table-price,
+.inventual-invoice-table-qty,
+.inventual-invoice-table-tax,
+.inventual-invoice-table-discount,
+.inventual-invoice-table-total {
+    @apply flex;
+    @apply justify-center;
+    @apply flex-col;
+    @apply h-full;
+    @apply px-2.5;
+    h5 {
+        @apply text-[15px];
+        @apply font-semibold;
+        @apply text-heading;
+    }
+    span {
+        @apply text-[14px];
+        @apply font-normal;
+        @apply text-body;
+    }
+}
+.inventual-invoice-table-sl {
+    min-width: 40px;
+    width: 40px;
+}
+.inventual-invoice-table-product {
+    min-width: 170px;
+    width: 170px;
+}
+.inventual-invoice-table-sll {
+    min-width: 209px;
+    width: 209px;
+}
+.inventual-invoice-table-batch {
+    min-width: 95px;
+    width: 95px;
+}
+.inventual-invoice-table-unit {
+    min-width: 50px;
+    width: 50px;
+}
+.inventual-invoice-table-price {
+    min-width: 90px;
+    width: 90px;
+}
+.inventual-invoice-table-qty {
+    min-width: 50px;
+    width: 50px;
+}
+.inventual-invoice-table-tax {
+    min-width: 90px;
+    width: 90px;
+}
+.inventual-invoice-table-discount {
+    min-width: 90px;
+    width: 90px;
+}
+.inventual-invoice-table-total {
+    @apply border-e-0;
+}
+.custom-height-70 {
+    height: 70px;
+}
+
+.inventual-invoice-popup-btn.inventual-table-header-search-action-btn button {
+    width: inherit;
+    @apply px-4;
+    @apply inline-flex;
+    @apply items-center;
+    @apply m-0;
+    @apply me-4;
+    @apply text-[14px];
+    @apply font-semibold;
+    @apply leading-[38px];
+    & svg {
+        @apply me-2.5;
+      }
+    &.printer {
+        @apply text-primary;
+        @apply sm:mb-2.5;
+    }
+    &.pdf {
+        @apply text-warning;
+        @apply sm:mb-2.5;
+    }
+}
+
+.inventual-invoice-table-inner {
+	@media (max-width: 991px) {
+		overflow-x: auto;
+		scrollbar-height: thin;
+	}
+}
+.inventual-invoice-table-inner-wrapper {
+	@media (max-width: 991px) {
+		min-width: 100%;
+        width: 740px;
+		scrollbar-height: thin;
+	}
+}
+.inventual-invoice-popup-heading {
+    ul {
+        li {
+            @apply border-e-0 sm:py-1;
+            span {
+                @apply p-0;
+            }
+        }
+    }
+}
+
+.invoice-print-document {
+    display: none;
+}
+
+@media print {
+    @page {
+        size: A4;
+        margin: 12mm;
+    }
+
+    body * {
+        visibility: hidden !important;
+    }
+
+    .cdk-overlay-container,
+    .cdk-global-overlay-wrapper,
+    .mat-mdc-dialog-container,
+    .mat-mdc-dialog-surface,
+    .mat-mdc-dialog-content,
+    .popup-body,
+    .inventual-popup-inner,
+    .invoice-print-document,
+    .invoice-print-document * {
+        visibility: visible !important;
+    }
+
+    .cdk-overlay-container,
+    .cdk-global-overlay-wrapper,
+    .mat-mdc-dialog-container,
+    .mat-mdc-dialog-surface {
+        position: static !important;
+        inset: auto !important;
+        transform: none !important;
+        width: auto !important;
+        height: auto !important;
+        max-width: none !important;
+        box-shadow: none !important;
+        background: #fff !important;
+    }
+
+    .mat-mdc-dialog-content,
+    .popup-body,
+    .inventual-popup-inner {
+        display: block !important;
+        width: 100% !important;
+        max-width: none !important;
+        height: auto !important;
+        max-height: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        overflow: visible !important;
+        box-shadow: none !important;
+        background: #fff !important;
+    }
+
+    .invoice-print-area,
+    .inventual-popup-header,
+    .inventual-invoice-popup-btn,
+    .cdk-overlay-backdrop {
+        display: none !important;
+    }
+
+    .invoice-print-document {
+        display: block !important;
+        color: #111 !important;
+        background: #fff !important;
+        font-family: Arial, sans-serif !important;
+        font-size: 12px !important;
+        line-height: 1.35 !important;
+    }
+
+    .invoice-print-header {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: flex-start !important;
+        border-bottom: 2px solid #111 !important;
+        padding-bottom: 12px !important;
+        margin-bottom: 14px !important;
+    }
+
+    .invoice-print-header img {
+        max-height: 56px !important;
+        max-width: 160px !important;
+    }
+
+    .invoice-print-header h1 {
+        font-size: 28px !important;
+        margin: 0 !important;
+        text-align: right !important;
+    }
+
+    .invoice-print-header p {
+        margin: 4px 0 0 !important;
+        text-align: right !important;
+        font-weight: 700 !important;
+    }
+
+    .invoice-print-meta {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 6px 18px !important;
+        border: 1px solid #d7dce2 !important;
+        padding: 10px !important;
+        margin-bottom: 14px !important;
+    }
+
+    .invoice-print-parties {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 18px !important;
+        margin-bottom: 16px !important;
+    }
+
+    .invoice-print-parties section {
+        border: 1px solid #d7dce2 !important;
+        padding: 10px !important;
+        min-height: 78px !important;
+    }
+
+    .invoice-print-parties h3 {
+        font-size: 13px !important;
+        margin: 0 0 8px !important;
+        text-transform: uppercase !important;
+    }
+
+    .invoice-print-parties p {
+        margin: 3px 0 !important;
+    }
+
+    .invoice-print-table {
+        width: 100% !important;
+        border-collapse: collapse !important;
+        margin-bottom: 14px !important;
+    }
+
+    .invoice-print-table th,
+    .invoice-print-table td {
+        border: 1px solid #cfd5dc !important;
+        padding: 7px 8px !important;
+        vertical-align: top !important;
+    }
+
+    .invoice-print-table th {
+        background: #eef1f4 !important;
+        font-weight: 700 !important;
+        text-align: left !important;
+    }
+
+    .invoice-print-table .num {
+        text-align: right !important;
+    }
+
+    .invoice-print-totals {
+        width: 280px !important;
+        margin-left: auto !important;
+        border: 1px solid #cfd5dc !important;
+    }
+
+    .invoice-print-totals p {
+        display: flex !important;
+        justify-content: space-between !important;
+        margin: 0 !important;
+        padding: 6px 10px !important;
+        border-bottom: 1px solid #e1e5ea !important;
+    }
+
+    .invoice-print-totals p:last-child {
+        border-bottom: 0 !important;
+    }
+
+    .invoice-print-totals .grand {
+        background: #111 !important;
+        color: #fff !important;
+        font-size: 14px !important;
+    }
+
+    .invoice-print-notes {
+        margin-top: 18px !important;
+        border-top: 1px solid #d7dce2 !important;
+        padding-top: 10px !important;
+    }
+
+    .invoice-print-notes p {
+        margin: 4px 0 !important;
+    }
+
+    /*
+    .inventual-invoice-popup-logo {
+        margin-bottom: 22px !important;
+    }
+
+    .inventual-invoice-popup-logo img {
+        max-height: 54px !important;
+    }
+
+    .inventual-invoice-popup-heading {
+        margin-bottom: 18px !important;
+    }
+
+    .inventual-invoice-popup-heading ul {
+        background: #f4f6f8 !important;
+        border: 1px solid #d9dee5 !important;
+        color: #111 !important;
+    }
+
+    .inventual-invoice-popup-heading span {
+        color: #111 !important;
+    }
+
+    .inventual-invoice-popup-address-area {
+        margin-bottom: 20px !important;
+    }
+
+    .inventual-invoice-table-inner,
+    .inventual-invoice-table-inner-wrapper {
+        width: 100% !important;
+        min-width: 0 !important;
+        overflow: visible !important;
+    }
+
+    .inventual-invoice-table-list {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    .inventual-invoice-table-sl {
+        min-width: 5% !important;
+        width: 5% !important;
+    }
+
+    .inventual-invoice-table-product {
+        min-width: 24% !important;
+        width: 24% !important;
+    }
+
+    .inventual-invoice-table-sll {
+        min-width: 29% !important;
+        width: 29% !important;
+    }
+
+    .inventual-invoice-table-batch {
+        min-width: 13% !important;
+        width: 13% !important;
+    }
+
+    .inventual-invoice-table-unit,
+    .inventual-invoice-table-qty {
+        min-width: 7% !important;
+        width: 7% !important;
+    }
+
+    .inventual-invoice-table-price,
+    .inventual-invoice-table-tax,
+    .inventual-invoice-table-discount,
+    .inventual-invoice-table-total {
+        min-width: 11% !important;
+        width: 11% !important;
+    }
+    */
+}

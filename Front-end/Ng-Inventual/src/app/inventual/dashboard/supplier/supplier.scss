@@ -1,0 +1,49 @@
+.inventual-dashboard-supplier-wrapper3 {
+    .inventual-dashboard-supplier-list-sl3 {
+        @apply text-center w-[50px] min-w-[50px] flex justify-center items-center flex-col h-full sm:w-[35px] sm:min-w-[35px];
+    }
+
+    .inventual-dashboard-supplier-list-name3 {
+        @apply flex w-[250px] min-w-[250px] justify-center flex-col h-full;
+
+        @media (min-width: 1601px) and (max-width: 1900px) {
+            width: 200px;
+            min-width: 200px;
+        }
+
+        @media (min-width: 1401px) and (max-width: 1600px) {
+            width: 145px;
+            min-width: 145px;
+        }
+
+        @media (min-width: 992px) and (max-width: 1200px) {
+            width: 145px;
+            min-width: 145px;
+        }
+
+        @media (max-width: 767px) {
+            width: 125px;
+            min-width: 125px;
+            @apply ps-2.5;
+        }
+
+        @media (max-width: 359px) {
+            width: 100px;
+            min-width: 100px;
+            @apply ps-2;
+        }
+
+        a {
+            @apply leading-none;
+        }
+    }
+
+    .inventual-dashboard-supplier-list-amount3 {
+        @apply text-center w-[110px] min-w-[110px] flex justify-center items-center flex-col h-full sm:w-[90px] sm:min-w-[90px];
+
+        @media (max-width: 359px) {
+            width: 70px;
+            min-width: 70px;
+        }
+    }
+}

@@ -1,0 +1,138 @@
+<div class="inventual-dashboard-area">
+  <div class="inventual-dashboard-sidebar" [class.sidebar-enable]="menuSidebarActive">
+
+    <div class="inventual-header-bar-responsive" (click)="myfunction()">
+      <mat-icon>reorder</mat-icon>
+    </div>
+
+    <div class="inventual-menu-wrapper bg-white border-e border-b border-solid border-border py-10 px-7 lg:px-5 lg:py-8">
+      <app-menus></app-menus>
+    </div>
+
+    <div class="inventual-menu-overlay" (click)="myfunction()" [class.sidebar-enable]="menuSidebarActive"></div>
+  </div>
+
+  <div class="inventual-dashboard-main" [class.sidebar-enable]="menuSidebarActive">
+
+    <div class="inventual-header-area">
+      <div class="inventual-header-wrapper custom-height-70 px-7 bg-white border-b border-solid border-border">
+        <app-header></app-header>
+      </div>
+    </div>
+
+    <!-- BREADCRUMB -->
+    <div class="inventual-breadcrumb-area px-7 py-9 bg-white mb-5">
+      <h5 class="text-[20px] text-heading font-bold mb-3">Add Supplier</h5>
+      <div>
+        <span>People</span> > <span>Supplier</span>
+      </div>
+    </div>
+
+    <!-- FORM -->
+    <div class="inventual-content-area px-7">
+
+      <div class="inventual-addsupplier-area bg-white p-7 custom-shadow rounded-8 mb-5">
+
+        <div class="grid grid-cols-12 gap-7">
+
+          <!-- nombre -->
+          <div class="col-span-4">
+            <mat-form-field class="w-full">
+              <mat-label>Nombre Proveedor</mat-label>
+              <input matInput [(ngModel)]="nombre_proveedor">
+            </mat-form-field>
+          </div>
+
+          <!-- nit -->
+          <div class="col-span-4">
+            <mat-form-field class="w-full">
+              <mat-label>NIT / RUC</mat-label>
+              <input matInput [(ngModel)]="nit_ruc">
+            </mat-form-field>
+          </div>
+
+          <!-- telefono -->
+          <div class="col-span-4">
+            <mat-form-field class="w-full">
+              <mat-label>Teléfono</mat-label>
+              <input matInput [(ngModel)]="telefono">
+            </mat-form-field>
+          </div>
+
+          <!-- email -->
+          <div class="col-span-4">
+            <mat-form-field class="w-full">
+              <mat-label>Email</mat-label>
+              <input matInput [(ngModel)]="email">
+            </mat-form-field>
+          </div>
+
+          <!-- pais -->
+          <div class="col-span-4">
+            <mat-form-field class="w-full">
+              <mat-label>País</mat-label>
+              <input matInput [(ngModel)]="pais">
+            </mat-form-field>
+          </div>
+
+          <!-- ciudad -->
+          <div class="col-span-4">
+            <mat-form-field class="w-full">
+              <mat-label>Ciudad</mat-label>
+              <input matInput [(ngModel)]="ciudad">
+            </mat-form-field>
+          </div>
+
+          <!-- direccion -->
+          <div class="col-span-6">
+            <mat-form-field class="w-full">
+              <mat-label>Dirección</mat-label>
+              <input matInput [(ngModel)]="direccion">
+            </mat-form-field>
+          </div>
+
+          <!-- compania -->
+          <div class="col-span-6">
+            <mat-form-field class="w-full">
+              <mat-label>Compañía</mat-label>
+              <input matInput [(ngModel)]="compania">
+            </mat-form-field>
+          </div>
+
+          <!-- codigo -->
+          <div class="col-span-4">
+            <mat-form-field class="w-full">
+              <mat-label>Código Proveedor</mat-label>
+              <input matInput [(ngModel)]="codigo_proveedor">
+            </mat-form-field>
+          </div>
+
+          <!-- estado -->
+          <div class="col-span-4">
+            <mat-form-field class="w-full">
+              <mat-label>Estado</mat-label>
+              <mat-select [(ngModel)]="estado">
+                <mat-option [value]="1">Activo</mat-option>
+                <mat-option [value]="0">Inactivo</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <!-- botón -->
+          <div class="col-span-12 flex justify-end">
+            <button mat-raised-button color="primary" (click)="crearProveedor()">
+              Crear Proveedor
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <div class="inventual-copyright-area">
+      <app-footer></app-footer>
+    </div>
+
+  </div>
+</div>

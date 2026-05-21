@@ -1,0 +1,198 @@
+.inventual-header-shortmenu {
+    @apply relative;
+    & .mat-icon {
+        font-size: 20px;
+        width: 20px !important;
+    }
+    @media (max-width: 359px) {
+        @apply hidden;
+    }
+}
+.inventual-header-language-content {
+    & ul {
+        & li {
+            @apply leading-none;
+        }
+    }
+    & .mat-icon {
+        width: 14px !important;
+        @apply text-body translate-y-[4px] text-[18px];
+    }
+}
+.inventual-header-language-content {
+    @apply translate-y-[-2px];
+}
+.inventual-header-bar {
+    @apply leading-none;
+}
+.custom-height-70 {
+    @apply h-[70px];
+}
+.inventual-header-notify-wrapper {
+    & svg {
+        @apply min-w-[18px];
+    }
+}
+.inventual-header-profile-info {
+    & .mat-icon {
+        width: 15px !important;
+        @apply text-[20px] translate-y-[4px] text-heading absolute -top-2 right-0;
+    }
+}
+.inventual-header-bar span {
+    @apply mb-[1px];
+}
+.inventual-quick-pro-dropdown {
+    i {
+        @apply me-1;
+    }
+}
+//shortcut dropdown
+.inventual-quick-dropdown {
+    @apply absolute top-full start-0 w-[220px] z-[9] border border-solid border-border py-3 px-5 bg-white opacity-0 invisible;
+    box-shadow: 0px 20px 40px rgba(18, 42, 91, 0.05);
+    transform: scale(0);
+    &.shortmenu-enable,
+    &.langmenu-enable,
+    &.promenu-enable {
+        @apply opacity-100 visible;
+        transform: scale(1);
+    }
+    ul {
+        li {
+            @apply py-2;
+            a {
+                @apply text-body inline-block font-normal text-[14px];
+                transition: all linear 0.3s;
+                &:hover {
+                    @apply text-primary;
+                }
+                &.active-language {
+                    @apply text-primary font-bold;
+                }
+            }
+        }
+    }
+}
+.inventual-quick-lang-dropdown {
+    @apply w-[160px];
+    &.langmenu-enable {
+        @apply start-auto end-0 top-[45px];
+    }
+}
+.inventual-quick-pro-dropdown {
+    @apply w-[195px];
+    &.promenu-enable {
+        @apply start-auto end-0 top-[59px];
+    }
+}
+.inventual-quick-pro-dropdown {
+    & a {
+        @apply inline-flex;
+        @apply items-center;
+        .mat-icon {
+            width: 24px !important;
+            @apply text-[16px];
+            transform: translateY(3px);
+        }
+    }
+}
+
+// notify dropdown
+.inventual-notify-dropdown-list {
+    .inventual-notify-img {
+        @apply me-4 w-[50px] rounded-[5px];
+    }
+    .inventual-notify-text {
+        h6 {
+            @apply text-[14px] mb-2 font-semibold text-heading;
+        }
+        span {
+            @apply text-[12px] block font-normal text-body;
+        }
+    }
+}
+.inventual-notify-dropdown-list a {
+    @apply text-body inline-flex;
+    &:hover {
+        @apply text-primary;
+    }
+    & .mat-icon {
+        @apply text-[16px] ms-1;
+    }
+}
+.inventual-notify-dropdown {
+    @apply absolute top-[45px] start-0 w-[250px] z-[9] bg-white opacity-0 invisible;
+    box-shadow: 0px 20px 40px rgba(18, 42, 91, 0.05);
+    transform: scale(0);
+    &.notifydropdown-enable,
+    &.emaildropdown-enable {
+        @apply opacity-100 visible;
+        transform: scale(1);
+        @media (max-width: 1400px) {
+            @apply start-auto end-0;
+        }
+    }
+    &.notifydropdown-enable {
+        @media (max-width: 400px) {
+            @apply start-auto end-[-80px];
+        }
+        @media (max-width: 360px) {
+            @apply start-auto end-[-130px];
+        }
+    }
+    &.emaildropdown-enable {
+        @media (max-width: 400px) {
+            @apply start-auto end-[-40px];
+        }
+        @media (max-width: 360px) {
+            @apply start-auto end-[-90px];
+        }
+    }
+}
+
+
+.inventual-header-shortmenu {
+    a.short {
+        @apply relative z-[9];
+    }
+}
+.inventual-header-profile {
+    @apply relative z-[9];
+}
+.inventual-header-notification {
+    a.noti {
+        @apply relative z-[9];
+    }
+}
+.inventual-header-email {
+    .emai {
+        @apply relative z-[9];
+    }
+}
+.inventual-header-language {
+    @apply cursor-pointer z-[9] relative;
+}
+.inventual-notify-dropdown,
+.inventual-quick-dropdown  {
+    @apply z-[9];
+}
+
+.inventual-header-overlay.shortmenu-enable {
+    @apply block;
+}
+.inventual-header-overlay.notifydropdown-enable {
+    @apply block;
+}
+.inventual-header-overlay.emaildropdown-enable {
+    @apply block;
+}
+.inventual-header-overlay.langmenu-enable {
+    @apply block;
+}
+.inventual-header-overlay.promenu-enable {
+    @apply block;
+}
+.inventual-header-overlay {
+    @apply fixed hidden top-0 start-0 end-0 w-full h-full z-[8];
+}

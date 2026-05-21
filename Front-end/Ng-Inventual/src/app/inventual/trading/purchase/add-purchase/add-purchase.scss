@@ -1,0 +1,57 @@
+@use '../../../../../custom-palettes.scss';
+
+@include custom-palettes.inventualSidebarMuneStyle;
+@include custom-palettes.inventualInputFieldStyle;
+@include custom-palettes.inventualSelectFieldStyle;
+@include custom-palettes.inventualCalenderFieldStyle;
+@include custom-palettes.inventualHeaderSearchAction;
+@include custom-palettes.inventualMaterialBtn;
+@include custom-palettes.commonActionMenuStyle;
+@include custom-palettes.inventualMaterialTableStyle;
+@include custom-palettes.inventualInputFieldFileStyle;
+@include custom-palettes.inventualTextareaFieldStyle;
+@include custom-palettes.productCounter;
+
+.inventual-addsale-product-cost {
+    @apply border-x border-border;
+
+    ul {
+        @apply inline-block max-w-[400px] w-[480px] text-start xs:w-full;
+
+        li {
+            @apply flex justify-between items-center;
+
+            span.w-40 {
+                @apply sm:w-24;
+            }
+        }
+    }
+}
+
+.inventual-search-filter-result {
+    @apply absolute z-10 top-[84px] w-full left-0 max-h-[250px] overflow-y-auto bg-white p-4 shadow;
+
+    .single-search-item {
+        @apply w-full border-b my-1 cursor-pointer border-border last:border-0 flex items-center gap-5 sm:flex-wrap;
+
+        span {
+            @apply text-[15px] font-semibold text-heading font-primary;
+        }
+
+        &.selected {
+            @apply bg-primary/5;
+
+            .single-search-item-img {
+                @apply bg-primary/10;
+            }
+        }
+    }
+}
+
+.search-delete-icon {
+    @apply absolute bottom-[9px] end-2.5 leading-[30px] cursor-pointer h-[30px] w-[30px] bg-primary/10 inline-flex justify-center rounded-[50%] items-center;
+
+    .material-icons {
+        @apply text-heading text-[16px];
+    }
+}

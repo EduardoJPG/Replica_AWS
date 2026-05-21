@@ -1,0 +1,77 @@
+* {
+    box-sizing: border-box !important;
+}
+html,
+body {
+    @apply h-full;
+}
+body {
+    @apply text-[14px] m-0 p-0 font-primary font-normal overflow-x-hidden border-solid;
+}
+input::placeholder,
+textarea::placeholder {
+    @apply opacity-100 text-body;
+}
+input,
+select,
+textarea,
+button {
+    @apply font-primary font-normal box-border opacity-100;
+}
+.inventual-input-field-style input {
+    &::-moz-placeholder,
+    &::placeholder {
+        @apply text-body opacity-100 font-primary font-normal;
+    }
+}
+ul,
+ol {
+    @apply m-0 p-0 list-none;
+}
+img,
+svg {
+    display: inline-block !important;
+}
+.mat-icon {
+    height: inherit !important;
+    width: inherit !important;
+    line-height: inherit;
+}
+.mat-button,
+.mat-raised-button,
+.mat-icon-button,
+.mat-stroked-button,
+.mat-flat-button,
+.mat-fab,
+.mat-mini-fab {
+    font-family: 'Nunito Sans', sans-serif !important;
+    @apply text-[14px] font-normal;
+}
+.mat-raised-button:not([class*="mat-elevation-z"]) {
+    box-shadow: none !important;
+}
+//shadow css
+.custom-shadow {
+    box-shadow: 0px 20px 40px rgba(18, 42, 91, 0.05);
+}
+.mat-mdc-dialog-container .mdc-dialog__content {
+    font-family: 'Nunito Sans', sans-serif !important;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    padding: 0px !important;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+.mat-menu-content:not(:empty) {
+    padding: 8px !important;
+}
+//common delete btn
+.sm-delete-btn {
+    button {
+        @apply h-7 w-7 leading-[26px] border border-danger rounded text-danger hover:bg-danger/20;
+        .material-icons {
+            @apply text-[18px] translate-x-[-1px] rtl:translate-x-[1px] text-danger;
+        }
+    }
+}

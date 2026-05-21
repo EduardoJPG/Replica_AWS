@@ -1,0 +1,243 @@
+<div class="inventual-dashboard-area">
+    <div class="inventual-dashboard-sidebar" [class.sidebar-enable]="menuSidebarActive">
+        <div class="inventual-header-bar-responsive" (click)="myfunction()">
+            <mat-icon>reorder</mat-icon>
+        </div>
+        <div
+            class="inventual-menu-wrapper bg-white border-e border-b border-solid border-border py-10 px-7 lg:px-5 lg:py-8">
+            <app-menus></app-menus>
+        </div>
+        <div class="inventual-menu-overlay" (click)="myfunction()" [class.sidebar-enable]="menuSidebarActive"></div>
+    </div>
+    <div class="inventual-dashboard-main" [class.sidebar-enable]="menuSidebarActive">
+        <div class="inventual-header-area">
+            <div class="inventual-header-wrapper custom-height-70 px-7 bg-white border-b border-solid border-border">
+                <div class="grid grid-cols-12 items-center h-full">
+                    <div class="col-span-12">
+                        <app-header></app-header>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="inventual-breadcrumb-area px-7 py-9 bg-white mb-5">
+            <div class="inventual-breadcrumb-area-inner px-0.5">
+                <h5 class="text-[20px] text-heading font-bold mb-3">Lista de ventas</h5>
+                <div class="inventual-breadcrumb-area-inner-wrap">
+                    <span class="text-[14px] text-body font-normal inline-block me-2">Comercio</span>
+                    <span class="text-[14px] text-body font-normal inline-block me-2">></span>
+                    <span class="text-[14px] text-body font-normal inline-block me-2">Ventas</span>
+                    <span class="text-[14px] text-body font-normal inline-block me-2">></span>
+                    <span class="text-[14px] text-body font-normal inline-block me-2">Gestionar ventas</span>
+                </div>
+            </div>
+        </div>
+        <div class="inventual-content-area px-7">
+            <div class="inventual-common-material-table bg-white p-7 custom-shadow rounded-8 mb-5">
+                <div class="inventual-material-btn mb-7">
+                    <button mat-raised-button color="accent" [routerLink]="['/trading/sales/newsale']"
+                        class="mb-1"><mat-icon>add_circle_outline</mat-icon> Nueva venta</button>
+                    <div class="inventual-input-field-file">
+                        <label for="fileUploadL"><mat-icon>add_to_photos</mat-icon> Importar venta</label>
+                        <input type="file" class="hidden" id="fileUploadL">
+                    </div>
+                </div>
+                <div class="inventual-table-header-search-area">
+                    <div class="grid grid-cols-12 gap-5 mb-7 pb-0.5">
+                        <div class="col-span-5 md:col-span-6 sm:col-span-12">
+                            <div class="inventual-select-field">
+                                <div class="inventual-input-field-style">
+                                    <mat-form-field class="w-full" [floatLabel]="'always'">
+                                        <mat-label class="hidden">Filter</mat-label>
+                                        <input matInput (keyup)="applyFilter($event)" placeholder="Buscar venta" #input>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-span-7 md:col-span-6 sm:col-span-12">
+                            <div class="inventual-table-header-search-action-btn text-end sm:text-start">
+                                <button type="button" class="filter" [matMenuTriggerFor]="beforeMenuA">
+                                    <app-filter-icon></app-filter-icon> Filtro
+                                </button>
+                                <mat-menu #beforeMenuA="matMenu" xPosition="before">
+                                    <button mat-menu-item>
+                                        <span>Fecha</span>
+                                    </button>
+                                    <button mat-menu-item>
+                                        <span>Cliente</span>
+                                    </button>
+                                    <button mat-menu-item>
+                                        <span>Bodega</span>
+                                    </button>
+                                    <button mat-menu-item>
+                                        <span>Facturador</span>
+                                    </button>
+                                    <button mat-menu-item>
+                                        <span>Pagado</span>
+                                    </button>
+                                    <button mat-menu-item>
+                                        <span>Pendiente</span>
+                                    </button>
+                                </mat-menu>
+                                <button type="button" class="pdf">
+                                    <app-pdf-icon></app-pdf-icon>
+                                </button>
+                                <button type="button" class="csv">
+                                    <app-csv-icon></app-csv-icon>
+                                </button>
+                                <button type="button" class="printer">
+                                    <app-printer-icon></app-printer-icon>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="inventual-common-table">
+                    <table mat-table [dataSource]="dataSource" matSort>
+
+                        <!-- Checkbox Column -->
+                        <ng-container matColumnDef="select">
+                            <th mat-header-cell *matHeaderCellDef>
+                                <mat-checkbox (change)="$event ? toggleAllRows() : null"
+                                    [checked]="selection.hasValue() && isAllSelected()"
+                                    [indeterminate]="selection.hasValue() && !isAllSelected()"
+                                    [aria-label]="checkboxLabel()">
+                                </mat-checkbox>
+                            </th>
+                            <td mat-cell *matCellDef="let row">
+                                <mat-checkbox (click)="$event.stopPropagation()"
+                                    (change)="$event ? selection.toggle(row) : null"
+                                    [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)">
+                                </mat-checkbox>
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="date">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha </th>
+                            <td mat-cell *matCellDef="let row"> {{row.date}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="reference">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Referencia </th>
+                            <td mat-cell *matCellDef="let row">
+                                {{row.reference}}
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="customer">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Cliente </th>
+                            <td mat-cell *matCellDef="let row"> {{row.customer}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="warehouse">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Bodega </th>
+                            <td mat-cell *matCellDef="let row"> {{row.warehouse}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="status">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Estado </th>
+                            <td mat-cell *matCellDef="let row">
+                                <div>
+                                    <span *ngIf="row.status?.toLowerCase().trim() === 'completed'"
+                                        class="badge badge-success">Completada</span>
+                                    <span *ngIf="row.status?.toLowerCase().trim() === 'ordered'"
+                                        class="badge badge-teal">Pendiente</span>
+                                    <span *ngIf="row.status?.toLowerCase().trim() === 'draft'"
+                                        class="badge badge-warning">Borrador</span>
+                                </div>
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="biller">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Facturador </th>
+                            <td mat-cell *matCellDef="let row"> {{row.biller}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="payment">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Pago </th>
+                            <td mat-cell *matCellDef="let row">
+                                <div>
+                                    <span *ngIf="row.payment?.toLowerCase().trim() === 'paid'"
+                                        class="badge badge-success">Pagado</span>
+                                    <span *ngIf="row.payment?.toLowerCase().trim() === 'partial'"
+                                        class="badge badge-teal">Parcial</span>
+                                    <span *ngIf="row.payment?.toLowerCase().trim() === 'unpaid'"
+                                        class="badge badge-danger">Pendiente</span>
+                                </div>
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="total">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Total </th>
+                            <td mat-cell *matCellDef="let row"> ${{row.total}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="paid">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Pagado </th>
+                            <td mat-cell *matCellDef="let row"> ${{row.paid}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="due">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Pendiente </th>
+                            <td mat-cell *matCellDef="let row"> ${{row.due}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="action">
+                            <th mat-header-cell *matHeaderCellDef> Accion </th>
+                            <td mat-cell *matCellDef="let row">
+                                <div class="table-action-menu-wrap">
+                                    <button mat-icon-button [matMenuTriggerFor]="beforeMenu"
+                                        class="common-action-menu-style" aria-label="Example icon-button with a menu">
+                                        Accion <mat-icon>arrow_drop_down</mat-icon>
+                                    </button>
+                                    <mat-menu #beforeMenu="matMenu" xPosition="before">
+                                        <button mat-menu-item (click)="viewSale(row); $event.stopPropagation()">
+                                            <img src="assets/img/icon/action-1.png" alt="icon not found">
+                                            <span>Ver venta</span>
+                                        </button>
+                                        <button mat-menu-item (click)="editSale(row); $event.stopPropagation()">
+                                            <img src="assets/img/icon/action-2.png" alt="icon not found">
+                                            <span>Editar venta</span>
+                                        </button>
+                                        <button mat-menu-item (click)="invoice(row); $event.stopPropagation()">
+                                            <img src="assets/img/icon/action-3.png" alt="icon not found">
+                                            <span>Generar factura</span>
+                                        </button>
+                                        <button mat-menu-item (click)="addPayment(row); $event.stopPropagation()">
+                                            <img src="assets/img/icon/action-4.png" alt="icon not found">
+                                            <span>Agregar pago</span>
+                                        </button>
+                                        <button mat-menu-item (click)="viewPayment(row); $event.stopPropagation()">
+                                            <img src="assets/img/icon/action-5.png" alt="icon not found">
+                                            <span>Ver pago</span>
+                                        </button>
+                                        <button mat-menu-item (click)="deleteSale(row); $event.stopPropagation()">
+                                            <img src="assets/img/icon/action-6.png" alt="icon not found">
+                                            <span>Inactivar</span>
+                                        </button>
+                                    </mat-menu>
+                                </div>
+                            </td>
+                        </ng-container>
+
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)">
+                        </tr>
+
+                        <!-- Row shown when there is no matching data. -->
+                        <tr class="mat-row" *matNoDataRow>
+                            <td class="mat-cell" colspan="12">
+                                <div class="table-data-not-found">
+                                        <p>No hay ventas para el filtro "{{input.value}}"</p>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <mat-paginator [pageSizeOptions]="[ 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+                </div>
+            </div>
+        </div>
+        <div class="inventual-copyright-area">
+            <app-footer></app-footer>
+        </div>
+    </div>
+</div>

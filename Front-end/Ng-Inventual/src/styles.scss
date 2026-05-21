@@ -1,0 +1,24 @@
+@use './custom-palettes';
+@use './assets/scss/badge';
+@use './assets/scss/common';
+@use './assets/scss/rtlStyles';
+@use './assets/scss/ImageUpload';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap');
+@import './assets/css/fontawesome-all.min.css';
+
+html, body { height: 100%; }
+body { margin: 0; }
+
+.modern-validation-dialog .mat-mdc-dialog-container {
+  --mdc-dialog-container-shape: 16px;
+}
+
+.modern-validation-dialog .mdc-dialog__surface {
+  border-radius: 16px !important;
+  box-shadow: 0 24px 70px rgba(15, 23, 42, 0.25) !important;
+}

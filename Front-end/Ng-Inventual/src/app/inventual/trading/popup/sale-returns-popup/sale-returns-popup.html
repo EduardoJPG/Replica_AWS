@@ -1,0 +1,125 @@
+<mat-dialog-content>
+    <div class="popup-body">
+        <div class="inventual-popup-inner">
+            <div class="inventual-popup-header relative mb-11">
+                <div class="inventual-popup-header-title">
+                    <h4 class="text-[20px] text-heading font-bold">Add Returns</h4>
+                </div>
+                <div
+                    class="inventual-popup-header-close absolute -top-4 ltr:-right-2.5 ltr:left-auto rtl:left-0 rtl:right-auto">
+                    <mat-dialog-actions>
+                        <div class="default-light-theme">
+                            <a href="javascript:void(0)" mat-dialog-close>
+                                <mat-icon>clear</mat-icon>
+                            </a>
+                        </div>
+                    </mat-dialog-actions>
+                </div>
+            </div>
+            <div class="grid grid-cols-12 gap-x-7 sm:gap-x-0">
+                <div class="col-span-6 sm:col-span-12">
+                    <div class="inventual-calender-field mb-5">
+                        <h5 class="text-[15px] text-heading font-semibold mb-3">Date</h5>
+                        <div class="inventual-calender-field-style">
+                            <mat-form-field appearance="fill" floatLabel="always">
+                                <mat-label class="hidden">Choose a date</mat-label>
+                                <input matInput [matDatepicker]="picker" [placeholder]="'MM/DD/YYYY'">
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-span-6 sm:col-span-12">
+                    <div class="inventual-select-field mb-5">
+                        <h5 class="text-[15px] text-heading font-semibold mb-3">Reference</h5>
+                        <div class="inventual-input-field-style">
+                            <mat-form-field class="w-full" [floatLabel]="'always'">
+                                <mat-label class="hidden">+02 587 698 771</mat-label>
+                                <input matInput [placeholder]="'S-123456789012'">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-span-6 sm:col-span-12">
+                    <div class="inventual-select-field mb-5">
+                        <h5 class="text-[15px] text-heading font-semibold mb-3">Select Customer</h5>
+                        <div class="inventual-select-field-style">
+                            <mat-form-field>
+                                <mat-select class="block" [placeholder]="'Select Cutomer'">
+                                    <mat-option value="language-1">Shane Watson</mat-option>
+                                    <mat-option value="language-2">David Warner</mat-option>
+                                    <mat-option value="language-3">David Miller</mat-option>
+                                    <mat-option value="language-4">Hashim Amla</mat-option>
+                                    <mat-option value="language-5">Imran Tahir</mat-option>
+                                    <mat-option value="language-6">JP Duminy</mat-option>
+                                    <mat-option value="language-7">Kagiso Rabada</mat-option>
+                                    <mat-option value="language-8">Stuart Broad</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-span-6 sm:col-span-12">
+                    <div class="inventual-select-field mb-5">
+                        <h5 class="text-[15px] text-heading font-semibold mb-3">Select Warehouse</h5>
+                        <div class="inventual-select-field-style">
+                            <mat-form-field>
+                                <mat-select class="block" [placeholder]="'Warehouse'">
+                                    <mat-option value="language-1">United States</mat-option>
+                                    <mat-option value="language-2">Canada</mat-option>
+                                    <mat-option value="language-3">Mexico</mat-option>
+                                    <mat-option value="language-4">France</mat-option>
+                                    <mat-option value="language-5">Germany</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-span-6 sm:col-span-12">
+                    <div class="inventual-select-field mb-5">
+                        <h5 class="text-[15px] text-heading font-semibold mb-3">Select Biller</h5>
+                        <div class="inventual-select-field-style">
+                            <mat-form-field>
+                                <mat-select class="block" [placeholder]="'Select Biller'">
+                                    <mat-option value="language-1">Shane Watson</mat-option>
+                                    <mat-option value="language-2">David Warner</mat-option>
+                                    <mat-option value="language-3">David Miller</mat-option>
+                                    <mat-option value="language-4">Hashim Amla</mat-option>
+                                    <mat-option value="language-5">Imran Tahir</mat-option>
+                                    <mat-option value="language-6">JP Duminy</mat-option>
+                                    <mat-option value="language-7">Kagiso Rabada</mat-option>
+                                    <mat-option value="language-8">Stuart Broad</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-span-6 sm:col-span-12">
+                    <div class="inventual-select-field mb-5">
+                        <h5 class="text-[15px] text-heading font-semibold mb-3">Amount</h5>
+                        <div class="inventual-input-field-style">
+                            <mat-form-field class="w-full" [floatLabel]="'always'">
+                                <mat-label class="hidden">+02 587 698 771</mat-label>
+                                <input matInput [placeholder]="'5000'">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-span-12">
+                    <div class="inventual-select-field mb-5">
+                        <h5 class="text-[15px] text-heading font-semibold mb-3">Return Note</h5>
+                        <div class="inventual-input-field-style">
+                            <textarea placeholder="Type sales note"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-span-12">
+                    <div class="inventual-material-btn pt-1.5 justify-end">
+                        <button type="submit" mat-raised-button color="primary">Create Returns</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</mat-dialog-content>

@@ -1,0 +1,26 @@
+.inventual-dashboard-calender {
+    @apply bg-white pb-[22px];
+
+    .mat-calendar-content {
+        padding: 0 24px 6px 24px;
+    }
+
+    span {
+        @apply text-heading font-primary text-[15px];
+
+        &.mat-calendar-body-selected {
+            @apply bg-primary text-white;
+        }
+    }
+
+    .mat-calendar {
+        @apply text-heading font-primary text-[15px];
+    }
+
+    .mat-mdc-card {
+        @apply bg-white shadow-none rounded-lg;
+    }
+    .mat-calendar-header {
+        @apply pt-0;
+    }
+}

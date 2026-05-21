@@ -1,0 +1,134 @@
+<mat-dialog-content>
+    <div class="popup-body">
+        <div class="inventual-popup-inner">
+            <div class="inventual-popup-header relative mb-11">
+                <div class="inventual-popup-header-title">
+                    <h4 class="text-[20px] text-heading font-bold">
+                        {{ translationService.translateText(modoEdicion ? 'Update Warehouse' : 'Add Warehouse') }}
+                    </h4>
+                </div>
+                <div
+                    class="inventual-popup-header-close absolute -top-4 ltr:-right-2.5 ltr:left-auto rtl:left-0 rtl:right-auto">
+                    <mat-dialog-actions>
+                        <div class="default-light-theme">
+                            <a href="javascript:void(0)" mat-dialog-close>
+                                <mat-icon>clear</mat-icon>
+                            </a>
+                        </div>
+                    </mat-dialog-actions>
+                </div>
+            </div>
+            <div class="grid grid-cols-12 gap-x-7 sm:gap-x-0">
+                <div class="col-span-6 sm:col-span-12">
+                    <div class="inventual-select-field mb-6">
+                        <h5 class="text-[15px] text-heading font-semibold mb-3">{{ translationService.translateText('Name') }}</h5>
+                        <div class="inventual-input-field-style">
+                            <mat-form-field class="w-full" [floatLabel]="'always'">
+                                <mat-label class="hidden">Customer name</mat-label>
+                                <input matInput
+                                    [placeholder]="translationService.translateText('Warehouse')"
+                                    [(ngModel)]="bodega.nombreBodega">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-span-6 sm:col-span-12">
+                    <div class="inventual-select-field mb-6">
+                        <h5 class="text-[15px] text-heading font-semibold mb-3">{{ translationService.translateText('Phone') }}</h5>
+                        <div class="inventual-input-field-style">
+                            <mat-form-field class="w-full" [floatLabel]="'always'">
+                                <mat-label class="hidden">+02 587 698 771</mat-label>
+                                <input matInput
+                                    [placeholder]="translationService.translateText('Phone')"
+                                    [(ngModel)]="bodega.telefono">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-span-12">
+                    <div class="inventual-select-field mb-6">
+                        <h5 class="text-[15px] text-heading font-semibold mb-3">{{ translationService.translateText('Email') }}</h5>
+                        <div class="inventual-input-field-style">
+                            <mat-form-field class="w-full" [floatLabel]="'always'">
+                                <mat-label class="hidden">+02 587 698 771</mat-label>
+                                <input type="email" matInput
+                                    [placeholder]="translationService.translateText('Email')"
+                                    [(ngModel)]="bodega.email">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-span-6 sm:col-span-12">
+                    <div class="inventual-select-field mb-6">
+                        <h5 class="text-[15px] text-heading font-semibold mb-3">{{ translationService.translateText('City') }}</h5>
+                        <div class="inventual-input-field-style">
+                            <mat-form-field class="w-full" [floatLabel]="'always'">
+                                <mat-label class="hidden">+02 587 698 771</mat-label>
+                                <input matInput
+                                    [placeholder]="translationService.translateText('City')"
+                                    [(ngModel)]="bodega.ciudad">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-span-6 sm:col-span-12">
+                    <div class="inventual-select-field mb-6">
+                        <h5 class="text-[15px] text-heading font-semibold mb-3">{{ translationService.translateText('Country') }}</h5>
+                        <div class="inventual-input-field-style">
+                            <mat-form-field class="w-full" [floatLabel]="'always'">
+                                <mat-label class="hidden">+02 587 698 771</mat-label>
+                                <input matInput
+                                    [placeholder]="translationService.translateText('Country')"
+                                    [(ngModel)]="bodega.pais">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-span-6 sm:col-span-12">
+                    <div class="inventual-select-field mb-6">
+                        <h5 class="text-[15px] text-heading font-semibold mb-3">{{ translationService.translateText('Address') }}</h5>
+                        <div class="inventual-input-field-style">
+                            <mat-form-field class="w-full" [floatLabel]="'always'">
+                                <mat-label class="hidden">+02 587 698 771</mat-label>
+                                <input matInput
+                                    [placeholder]="translationService.translateText('Address')"
+                                    [(ngModel)]="bodega.direccion">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-span-6 sm:col-span-12">
+                    <div class="inventual-select-field mb-6">
+                        <h5 class="text-[15px] text-heading font-semibold mb-3">{{ translationService.translateText('Zip') }}</h5>
+                        <div class="inventual-input-field-style">
+                            <mat-form-field class="w-full" [floatLabel]="'always'">
+                                <mat-label class="hidden">+02 587 698 771</mat-label>
+                                <input matInput
+                                    [placeholder]="translationService.translateText('Zip')"
+                                    [(ngModel)]="bodega.zip">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-span-12">
+                    <div class="inventual-material-btn pt-1.5 justify-end flex flex-wrap gap-2">
+                        <button type="button"
+                            mat-raised-button
+                            color="accent"
+                            mat-dialog-close>
+                            <mat-icon>list</mat-icon>
+                            {{ translationService.translateText('View List') }}
+                        </button>
+                        <button type="button"
+                            mat-raised-button
+                            color="primary"
+                            [disabled]="guardando"
+                            (click)="guardarBodega()">
+                            {{ translationService.translateText(modoEdicion ? 'Update Warehouse' : 'Create Warehouse') }}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</mat-dialog-content>

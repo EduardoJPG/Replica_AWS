@@ -1,0 +1,50 @@
+@use '../../../../../../../custom-palettes.scss';
+
+@include custom-palettes.inventualPopupClose;
+@include custom-palettes.inventualBtnStyle;
+@include custom-palettes.popupCommonStyle;
+
+.inventual-popup-inner {
+    width: 700px;
+    @apply p-7;
+
+    @media (min-width: 768px) and (max-width: 991px) {
+        width: 600px;
+    }
+
+    @media (min-width: 576px) and (max-width: 767px) {
+        width: 440px;
+    }
+
+    @media (min-width: 450px) and (max-width: 575px) {
+        width: 350px;
+    }
+
+    @media (max-width: 449px) {
+        width: 100%;
+    }
+}
+
+.pos-products,
+.pos-categories,
+.pos-brands {
+    .pos-product-item {
+        @apply text-center border border-border px-2.5 pt-6 pb-5 hover:border-primary rounded-md transition-all duration-300 cursor-pointer;
+
+        &.selected {
+            @apply border-primary;
+        }
+    }
+
+    img {
+        @apply inline-block mb-5;
+    }
+
+    h5 {
+        @apply text-[15px] font-bold text-heading mb-1;
+    }
+
+    span {
+        @apply text-[14px] font-normal text-body inline-block;
+    }
+}

@@ -1,0 +1,42 @@
+<div>
+    <div class="inventual-logo text-center mb-8 px-0.5">
+        <a [routerLink]="['/dashboard']" class="inline-block"><img src="assets/img/logo/logo.png"
+                alt="logo not found"></a>
+    </div>
+    <div class="inventual-menu px-0.5">
+        <div class="sidenav sidenav-collapsed" [ngClass]="collapsed ? 'sidenav-collapsed': ''">
+            <div class="scrollwrap scrollwrap_delayed">
+                <ul class="sidenav-nav">
+                    <li class="sidenav-nav-item" *ngFor="let data of navData">
+                        <a class="sidenav-nav-link" (click)="handleClick(data)"
+                            *ngIf="data.items && data.items.length > 0" [ngClass]="getActiveClass(data)">
+                            <i class="sidenav-link-icon" [class]="data.icon"></i>
+                            <span class="sidenav-link-text" @fadeInOut>
+                                {{ translationService.translateText(data.label) }}
+                            </span>
+                            <i *ngIf="data.items" class="menu-collapse-icon menu-collapse-icon-rtl"
+                                [ngClass]="!data.expanded ? 'fal fa-angle-right' : 'fal fa-angle-down'"></i>
+                            <i *ngIf="data.items" class="menu-collapse-icon menu-collapse-icon-ltr"
+                                [ngClass]="!data.expanded ? 'fal fa-angle-left' : 'fal fa-angle-down'"></i>
+                        </a>
+                        <!-- start main item on child -->
+                        <a class="sidenav-nav-link" *ngIf="!data.items || (data.items && data.items.length === 0)"
+                            [routerLink]="[data.routeLink]" routerLinkActive="active"
+                            [routerLinkActiveOptions]="{exact: true}" (click)="shrinkItems(data)">
+                            <i class="sidenav-link-icon" [class]="data.icon"></i>
+                            <span class="sidenav-link-text" @fadeInOut>
+                                {{ translationService.translateText(data.label) }}
+                            </span>
+                        </a>
+                        <!-- end main item on child -->
+                        <div *ngIf="data.items && data.items.length > 0">
+                            <app-sublevel-menu *ngIf="data.items && data.items.length > 0" [data]="data"
+                                [collapsed]="collapsed" [multiple]="multiple"
+                                [expanded]="data.expanded"></app-sublevel-menu>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

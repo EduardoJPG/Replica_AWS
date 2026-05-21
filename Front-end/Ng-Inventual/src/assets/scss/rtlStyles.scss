@@ -1,0 +1,175 @@
+//rtl styles start
+.hide-switcher {
+    display: none !important;
+}
+
+[dir="rtl"] div.mat-mdc-text-field-wrapper {
+    @apply px-0;
+}
+
+.mat-mdc-form-field-icon-prefix,
+[dir="rtl"] div.mat-mdc-form-field-icon-suffix {
+    padding: 0 0px 0 4px;
+    @apply border-l border-border;
+}
+
+[dir="rtl"] {
+    .inventual-header-profile-info {
+        & .mat-icon {
+            right: auto !important;
+            @apply left-0;
+        }
+    }
+
+    .inventual-dashboard-piechart .apexcharts-canvas {
+        transform: translate(-20px);
+    }
+
+    .inventual-dashboard-piechart .apexcharts-legend {
+        @apply overflow-clip;
+    }
+
+    div.inventual-addsale-product-qty button .material-icons,
+    div.inventual-possale-product-qty button .material-icons {
+        @apply translate-x-[2px];
+    }
+
+    div.inventual-addsale-product-action .product-delete-btn .material-icons,
+    div.inventual-possale-product-action .product-delete-btn .material-icons {
+        @apply translate-x-[1px];
+    }
+
+    div.inventual-popup-header-close a {
+        & .material-icons {
+            @apply translate-x-[1px];
+        }
+    }
+}
+
+.bd-theme {
+    &-settings {
+        &-area {
+            border-bottom-right-radius: 4px;
+            @apply fixed top-[50%] right-[-240px] w-[240px] bg-white border border-[#EAEAEF] translate-y-[-50%] z-[991];
+            &.active {
+                @apply right-0;
+
+                .bd-theme-settings-gear {
+                    @apply opacity-0;
+                }
+                .bd-theme-settings-close {
+                    @apply opacity-100;
+                }
+            }
+        }
+
+        &-open {
+            @apply absolute top-[-1px] end-full;
+
+            & button {
+                border-start-start-radius: 4px;
+                border-bottom-left-radius: 4px;
+                @apply bg-white border-[#EAEAEF] border border-e-0 w-[60px] h-[60px] leading-[60px] text-center text-[24px] text-heading relative;
+            }
+        }
+
+        &-gear {
+            -webkit-animation: spin 4s linear infinite;
+            -moz-animation: spin 4s linear infinite;
+            animation: spin 4s linear infinite;
+            @apply inline-block;
+        }
+
+        &-close {
+            transform: translateY(-50%) translateX(-50%);
+            @apply inline-block absolute top-[50%] left-[50%] opacity-0;
+        }
+    }
+
+    &-header {
+        &-title {
+            @apply text-[16px] font-semibold mb-[30px];
+        }
+    }
+
+    &-wrapper {
+        @apply pt-5 px-[30px] pb-[30px];
+    }
+
+    &-dir {
+        @apply text-center;
+        &-main {
+            @apply inline-block w-[160px] m-auto relative z-[1] bg-[#f0f0f5] p-1 rounded-[20px];
+        }
+
+        &-ltr,
+        &-rtl {
+            width: calc(100% - 52%);
+            @apply inline-block h-[26px] leading-[26px];
+        }
+
+        & input {
+            @apply hidden;
+        }
+
+        &:hover {
+            @apply cursor-pointer;
+        }
+
+        & label {
+            @apply text-heading text-[14px] font-medium;
+
+            &:hover {
+                @apply cursor-pointer;
+            }
+        }
+
+        #bd-dir-toggler {
+            @apply hidden;
+
+            &:checked+i {
+                right: calc(50% - 4px);
+
+            }
+        }
+
+        &-slide {
+            width: calc(100% - 50%);
+            -webkit-transform: translate3d(0, 0);
+            transform: translate3d(0, 0);
+            @apply absolute top-[50%] left-1 translate-y-[-50%] h-[26px] text-heading bg-white rounded-[30px] transition duration-300 z-[-1];
+        }
+
+    }
+}
+
+[dir="ltr"] {
+    .sidenav-nav-link {
+        .menu-collapse-icon.menu-collapse-icon-ltr {
+            @apply hidden;
+        }
+
+        .menu-collapse-icon.menu-collapse-icon-rtl {
+            @apply inline-block;
+        }
+    }
+}
+
+[dir="rtl"] {
+    .bd-theme-settings-area {
+        @apply right-auto left-[-240px] translate-y-[-50%];
+        &.active {
+            @apply left-0;
+        }
+    }
+
+    .sidenav-nav-link {
+        .menu-collapse-icon.menu-collapse-icon-ltr {
+            @apply inline-block;
+        }
+
+        .menu-collapse-icon.menu-collapse-icon-rtl {
+            @apply hidden;
+        }
+    }
+}

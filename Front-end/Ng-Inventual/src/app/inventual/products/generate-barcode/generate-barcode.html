@@ -1,0 +1,208 @@
+<div class="inventual-dashboard-area">
+    <div class="inventual-dashboard-sidebar" [class.sidebar-enable]="menuSidebarActive">
+        <div class="inventual-header-bar-responsive" (click)="myfunction()">
+            <mat-icon>reorder</mat-icon>
+        </div>
+        <div class="inventual-menu-wrapper bg-white border-e border-b border-solid border-border py-10 px-7 lg:px-5 lg:py-8">
+            <app-menus></app-menus>
+        </div>
+        <div class="inventual-menu-overlay" (click)="myfunction()" [class.sidebar-enable]="menuSidebarActive"></div>
+    </div>
+    <div class="inventual-dashboard-main" [class.sidebar-enable]="menuSidebarActive">
+        <div class="inventual-header-area">
+            <div class="inventual-header-wrapper custom-height-70 px-7 bg-white border-b border-solid border-border">
+                <div class="grid grid-cols-12 items-center h-full">
+                    <div class="col-span-12">
+                        <app-header></app-header>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="inventual-breadcrumb-area px-7 py-9 bg-white mb-5">
+            <div class="inventual-breadcrumb-area-inner px-0.5">
+                <h5 class="text-[20px] text-heading font-bold mb-3">Generate Barcode</h5>
+                <div class="inventual-breadcrumb-area-inner-wrap">
+                    <span class="text-[14px] text-body font-normal inline-block me-2">Products</span>
+                    <span class="text-[14px] text-body font-normal inline-block me-2">></span>
+                    <span class="text-[14px] text-body font-normal inline-block me-2">Generate Barcode</span>
+                </div>
+            </div>
+        </div>
+        <div class="inventual-content-area px-7">
+            <div class="inventual-addbrand-area bg-white p-7 custom-shadow rounded-8 mb-5">
+                <div class="inventual-barcode-area">
+                    <div class="grid grid-cols-12 gap-x-7 md:gap-x-0 sm:gap-x-0">
+                        <div class="col-span-6 md:col-span-12 sm:col-span-12">
+                            <div class="inventual-barcode-left h-full md:mb-7 sm:mb-7">
+                                <div class="inventual-select-field mb-5">
+                                    <div class="relative inventual-search-filter">
+                                        <div class="inventual-select-field mb-5">
+                                            <h5 class="text-[15px] text-heading font-semibold mb-3">Select Product</h5>
+                                            <div class="inventual-input-field-style">
+                                                <mat-form-field class="w-full" [floatLabel]="'always'">
+                                                    <mat-label class="hidden">Filter</mat-label>
+                                                    <input matInput
+                                                        [(ngModel)]="searchText"
+                                                        (keyup)="updateSearchResults($event)"
+                                                        placeholder="Scan / search products by name or code">
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                        <div class="inventual-search-filter-result" *ngIf="searchResults.length > 0">
+                                            <ul>
+                                                <li class="single-search-item"
+                                                    *ngFor="let result of searchResults"
+                                                    (click)="addProduct(result)">
+                                                    <div class="single-search-item-img h-[50px] w-[50px] p-2 rounded block bg-lightest">
+                                                        <img [src]="result.image" alt="">
+                                                    </div>
+                                                    <div class="single-search-item-title">
+                                                        <span>{{ result.name }}</span>
+                                                        <small class="block text-body">{{ result.code }}</small>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <button type="button" class="search-delete-icon" *ngIf="searchResults.length > 0"
+                                            (click)="hideSearchResults()"><mat-icon>clear</mat-icon></button>
+                                    </div>
+                                </div>
+
+                                <div class="inventual-common-table mb-10 mt-10">
+                                    <table class="!min-w-full" mat-table [dataSource]="dataSource" matSort>
+                                        <ng-container matColumnDef="name">
+                                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Product </th>
+                                            <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+                                        </ng-container>
+
+                                        <ng-container matColumnDef="code">
+                                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Code </th>
+                                            <td mat-cell *matCellDef="let row"> {{row.code}} </td>
+                                        </ng-container>
+
+                                        <ng-container matColumnDef="quantity">
+                                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Quantity </th>
+                                            <td mat-cell *matCellDef="let row">
+                                                <div class="inventual-addsale-product-qty">
+                                                    <span class="text-body flex items-center">
+                                                        <button type="button" (click)="decreaseQuantity(row)">
+                                                            <mat-icon>remove</mat-icon>
+                                                        </button>
+                                                        <input
+                                                            class="barcode-quantity-input"
+                                                            type="number"
+                                                            min="1"
+                                                            step="1"
+                                                            inputmode="numeric"
+                                                            pattern="[0-9]*"
+                                                            [(ngModel)]="row.quantity"
+                                                            [ngModelOptions]="{ standalone: true }"
+                                                            (keydown)="preventInvalidQuantityKey($event)"
+                                                            (input)="sanitizeQuantity(row)"
+                                                            (blur)="normalizeQuantity(row)"
+                                                            aria-label="Quantity">
+                                                        <button type="button" class="active" (click)="increaseQuantity(row)">
+                                                            <mat-icon>add</mat-icon>
+                                                        </button>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                        </ng-container>
+
+                                        <ng-container matColumnDef="action">
+                                            <th mat-header-cell *matHeaderCellDef> Action </th>
+                                            <td mat-cell *matCellDef="let row">
+                                                <div class="sm-delete-btn">
+                                                    <button class="product-delete-btn" type="button" (click)="removeProduct(row)">
+                                                        <mat-icon>clear</mat-icon>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </ng-container>
+
+                                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                                        <tr class="mat-row" *matNoDataRow>
+                                            <td class="mat-cell" colspan="4">
+                                                <div class="table-data-not-found">
+                                                    <p>No data found!</p>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <div class="inventual-barcode-print-checkbox">
+                                    <div class="inventual-checkbox-field-style mb-2 inline-flex gap-1 me-7">
+                                        <input type="checkbox" name="showName" id="showName" [(ngModel)]="showName">
+                                        <label for="showName" class="text-[15px] font-semibold text-heading cursor-pointer inline-block sm:text-[12px]">Name</label>
+                                    </div>
+                                    <div class="inventual-checkbox-field-style mb-2 inline-flex gap-1 me-7">
+                                        <input type="checkbox" name="showCode" id="showCode" [(ngModel)]="showCode">
+                                        <label for="showCode" class="text-[15px] font-semibold text-heading cursor-pointer inline-block sm:text-[12px]">Code</label>
+                                    </div>
+                                    <div class="inventual-checkbox-field-style mb-2 inline-flex gap-1 me-7">
+                                        <input type="checkbox" name="showPrice" id="showPrice" [(ngModel)]="showPrice">
+                                        <label for="showPrice" class="text-[15px] font-semibold text-heading cursor-pointer inline-block sm:text-[12px]">Price</label>
+                                    </div>
+                                </div>
+
+                                <div class="inventual-select-field mb-7 pt-3">
+                                    <h5 class="text-[15px] text-heading font-semibold mb-3">Paper Size</h5>
+                                    <div class="inventual-select-field-style">
+                                        <mat-form-field>
+                                            <mat-select class="block" [(ngModel)]="paperSize" name="paperSize">
+                                                <mat-option value="50">50 mm (1.95 Inch)</mat-option>
+                                                <mat-option value="40">40 mm (1.65 Inch)</mat-option>
+                                                <mat-option value="30">30 mm (1.35 Inch)</mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+
+                                <div class="inventual-material-btn justify-end">
+                                    <button type="button" mat-raised-button color="primary" class="mb-1" (click)="printBarcodes()">
+                                        Print
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-span-6 md:col-span-12 sm:col-span-12">
+                            <div id="barcode-print-area"
+                                class="inventual-barcode-right bg-white p-7 rounded-[3px] border border-solid border-border h-full">
+                                <div class="grid grid-cols-12 gap-x-7 md:gap-x-5 sm:gap-x-0">
+                                    <div class="col-span-4 lg:col-span-6 sm:col-span-6 md:col-span-6"
+                                        *ngFor="let label of barcodeLabels">
+                                        <div class="inventual-barcode mb-10 text-center border border-solid border-border rounded-[3px] p-3">
+                                            <div *ngIf="showName" class="text-[13px] font-semibold text-heading mb-1">
+                                                {{ label.name }}
+                                            </div>
+                                            <img [src]="label.barcodeImage" alt="barcode" class="mx-auto w-full max-w-[180px]">
+                                            <div *ngIf="showCode" class="text-[12px] text-body mt-1">
+                                                {{ label.code }}
+                                            </div>
+                                            <div *ngIf="showPrice" class="text-[12px] font-semibold text-heading mt-1">
+                                                ${{ label.price }}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-span-12" *ngIf="barcodeLabels.length === 0">
+                                        <div class="table-data-not-found">
+                                            <p>Select products to preview barcodes</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="inventual-copyright-area">
+            <app-footer></app-footer>
+        </div>
+    </div>
+</div>

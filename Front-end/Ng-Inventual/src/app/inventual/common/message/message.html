@@ -1,0 +1,394 @@
+<div class="inventual-notification-area">
+    <div class="grid grid-cols-12 gap-x-0 sm:gap-x-0">
+        <div class="col-span-12">
+            <div class="inventual-notification-wrapper bg-white p-5 rounded-[5px]">
+                <div class="inventual-notification-wrapper-inner">
+                    <div class="inventual-notification-search-wrapper mb-2.5">
+                        <div class="grid grid-cols-12 items-center">
+                            <div class="col-span-8 sm:col-span-12">
+                                <div class="inventual-notification-search">
+                                    <div class="inventual-select-field mb-5">
+                                        <div class="inventual-input-field-style relative">
+                                            <mat-form-field class="w-full" [floatLabel]="'always'">
+                                                <mat-label class="hidden">Bdevs Technology</mat-label>
+                                                <input matInput [placeholder]="'Search mail'">
+                                            </mat-form-field>
+                                            <mat-icon>search</mat-icon>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-span-4 sm:col-span-12">
+                                <div class="inventual-notification-action text-end mb-5 maxSm:text-start">
+                                    <button type="button"><app-download-icon></app-download-icon></button>
+                                    <button type="button"><app-trash-icon></app-trash-icon></button>
+                                    <button type="button"><app-star-icon></app-star-icon></button>
+                                    <button type="button"><app-arrow-icon></app-arrow-icon></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <mat-tab-group [@.disabled]="true">
+                        <mat-tab>
+                            <ng-template mat-tab-label>
+                                <div class="inventual-notification rounded-[10px] flex flex-wrap p-5">
+                                    <div class="inventual-notification-img me-5 w-12">
+                                        <img src="assets/img/user/inbox-1.png" alt="img not found">
+                                    </div>
+                                    <div class="inventual-notification-text w-full relative">
+                                        <h5 class="text-[18px] font-bold text-heading mb-1">Joseph David</h5>
+                                        <span class="text-[14px] font-semibold text-heading block mb-1">Minimize the
+                                            stock</span>
+                                        <p class="text-[13px] font-normal text-body">Teams with more than .....</p>
+                                        <figure class="text-[12px] font-semibold text-heading absolute top-0 -end-5">
+                                            02: 47 PM</figure>
+                                    </div>
+                                </div>
+                            </ng-template>
+                            <div class="inventual-notification-body">
+                                <h4 class="text-[24px] font-bold text-heading mb-10">Minimize the stock</h4>
+                                <h5 class="text-[18px] font-bold text-heading mb-1">Joseph David</h5>
+                                <span class="text-[14px] font-semibold text-body block mb-11">02: 47 PM</span>
+                                <span class="text-[16px] font-normal text-body block mb-4 pb-0.5">Hi, </span>
+                                <p class="text-[16px] font-normal text-body leading-[26px] mb-6">Joseph David was
+                                    born in 1977 when he arrived in Los Angeles. His previous life in Tennessee,
+                                    Wisconsin & Baltimore was a great & fertile time but new music and social changes
+                                    led him to events that created a life in art. He graduated from Antioch College in
+                                    Baltimore in 1975, worked as a roofer, aluminum siding mechanic, and ran a poetry
+                                    reading series. </p>
+                                <p class="text-[16px] font-normal text-body leading-[26px] mb-6">John met Exene
+                                    Cervenka at the Venice poetry workshop Nov 1976 and he started working with Billy
+                                    Zoom around the same time. </p>
+                                <p class="text-[16px] font-normal text-body leading-[26px] mb-12 pb-0.5">When DJ
+                                    Bonebrake joined X in mid-1977 the line up was complete. They released six studio
+                                    records, five or six singles and one live record from 1978-1993.</p>
+                                <p class="text-[16px] font-normal text-body mb-12">Thanks!</p>
+                                <div class="inventual-notification-feedback default-light-theme">
+                                    <button mat-raised-button color="primary" [routerLink]="['/newmessage']"><i
+                                            class="fas fa-reply"></i> Reply</button>
+                                    <button mat-raised-button color="primary"><i class="far fa-arrow-alt-right"></i>
+                                        Forward</button>
+                                    <button mat-raised-button color="primary"><i class="far fa-trash-alt"></i>
+                                        Delete</button>
+                                </div>
+                            </div>
+                        </mat-tab>
+                        <mat-tab>
+                            <ng-template mat-tab-label>
+                                <div class="inventual-notification rounded-[10px] flex flex-wrap p-5">
+                                    <div class="inventual-notification-img me-5 w-12">
+                                        <img src="assets/img/user/inbox-2.png" alt="img not found">
+                                    </div>
+                                    <div class="inventual-notification-text w-full relative">
+                                        <h5 class="text-[18px] font-bold text-heading mb-1">Hardik</h5>
+                                        <span class="text-[14px] font-semibold text-heading block mb-1">Minimize the
+                                            stock</span>
+                                        <p class="text-[13px] font-normal text-body">If you have additional .....
+                                        </p>
+                                        <figure class="text-[12px] font-semibold text-heading absolute top-0 -end-5">
+                                            03: 25 PM</figure>
+                                    </div>
+                                </div>
+                            </ng-template>
+                            <div class="inventual-notification-body">
+                                <h4 class="text-[24px] font-bold text-heading mb-10">Minimize the stock</h4>
+                                <h5 class="text-[18px] font-bold text-heading mb-1">Hardik</h5>
+                                <span class="text-[14px] font-semibold text-body block mb-11">03: 25 PM</span>
+                                <span class="text-[16px] font-normal text-body block mb-4 pb-0.5">Hi, </span>
+                                <p class="text-[16px] font-normal text-body leading-[26px] mb-6">In September last
+                                    year, I wrote about some of the latest updates in our beloved DevTools, across
+                                    Firefox, Chrome, Safari, and Edge. Four months have already passed since then, and
+                                    the different teams working on DevTools have been busy! In these four months, they
+                                    built a lot of new things for us to use. </p>
+                                <p class="text-[16px] font-normal text-body leading-[26px] mb-6">In fact,
+                                    administration experience is often assumed or glossed over in software, because 99%
+                                    users never engage with it directly.</p>
+                                <p class="text-[16px] font-normal text-body leading-[26px] mb-12 pb-0.5">From
+                                    powerful productivity improvements to entire new panels, they’ve been continuing to
+                                    close the parity gap and innovate with new means of debugging and improving our web
+                                    experiences.</p>
+                                <p class="text-[16px] font-normal text-body mb-12">Thanks!</p>
+                                <div class="inventual-notification-feedback default-light-theme">
+                                    <button mat-raised-button color="primary" [routerLink]="['/newmessage']"><i
+                                            class="fas fa-reply"></i> Reply</button>
+                                    <button mat-raised-button color="primary"><i class="far fa-arrow-alt-right"></i>
+                                        Forward</button>
+                                    <button mat-raised-button color="primary"><i class="far fa-trash-alt"></i>
+                                        Delete</button>
+                                </div>
+                            </div>
+                        </mat-tab>
+                        <mat-tab>
+                            <ng-template mat-tab-label>
+                                <div class="inventual-notification rounded-[10px] flex flex-wrap p-5">
+                                    <div class="inventual-notification-img me-5 w-12">
+                                        <img src="assets/img/user/inbox-3.png" alt="img not found">
+                                    </div>
+                                    <div class="inventual-notification-text w-full relative">
+                                        <h5 class="text-[18px] font-bold text-heading mb-1">Shane Watson</h5>
+                                        <span class="text-[14px] font-semibold text-heading block mb-1">Minimize the
+                                            stock</span>
+                                        <p class="text-[13px] font-normal text-body">You'll get posts from .....</p>
+                                        <figure class="text-[12px] font-semibold text-heading absolute top-0 -end-5">
+                                            08: 30 PM</figure>
+                                    </div>
+                                </div>
+                            </ng-template>
+                            <div class="inventual-notification-body">
+                                <h4 class="text-[24px] font-bold text-heading mb-10">Minimize the stock</h4>
+                                <h5 class="text-[18px] font-bold text-heading mb-1">Shane Watson</h5>
+                                <span class="text-[14px] font-semibold text-body block mb-11">08: 30 PM</span>
+                                <span class="text-[16px] font-normal text-body block mb-4 pb-0.5">Hi, </span>
+                                <p class="text-[16px] font-normal text-body leading-[26px] mb-6">In 1988 John
+                                    started a family and lived in the Tehachapi Mountains, near the “Grapevine” of
+                                    Highway 5, which separates southern and central California. He has recorded 8 solo
+                                    records w/ numerous renowned singers and players, more recently including Patty
+                                    Griffin, Dan Auerbach, Aimee Mann, Don Was, Kathleen Edwards and Greg Liesz.</p>
+                                <p class="text-[16px] font-normal text-body leading-[26px] mb-6">He has appeared in
+                                    over 50 films and television productions, with some of his most notable roles in
+                                    Road House, Georgia, Roadside Prophets, Great Balls of Fire, Pure Country and
+                                    Roswell.</p>
+                                <p class="text-[16px] font-normal text-body leading-[26px] mb-12 pb-0.5">He
+                                    continues to act these days but more sporadically as his touring schedule has become
+                                    more demanding.</p>
+                                <p class="text-[16px] font-normal text-body mb-12">Thanks!</p>
+                                <div class="inventual-notification-feedback default-light-theme">
+                                    <button mat-raised-button color="primary" [routerLink]="['/newmessage']"><i
+                                            class="fas fa-reply"></i> Reply</button>
+                                    <button mat-raised-button color="primary"><i class="far fa-arrow-alt-right"></i>
+                                        Forward</button>
+                                    <button mat-raised-button color="primary"><i class="far fa-trash-alt"></i>
+                                        Delete</button>
+                                </div>
+                            </div>
+                        </mat-tab>
+                        <mat-tab>
+                            <ng-template mat-tab-label>
+                                <div class="inventual-notification rounded-[10px] flex flex-wrap p-5">
+                                    <div class="inventual-notification-img me-5 w-12">
+                                        <img src="assets/img/user/inbox-4.png" alt="img not found">
+                                    </div>
+                                    <div class="inventual-notification-text w-full relative">
+                                        <h5 class="text-[18px] font-bold text-heading mb-1">David Warner</h5>
+                                        <span class="text-[14px] font-semibold text-heading block mb-1">Minimize the
+                                            stock</span>
+                                        <p class="text-[13px] font-normal text-body">You'll get posts from .....</p>
+                                        <figure class="text-[12px] font-semibold text-heading absolute top-0 -end-5">
+                                            01: 20 AM</figure>
+                                    </div>
+                                </div>
+                            </ng-template>
+                            <div class="inventual-notification-body">
+                                <h4 class="text-[24px] font-bold text-heading mb-10">Minimize the stock</h4>
+                                <h5 class="text-[18px] font-bold text-heading mb-1">David Warner</h5>
+                                <span class="text-[14px] font-semibold text-body block mb-11">01: 20 AM</span>
+                                <span class="text-[16px] font-normal text-body block mb-4 pb-0.5">Hi, </span>
+                                <p class="text-[16px] font-normal text-body leading-[26px] mb-6">The legislative
+                                    branch drafts proposed laws, confirms or rejects presidential nominations for heads
+                                    of federal agencies, federal judges, and the Supreme Court, and has the authority to
+                                    declare war. This branch includes Congress (the Senate and House of Representatives)
+                                    and special agencies and offices that provide support services to Congress.</p>
+                                <p class="text-[16px] font-normal text-body leading-[26px] mb-6">In fact,
+                                    administration experience is often assumed or glossed over in software, because 99%
+                                    users never engage with it directly.</p>
+                                <p class="text-[16px] font-normal text-body leading-[26px] mb-12 pb-0.5">Other
+                                    musical side projects include work with the Knitters, Jill Sobule and The Sadies. He
+                                    continues to write poetry and has even taught workshops from time to time. He
+                                    currently lives north of San Francisco, California.</p>
+                                <p class="text-[16px] font-normal text-body mb-12">Thanks!</p>
+                                <div class="inventual-notification-feedback default-light-theme">
+                                    <button mat-raised-button color="primary" [routerLink]="['/newmessage']"><i
+                                            class="fas fa-reply"></i> Reply</button>
+                                    <button mat-raised-button color="primary"><i class="far fa-arrow-alt-right"></i>
+                                        Forward</button>
+                                    <button mat-raised-button color="primary"><i class="far fa-trash-alt"></i>
+                                        Delete</button>
+                                </div>
+                            </div>
+                        </mat-tab>
+                        <mat-tab>
+                            <ng-template mat-tab-label>
+                                <div class="inventual-notification rounded-[10px] flex flex-wrap p-5">
+                                    <div class="inventual-notification-img me-5 w-12">
+                                        <img src="assets/img/user/inbox-5.png" alt="img not found">
+                                    </div>
+                                    <div class="inventual-notification-text w-full relative">
+                                        <h5 class="text-[18px] font-bold text-heading mb-1">Steve Long</h5>
+                                        <span class="text-[14px] font-semibold text-heading block mb-1">Minimize the
+                                            stock</span>
+                                        <p class="text-[13px] font-normal text-body">This is an automatically .....
+                                        </p>
+                                        <figure class="text-[12px] font-semibold text-heading absolute top-0 -end-5">
+                                            06: 40 AM</figure>
+                                    </div>
+                                </div>
+                            </ng-template>
+                            <div class="inventual-notification-body">
+                                <h4 class="text-[24px] font-bold text-heading mb-10">Minimize the stock</h4>
+                                <h5 class="text-[18px] font-bold text-heading mb-1">Steve Long</h5>
+                                <span class="text-[14px] font-semibold text-body block mb-11">06: 40 AM</span>
+                                <span class="text-[16px] font-normal text-body block mb-4 pb-0.5">Hi, </span>
+                                <p class="text-[16px] font-normal text-body leading-[26px] mb-6">In September last
+                                    year, I wrote about some of the latest updates in our beloved DevTools, across
+                                    Firefox, Chrome, Safari, and Edge. Four months have already passed since then, and
+                                    the different teams working on DevTools have been busy! In these four months, they
+                                    built a lot of new things for us to use. </p>
+                                <p class="text-[16px] font-normal text-body leading-[26px] mb-6">In fact,
+                                    administration experience is often assumed or glossed over in software, because 99%
+                                    users never engage with it directly.</p>
+                                <p class="text-[16px] font-normal text-body leading-[26px] mb-12 pb-0.5">From
+                                    powerful productivity improvements to entire new panels, they’ve been continuing to
+                                    close the parity gap and innovate with new means of debugging and improving our web
+                                    experiences.</p>
+                                <p class="text-[16px] font-normal text-body mb-12">Thanks!</p>
+                                <div class="inventual-notification-feedback default-light-theme">
+                                    <button mat-raised-button color="primary" [routerLink]="['/newmessage']"><i
+                                            class="fas fa-reply"></i> Reply</button>
+                                    <button mat-raised-button color="primary"><i class="far fa-arrow-alt-right"></i>
+                                        Forward</button>
+                                    <button mat-raised-button color="primary"><i class="far fa-trash-alt"></i>
+                                        Delete</button>
+                                </div>
+                            </div>
+                        </mat-tab>
+                        <mat-tab>
+                            <ng-template mat-tab-label>
+                                <div class="inventual-notification rounded-[10px] flex flex-wrap p-5">
+                                    <div class="inventual-notification-img me-5 w-12">
+                                        <img src="assets/img/user/inbox-1.png" alt="img not found">
+                                    </div>
+                                    <div class="inventual-notification-text w-full relative">
+                                        <h5 class="text-[18px] font-bold text-heading mb-1">Andrew Tye</h5>
+                                        <span class="text-[14px] font-semibold text-heading block mb-1">Minimize the
+                                            stock</span>
+                                        <p class="text-[13px] font-normal text-body">If you have additional .....
+                                        </p>
+                                        <figure class="text-[12px] font-semibold text-heading absolute top-0 -end-5">
+                                            03: 18 PM</figure>
+                                    </div>
+                                </div>
+                            </ng-template>
+                            <div class="inventual-notification-body">
+                                <h4 class="text-[24px] font-bold text-heading mb-10">Minimize the stock</h4>
+                                <h5 class="text-[18px] font-bold text-heading mb-1">Andrew Tye</h5>
+                                <span class="text-[14px] font-semibold text-body block mb-11">03: 18 PM</span>
+                                <span class="text-[16px] font-normal text-body block mb-4 pb-0.5">Hi, </span>
+                                <p class="text-[16px] font-normal text-body leading-[26px] mb-6">The Agricultural
+                                    Marketing Service (AMS) administers programs that create domestic and international
+                                    marketing opportunities for U.S. producers of food, fiber, and specialty crops. AMS
+                                    also provides the agriculture industry with valuable services to ensure the quality
+                                    and availability of wholesome food for consumers across the country and around the
+                                    world.</p>
+                                <p class="text-[16px] font-normal text-body leading-[26px] mb-6">In fact,
+                                    administration experience is often assumed or glossed over in software, because 99%
+                                    users never engage with it directly.</p>
+                                <p class="text-[16px] font-normal text-body leading-[26px] mb-12 pb-0.5">From
+                                    powerful productivity improvements to entire new panels, they’ve been continuing to
+                                    close the parity gap and innovate with new means of debugging and improving our web
+                                    experiences.</p>
+                                <p class="text-[16px] font-normal text-body mb-12">Thanks!</p>
+                                <div class="inventual-notification-feedback default-light-theme">
+                                    <button mat-raised-button color="primary" [routerLink]="['/newmessage']"><i
+                                            class="fas fa-reply"></i> Reply</button>
+                                    <button mat-raised-button color="primary"><i class="far fa-arrow-alt-right"></i>
+                                        Forward</button>
+                                    <button mat-raised-button color="primary"><i class="far fa-trash-alt"></i>
+                                        Delete</button>
+                                </div>
+                            </div>
+                        </mat-tab>
+                        <mat-tab>
+                            <ng-template mat-tab-label>
+                                <div class="inventual-notification rounded-[10px] flex flex-wrap p-5">
+                                    <div class="inventual-notification-img me-5 w-12">
+                                        <img src="assets/img/user/inbox-3.png" alt="img not found">
+                                    </div>
+                                    <div class="inventual-notification-text w-full relative">
+                                        <h5 class="text-[18px] font-bold text-heading mb-1">Steve Smith</h5>
+                                        <span class="text-[14px] font-semibold text-heading block mb-1">Minimize the
+                                            stock</span>
+                                        <p class="text-[13px] font-normal text-body">Teams with more than .....</p>
+                                        <figure class="text-[12px] font-semibold text-heading absolute top-0 -end-5">
+                                            11: 47 PM</figure>
+                                    </div>
+                                </div>
+                            </ng-template>
+                            <div class="inventual-notification-body">
+                                <h4 class="text-[24px] font-bold text-heading mb-10">Minimize the stock</h4>
+                                <h5 class="text-[18px] font-bold text-heading mb-1">Steve Smith</h5>
+                                <span class="text-[14px] font-semibold text-body block mb-11">11: 47 PM</span>
+                                <span class="text-[16px] font-normal text-body block mb-4 pb-0.5">Hi, </span>
+                                <p class="text-[16px] font-normal text-body leading-[26px] mb-6">I wrote about some
+                                    of the latest updates in our beloved DevTools, across Firefox, Chrome, Safari, and
+                                    Edge. Four months have already passed since then, and the different teams working on
+                                    DevTools have been busy! In these four months, they built a lot of new things for us
+                                    to use. </p>
+                                <p class="text-[16px] font-normal text-body leading-[26px] mb-6">You can file a
+                                    complaint or tip if you suspect a violation of the Packers and Stockyards Act or any
+                                    other Federal law governing fair and competitive marketing and contract growing of
+                                    livestock and poultry</p>
+                                <p class="text-[16px] font-normal text-body leading-[26px] mb-12 pb-0.5">To submit a
+                                    Livestock & Poultry Competition complaint with the USDA and DOJ Agricultural Markets
+                                    Enforcement Partnership, please click the below button.</p>
+                                <p class="text-[16px] font-normal text-body mb-12">Thanks!</p>
+                                <div class="inventual-notification-feedback default-light-theme">
+                                    <button mat-raised-button color="primary" [routerLink]="['/newmessage']"><i
+                                            class="fas fa-reply"></i> Reply</button>
+                                    <button mat-raised-button color="primary"><i class="far fa-arrow-alt-right"></i>
+                                        Forward</button>
+                                    <button mat-raised-button color="primary"><i class="far fa-trash-alt"></i>
+                                        Delete</button>
+                                </div>
+                            </div>
+                        </mat-tab>
+                        <mat-tab>
+                            <ng-template mat-tab-label>
+                                <div class="inventual-notification rounded-[10px] flex flex-wrap p-5">
+                                    <div class="inventual-notification-img me-5 w-12">
+                                        <img src="assets/img/user/inbox-2.png" alt="img not found">
+                                    </div>
+                                    <div class="inventual-notification-text w-full relative">
+                                        <h5 class="text-[18px] font-bold text-heading mb-1">Williamson</h5>
+                                        <span class="text-[14px] font-semibold text-heading block mb-1">Minimize the
+                                            stock</span>
+                                        <p class="text-[13px] font-normal text-body">on the northern coast of.....
+                                        </p>
+                                        <figure class="text-[12px] font-semibold text-heading absolute top-0 -end-5">
+                                            07: 32 PM</figure>
+                                    </div>
+                                </div>
+                            </ng-template>
+                            <div class="inventual-notification-body">
+                                <h4 class="text-[24px] font-bold text-heading mb-10">Minimize the stock</h4>
+                                <h5 class="text-[18px] font-bold text-heading mb-1">Williamson</h5>
+                                <span class="text-[14px] font-semibold text-body block mb-11">07: 32 PM</span>
+                                <span class="text-[16px] font-normal text-body block mb-4 pb-0.5">Hi, </span>
+                                <p class="text-[16px] font-normal text-body leading-[26px] mb-6">Any information you
+                                    provide is voluntary. Comments including vulgar language may not be processed;
+                                    additionally, comments including implicit or explicit threats may be referred to the
+                                    appropriate authorities. Other than contact information, please do not include any
+                                    personally identifying information (PII), such as social security numbers or birth
+                                    dates, in your comments.</p>
+                                <p class="text-[16px] font-normal text-body leading-[26px] mb-6">For any information
+                                    provided, USDA and DOJ will follow their respective Privacy and Confidentiality
+                                    Policies found at: USDA Privacy and DOJ Confidentiality</p>
+                                <p class="text-[16px] font-normal text-body leading-[26px] mb-12 pb-0.5">To submit a
+                                    Livestock & Poultry Competition complaint with the USDA and DOJ Agricultural Markets
+                                    Enforcement Partnership, please click the below button.</p>
+                                <p class="text-[16px] font-normal text-body mb-12">Thanks!</p>
+                                <div class="inventual-notification-feedback default-light-theme">
+                                    <button mat-raised-button color="primary" [routerLink]="['/newmessage']"><i
+                                            class="fas fa-reply"></i> Reply</button>
+                                    <button mat-raised-button color="primary"><i class="far fa-arrow-alt-right"></i>
+                                        Forward</button>
+                                    <button mat-raised-button color="primary"><i class="far fa-trash-alt"></i>
+                                        Delete</button>
+                                </div>
+                            </div>
+                        </mat-tab>
+                    </mat-tab-group>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

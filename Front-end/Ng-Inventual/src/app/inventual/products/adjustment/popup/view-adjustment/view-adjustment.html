@@ -1,0 +1,81 @@
+<mat-dialog-content>
+    <div class="popup-body">
+        <div class="inventual-popup-inner">
+            <div class="inventual-popup-header relative mb-11">
+                <div class="inventual-popup-header-title">
+                    <h4 class="text-[20px] text-heading font-bold">{{ translationService.translateText('Adjustment Details') }}</h4>
+                </div>
+                <div
+                    class="inventual-popup-header-close absolute -top-4 ltr:-right-2.5 ltr:left-auto rtl:left-0 rtl:right-auto">
+                    <mat-dialog-actions>
+                        <div class="default-light-theme">
+                            <a href="javascript:void(0)" mat-dialog-close><mat-icon>clear</mat-icon></a>
+                        </div>
+                    </mat-dialog-actions>
+                </div>
+            </div>
+            <div class="inventual-popup-header-content pb-3">
+                <ul>
+                    <li class="text-[15px] font-semibold text-heading mb-4">{{ translationService.translateText('Date') }}:
+                        <span class="text-[15px] font-normal text-body">{{ adjustment.fecha | date:'yyyy-MM-dd' }}</span>
+                    </li>
+                    <li class="text-[15px] font-semibold text-heading mb-4">{{ translationService.translateText('Reference') }}:
+                        <span class="text-[15px] font-normal text-body">{{ adjustment.referencia }}</span>
+                    </li>
+                    <li class="text-[15px] font-semibold text-heading mb-4">{{ translationService.translateText('Warehouse') }}:
+                        <span class="text-[15px] font-normal text-body">{{ adjustment.bodega }}</span>
+                    </li>
+                    <li class="text-[15px] font-semibold text-heading mb-4">{{ translationService.translateText('Remarks') }}:
+                        <span class="text-[15px] font-normal text-body">{{ adjustment.observaciones || '-' }}</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="inventual-viewpayment-table border border-solid border-border">
+                <div class="inventual-viewpayment-table-inner">
+                    <div class="inventual-viewpayment-table-inner-wrapper">
+                        <div class="inventual-viewpayment-list h-10">
+                            <div class="inventual-viewpayment-products">
+                                <h5>{{ translationService.translateText('Products') }}</h5>
+                            </div>
+                            <div class="inventual-viewpayment-code">
+                                <h5>{{ translationService.translateText('Code') }}</h5>
+                            </div>
+                            <div class="inventual-viewpayment-unit">
+                                <h5>{{ translationService.translateText('Unit') }}</h5>
+                            </div>
+                            <div class="inventual-viewpayment-qty">
+                                <h5>{{ translationService.translateText('Qty') }}</h5>
+                            </div>
+                            <div class="inventual-viewpayment-amount">
+                                <h5>{{ translationService.translateText('Stock') }}</h5>
+                            </div>
+                            <div class="inventual-viewpayment-type">
+                                <h5>{{ translationService.translateText('Type') }}</h5>
+                            </div>
+                        </div>
+                        <div class="inventual-viewpayment-list h-14" *ngFor="let detalle of adjustment.detalles">
+                            <div class="inventual-viewpayment-products">
+                                <span>{{ detalle.name }}</span>
+                            </div>
+                            <div class="inventual-viewpayment-code">
+                                <span>{{ detalle.code }}</span>
+                            </div>
+                            <div class="inventual-viewpayment-unit">
+                                <span>{{ detalle.unidad || translationService.translateText('Quantity') }}</span>
+                            </div>
+                            <div class="inventual-viewpayment-qty">
+                                <span>{{ detalle.quantity }}</span>
+                            </div>
+                            <div class="inventual-viewpayment-amount">
+                                <span>{{ detalle.stockAnterior }} -> {{ detalle.stockNuevo }}</span>
+                            </div>
+                            <div class="inventual-viewpayment-type">
+                                <span>{{ translationService.translateText(detalle.type || 'Subtraction') }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</mat-dialog-content>

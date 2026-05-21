@@ -1,0 +1,42 @@
+<mat-dialog-content>
+    <div class="popup-body">
+        <div class="inventual-popup-inner">
+            <div class="inventual-popup-header relative mb-11">
+                <div class="inventual-popup-header-title">
+                    <h4 class="text-[20px] text-heading font-bold">Order Discount</h4>
+                </div>
+                <div
+                    class="inventual-popup-header-close absolute -top-4 ltr:-right-2.5 ltr:left-auto rtl:left-0 rtl:right-auto">
+                    <mat-dialog-actions>
+                        <div class="default-light-theme">
+                            <a href="javascript:void(0)" mat-dialog-close><mat-icon>clear</mat-icon></a>
+                        </div>
+                    </mat-dialog-actions>
+                </div>
+            </div>
+            <div class="inventual-popup-discount-checkbox mb-5">
+                <div class="inventual-checkbox-field-style inline-block me-9" (click)="discounttwo()">
+                    <input type="radio" name="discount" id="Discount">
+                    <label for="Discount" class="text-[15px] font-semibold text-heading">Discount</label>
+                </div>
+                <div class="inventual-checkbox-field-style inline-block">
+                    <input type="radio" name="discount" id="Membership" required>
+                    <label for="Membership" class="text-[15px] font-semibold text-heading">Membership</label>
+                </div>
+            </div>
+            <div class="inventual-select-field mb-7">
+                <h5 class="text-[15px] text-heading font-semibold mb-3">Phone</h5>
+                <div class="inventual-input-field-style">
+                    <mat-form-field class="w-full" [floatLabel]="'always'">
+                        <mat-label class="hidden">Scan / search products by code / name</mat-label>
+                        <input matInput [placeholder]="'+02 872 360 930'">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="inventual-material-btn justify-end">
+                <button type="submit" mat-raised-button color="primary" (click)="discounttwo()">Check
+                    Eligibility</button>
+            </div>
+        </div>
+    </div>
+</mat-dialog-content>

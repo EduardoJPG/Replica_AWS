@@ -1,0 +1,130 @@
+export interface SupplierReportInterfaceData {
+  id: number;
+  date: string;
+  code: number;
+  supplier: string;
+  products: string;
+  amount: number;
+}
+export const supplierReportData: SupplierReportInterfaceData[] = [
+  {
+    id: 1,
+    date: '01 Jan 2024',
+    code: 57496,
+    supplier: 'Joseph Tylor',
+    products: 'Dell Laptop',
+    amount: 542.0,
+  },
+  {
+    id: 2,
+    date: '02 Jan 2024',
+    code: 57497,
+    supplier: 'Emily Johnson',
+    products: 'HP Desktop',
+    amount: 620.0,
+  },
+  {
+    id: 3,
+    date: '03 Jan 2024',
+    code: 57498,
+    supplier: 'Michael Smith',
+    products: 'Lenovo Tablet',
+    amount: 450.0,
+  },
+  {
+    id: 4,
+    date: '04 Jan 2024',
+    code: 57499,
+    supplier: 'Sophia Brown',
+    products: 'Samsung Phone',
+    amount: 320.0,
+  },
+  {
+    id: 5,
+    date: '05 Jan 2024',
+    code: 57500,
+    supplier: 'William Davis',
+    products: 'Apple MacBook',
+    amount: 890.0,
+  },
+  {
+    id: 6,
+    date: '06 Jan 2024',
+    code: 57501,
+    supplier: 'Olivia Miller',
+    products: 'Sony Camera',
+    amount: 550.0,
+  },
+  {
+    id: 7,
+    date: '07 Jan 2024',
+    code: 57502,
+    supplier: 'James Wilson',
+    products: 'Canon Printer',
+    amount: 280.0,
+  },
+  {
+    id: 8,
+    date: '08 Jan 2024',
+    code: 57503,
+    supplier: 'Isabella Moore',
+    products: 'Microsoft Surface',
+    amount: 640.0,
+  },
+  {
+    id: 9,
+    date: '09 Jan 2024',
+    code: 57504,
+    supplier: 'Benjamin Taylor',
+    products: 'LG TV',
+    amount: 750.0,
+  },
+  {
+    id: 10,
+    date: '10 Jan 2024',
+    code: 57505,
+    supplier: 'Amelia Anderson',
+    products: 'Google Pixel',
+    amount: 380.0,
+  },
+  {
+    id: 11,
+    date: '11 Jan 2024',
+    code: 57506,
+    supplier: 'Henry Martinez',
+    products: 'Amazon Echo',
+    amount: 430.0,
+  },
+  {
+    id: 12,
+    date: '12 Jan 2024',
+    code: 57507,
+    supplier: 'Evelyn Jackson',
+    products: 'GoPro Camera',
+    amount: 620.0,
+  },
+  {
+    id: 13,
+    date: '13 Jan 2024',
+    code: 57508,
+    supplier: 'Alexander Thompson',
+    products: 'Fitbit Tracker',
+    amount: 590.0,
+  },
+  {
+    id: 14,
+    date: '14 Jan 2024',
+    code: 57509,
+    supplier: 'Mia White',
+    products: 'Beats Headphones',
+    amount: 720.0,
+  },
+  {
+    id: 15,
+    date: '15 Jan 2024',
+    code: 57510,
+    supplier: 'Charlotte Harris',
+    products: 'Nintendo Switch',
+    amount: 830.0,
+  },
+];

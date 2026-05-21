@@ -1,0 +1,156 @@
+<div class="inventual-dashboard-area">
+    <div class="inventual-dashboard-sidebar" [class.sidebar-enable]="menuSidebarActive">
+        <div class="inventual-header-bar-responsive" (click)="myfunction()">
+            <mat-icon>reorder</mat-icon>
+        </div>
+        <div
+            class="inventual-menu-wrapper bg-white border-e border-b border-solid border-border py-10 px-7 lg:px-5 lg:py-8">
+            <app-menus></app-menus>
+        </div>
+        <div class="inventual-menu-overlay" (click)="myfunction()" [class.sidebar-enable]="menuSidebarActive"></div>
+    </div>
+    <div class="inventual-dashboard-main" [class.sidebar-enable]="menuSidebarActive">
+        <div class="inventual-header-area">
+            <div class="inventual-header-wrapper custom-height-70 px-7 bg-white border-b border-solid border-border">
+                <div class="grid grid-cols-12 items-center h-full">
+                    <div class="col-span-12">
+                        <app-header></app-header>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="inventual-breadcrumb-area px-7 py-9 bg-white mb-5">
+            <div class="inventual-breadcrumb-area-inner px-0.5">
+                <h5 class="text-[20px] text-heading font-bold mb-3">{{ translationService.translateText('Add Supplier') }}</h5>
+                <div class="inventual-breadcrumb-area-inner-wrap">
+                    <span class="text-[14px] text-body font-normal inline-block me-2">{{ translationService.translateText('Supplier') }}</span>
+                    <span class="text-[14px] text-body font-normal inline-block me-2">></span>
+                    <span class="text-[14px] text-body font-normal inline-block me-2">{{ translationService.translateText('Add Supplier') }}</span>
+                </div>
+            </div>
+        </div>
+        <div class="inventual-content-area px-7">
+            <div class="inventual-addsupplier-area bg-white p-7 custom-shadow rounded-8 mb-5">
+                <div class="grid grid-cols-12 gap-x-7 sm:gap-x-0">
+                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                        <div class="inventual-select-field mb-5">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">{{ translationService.translateText('Name') }}</h5>
+                            <div class="inventual-input-field-style">
+                                <mat-form-field class="w-full" [floatLabel]="'always'">
+                                    <mat-label class="hidden">Joseph Tylor</mat-label>
+                                    <input matInput [placeholder]="translationService.translateText('Name')" [(ngModel)]="proveedor.nombreProveedor">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                        <div class="inventual-select-field mb-5">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">{{ translationService.translateText('Phone') }}</h5>
+                            <div class="inventual-input-field-style">
+                                <mat-form-field class="w-full" [floatLabel]="'always'">
+                                    <mat-label class="hidden">00 000 000 000</mat-label>
+                                    <input matInput [placeholder]="translationService.translateText('Phone')" [(ngModel)]="proveedor.telefono">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                        <div class="inventual-select-field mb-5">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">{{ translationService.translateText('Email') }}</h5>
+                            <div class="inventual-input-field-style">
+                                <mat-form-field class="w-full" [floatLabel]="'always'">
+                                    <mat-label class="hidden"></mat-label>
+                                    <input type="email" matInput [placeholder]="translationService.translateText('Email')" [(ngModel)]="proveedor.email">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                        <div class="inventual-select-field mb-5">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">{{ translationService.translateText('Country') }}</h5>
+                            <div class="inventual-input-field-style">
+                                <mat-form-field class="w-full" [floatLabel]="'always'">
+                                    <mat-label class="hidden">United States</mat-label>
+                                    <input matInput [placeholder]="translationService.translateText('Country')" [(ngModel)]="proveedor.pais">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                        <div class="inventual-select-field mb-5">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">{{ translationService.translateText('City') }}</h5>
+                            <div class="inventual-input-field-style">
+                                <mat-form-field class="w-full" [floatLabel]="'always'">
+                                    <mat-label class="hidden">New York</mat-label>
+                                    <input matInput [placeholder]="translationService.translateText('City')" [(ngModel)]="proveedor.ciudad">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                        <div class="inventual-select-field mb-5">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">{{ translationService.translateText('Address') }}</h5>
+                            <div class="inventual-input-field-style">
+                                <mat-form-field class="w-full" [floatLabel]="'always'">
+                                    <mat-label class="hidden">Malmate Station</mat-label>
+                                    <input matInput [placeholder]="translationService.translateText('Address')" [(ngModel)]="proveedor.direccion">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                        <div class="inventual-select-field mb-5">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">{{ translationService.translateText('NIT / RUC') }}</h5>
+                            <div class="inventual-input-field-style">
+                                <mat-form-field class="w-full" [floatLabel]="'always'">
+                                    <mat-label class="hidden">NIT / RUC</mat-label>
+                                    <input matInput [placeholder]="translationService.translateText('NIT / RUC')" [(ngModel)]="proveedor.nitRuc">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                        <div class="inventual-select-field mb-5">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">{{ translationService.translateText('Company') }}</h5>
+                            <div class="inventual-input-field-style">
+                                <mat-form-field class="w-full" [floatLabel]="'always'">
+                                    <mat-label class="hidden">Bdevs Technology</mat-label>
+                                    <input matInput [placeholder]="translationService.translateText('Company')" [(ngModel)]="proveedor.compania">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                        <div class="inventual-select-field mb-5">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">{{ translationService.translateText('Supplier Code') }}</h5>
+                            <div class="inventual-input-field-style">
+                                <mat-form-field class="w-full" [floatLabel]="'always'">
+                                    <mat-label class="hidden">Supplier Code</mat-label>
+                                    <input type="text" matInput [placeholder]="translationService.translateText('Supplier Code')" [(ngModel)]="proveedor.codigoProveedor">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-12">
+                        <div class="inventual-material-btn pt-2.5 justify-end flex flex-wrap gap-2">
+                            <button type="button"
+                                mat-raised-button
+                                color="accent"
+                                [routerLink]="['/people/supplierlist']">
+                                <mat-icon>list</mat-icon>
+                                {{ translationService.translateText('View List') }}
+                            </button>
+                            <button mat-raised-button color="primary" (click)="guardarProveedor()">
+                                {{ translationService.translateText(modoEdicion ? 'Update Supplier' : 'Create Supplier') }}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="inventual-copyright-area pt-28 xl:pt-0 lg:pt-0 md:pt-0 sm:pt-0">
+            <app-footer></app-footer>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+@use '../../../../custom-palettes.scss';
+
+@include custom-palettes.inventualSidebarMuneStyle;
+@include custom-palettes.inventualInputFieldStyle;
+@include custom-palettes.inventualMaterialBtn;
+@include custom-palettes.commonActionMenuStyle;
+@include custom-palettes.inventualMaterialTableStyle;
+
+.inventual-addbrand-table-image img {
+	@apply w-12;
+}
+
+.inventual-input-field-file-image label {
+	line-height: 46px !important;
+}
+.inventual-input-field-file-image input {
+	@apply hidden;
+}
+.inventual-input-field-file-image {
+    @apply w-40;
+}
+.inventual-input-field-file-image label {
+	@apply h-40 w-40 border border-dashed border-primary rounded-[10px] outline-none flex justify-center items-center text-[15px] text-heading font-primary;
+    @apply font-normal w-full bg-gray cursor-pointer;
+	transition: all linear 0.3s;
+	&:focus {
+		@apply bg-white;
+	}
+}

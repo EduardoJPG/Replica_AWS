@@ -1,0 +1,229 @@
+<form #form="ngForm" (ngSubmit)="updateProfile(form)">
+<div class="inventual-dashboard-area">
+    <div class="inventual-dashboard-sidebar" [class.sidebar-enable]="menuSidebarActive">
+        <div class="inventual-header-bar-responsive" (click)="myfunction()">
+            <mat-icon>reorder</mat-icon>
+        </div>
+        <div class="inventual-menu-wrapper bg-white border-e border-b border-solid border-border py-10 px-7 lg:px-5 lg:py-8">
+            <app-menus></app-menus>
+        </div>
+        <div class="inventual-menu-overlay" (click)="myfunction()" [class.sidebar-enable]="menuSidebarActive"></div>
+    </div>
+    <div class="inventual-dashboard-main" [class.sidebar-enable]="menuSidebarActive">
+        <div class="inventual-header-area">
+            <div class="inventual-header-wrapper custom-height-70 px-7 bg-white border-b border-solid border-border">
+                <div class="grid grid-cols-12 items-center h-full">
+                    <div class="col-span-12">
+                        <app-header></app-header>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="inventual-breadcrumb-area px-7 py-9 bg-white mb-5">
+            <div class="inventual-breadcrumb-area-inner px-0.5">
+                <h5 class="text-[20px] text-heading font-bold mb-3">Profile</h5>
+                <div class="inventual-breadcrumb-area-inner-wrap">
+                    <span class="text-[14px] text-body font-normal inline-block me-2">User</span>
+                    <span class="text-[14px] text-body font-normal inline-block me-2">></span>
+                    <span class="text-[14px] text-body font-normal inline-block me-2">Profile</span>
+                </div>
+            </div>
+        </div>
+        <div class="inventual-content-area px-7">
+            <div class="inventual-addsupplier-area bg-white p-7 custom-shadow rounded-8 mb-1">
+                <div class="inventual-profile-area">
+                    <div class="inventual-profile-wrapper flex items-center sm:block pb-1 mb-14">
+                        <div class="inventual-profile-info flex items-center me-20 sm:me-0 sm:mb-5">
+                            <div class="inventual-profile-info-img me-5">
+                                <img [src]="user.FotoPerfil || defaultPhoto" alt="profile image">
+                            </div>
+                            <div class="inventual-profile-info-text">
+                                <h4 class="text-heading font-bold text-[24px] mb-1">{{ user.Nombre || user.NombreUsuario }}</h4>
+                                <span class="text-[16px] text-body">{{ user.RoleName || 'Usuario' }}</span>
+                            </div>
+                        </div>
+                        <div class="inventual-profile-info-btn">
+                            <button type="button" (click)="editProfileEnable()">
+                                {{ isProfileEnabled ? 'Cancel Edit' : 'Edit Profile' }}
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-12 gap-x-7 sm:gap-x-0">
+                        <div class="col-span-12" *ngIf="isProfileEnabled">
+                            <div class="flex items-center gap-5 mb-5">
+                                <div class="profile-edit-photo-preview">
+                                    <img [src]="user.FotoPerfil || defaultPhoto"
+                                        alt="profile preview">
+                                </div>
+                                <div class="inventual-material-btn flex gap-3">
+                                    <label mat-raised-button color="accent" for="profilePhoto">
+                                        <mat-icon>add_a_photo</mat-icon> Photo
+                                    </label>
+                                    <button type="button" mat-raised-button color="warn"
+                                        *ngIf="user.FotoPerfil"
+                                        (click)="removePhoto()">
+                                        Remove
+                                    </button>
+                                    <input id="profilePhoto" type="file" accept="image/*" class="hidden"
+                                        (change)="onPhotoSelected($event)">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                            <div class="inventual-select-field mb-5">
+                                <h5 class="text-[15px] text-heading font-semibold mb-3">Full Name</h5>
+                                <div class="inventual-input-field-style">
+                                    <mat-form-field class="w-full" [floatLabel]="'always'">
+                                        <input matInput
+                                            placeholder="Full Name"
+                                            [(ngModel)]="user.Nombre"
+                                            name="nombre"
+                                            required
+                                            #nombre="ngModel"
+                                            [disabled]="!isProfileEnabled">
+                                        <mat-error *ngIf="nombre.invalid && nombre.touched">
+                                            El nombre es obligatorio
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                            <div class="inventual-select-field mb-5">
+                                <h5 class="text-[15px] text-heading font-semibold mb-3">Phone</h5>
+                                <div class="inventual-input-field-style">
+                                    <mat-form-field class="w-full" [floatLabel]="'always'">
+                                        <input matInput
+                                            placeholder="Phone"
+                                            [(ngModel)]="user.Telefono"
+                                            name="telefono"
+                                            [disabled]="!isProfileEnabled">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                            <div class="inventual-select-field mb-5">
+                                <h5 class="text-[15px] text-heading font-semibold mb-3">Email</h5>
+                                <div class="inventual-input-field-style">
+                                    <mat-form-field class="w-full" [floatLabel]="'always'">
+                                        <input type="email"
+                                            matInput
+                                            placeholder="Email"
+                                            [(ngModel)]="user.Email"
+                                            name="email"
+                                            required
+                                            email
+                                            #email="ngModel"
+                                            [disabled]="!isProfileEnabled">
+                                        <mat-error *ngIf="email.invalid && email.touched">
+                                            Email invalido
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                            <div class="inventual-select-field mb-5">
+                                <h5 class="text-[15px] text-heading font-semibold mb-3">Gender</h5>
+                                <div class="inventual-select-field-style">
+                                    <mat-form-field>
+                                        <mat-select class="block"
+                                            placeholder="Select Gender"
+                                            [(ngModel)]="user.Genero"
+                                            name="genero"
+                                            [disabled]="!isProfileEnabled">
+                                            <mat-option value="Male">Male</mat-option>
+                                            <mat-option value="Female">Female</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                            <div class="inventual-select-field mb-5">
+                                <h5 class="text-[15px] text-heading font-semibold mb-3">Username</h5>
+                                <div class="inventual-input-field-style">
+                                    <mat-form-field class="w-full" [floatLabel]="'always'">
+                                        <input matInput
+                                            placeholder="Username"
+                                            [(ngModel)]="user.NombreUsuario"
+                                            name="username"
+                                            required
+                                            minlength="4"
+                                            #username="ngModel"
+                                            [disabled]="!isProfileEnabled">
+                                        <mat-error *ngIf="username.invalid && username.touched">
+                                            El username es obligatorio
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                            <div class="inventual-select-field mb-5">
+                                <h5 class="text-[15px] text-heading font-semibold mb-3">Password</h5>
+                                <div class="inventual-input-field-style inventual-input-field-style-eye">
+                                    <mat-form-field appearance="fill">
+                                        <input matInput
+                                            [type]="hide ? 'password' : 'text'"
+                                            placeholder="Leave empty to keep current password"
+                                            [(ngModel)]="user.Password"
+                                            name="password"
+                                            minlength="6"
+                                            #password="ngModel"
+                                            [disabled]="!isProfileEnabled">
+                                        <button mat-icon-button matSuffix type="button" (click)="hide = !hide"
+                                            [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                        </button>
+                                        <mat-error *ngIf="password.invalid && password.touched">
+                                            Minimo 6 caracteres
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                            <div class="inventual-select-field mb-5">
+                                <h5 class="text-[15px] text-heading font-semibold mb-3">Role</h5>
+                                <div class="inventual-input-field-style">
+                                    <mat-form-field class="w-full" [floatLabel]="'always'">
+                                        <input matInput
+                                            placeholder="Role"
+                                            [(ngModel)]="user.RoleName"
+                                            name="roleName"
+                                            disabled>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-span-12">
+                            <div class="inventual-material-btn pt-2.5 justify-end">
+                                <button type="submit"
+                                    mat-raised-button
+                                    color="primary"
+                                    [disabled]="!isProfileEnabled || form.invalid">
+                                    Update Profile
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="inventual-copyright-area pt-9 xl:pt-0 lg:pt-0 md:pt-0 sm:pt-0">
+                <app-footer></app-footer>
+            </div>
+        </div>
+    </div>
+</div>
+</form>

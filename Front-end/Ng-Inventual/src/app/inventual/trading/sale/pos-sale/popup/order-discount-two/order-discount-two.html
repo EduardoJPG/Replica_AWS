@@ -1,0 +1,61 @@
+<mat-dialog-content>
+    <div class="popup-body">
+        <div class="inventual-popup-inner">
+            <div class="inventual-popup-header relative mb-11">
+                <div class="inventual-popup-header-title">
+                    <h4 class="text-[20px] text-heading font-bold">Order Discount</h4>
+                </div>
+                <div
+                    class="inventual-popup-header-close absolute -top-4 ltr:-right-2.5 ltr:left-auto rtl:left-0 rtl:right-auto">
+                    <mat-dialog-actions>
+                        <div class="default-light-theme">
+                            <a href="javascript:void(0)" mat-dialog-close><mat-icon>clear</mat-icon></a>
+                        </div>
+                    </mat-dialog-actions>
+                </div>
+            </div>
+            <div class="inventual-popup-discount-eligibity">
+                <div class="grid grid-cols-12">
+                    <div class="col-span-8 sm:col-span-12 sm:mb-3">
+                        <h6 class="text-[16px] font-semibold text-heading mb-2">Daniyel Machman</h6>
+                        <span class="text-[14px] font-normal text-body">Status <span
+                                class="text-[14px] font-bold text-warning ps-1">Premium <img
+                                    src="assets/img/icon/croun.png" alt="icon not found"></span></span>
+                    </div>
+                    <div class="col-span-4 sm:col-span-12">
+                        <h6 class="text-[14px] font-semibold text-heading text-end sm:text-start">Eligibility : <span
+                                class="text-[14px] text-success font-semibold ps-1">Yes</span></h6>
+                    </div>
+                </div>
+                <div class="grid grid-cols-12 pt-7">
+                    <div class="col-span-4 sm:col-span-12">
+                        <div class="inventual-select-field mb-6">
+                            <div class="inventual-select-field-style">
+                                <mat-form-field>
+                                    <mat-select class="block" [placeholder]="'8% OFF'">
+                                        <mat-option value="language-1">8% OFF</mat-option>
+                                        <mat-option value="language-2">10% OFF</mat-option>
+                                        <mat-option value="language-3">12% OFF</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-8 sm:col-span-12">
+                        <div class="inventual-select-field mb-7">
+                            <div class="inventual-input-field-style">
+                                <mat-form-field class="w-full" [floatLabel]="'always'">
+                                    <mat-label class="hidden">$25.00</mat-label>
+                                    <input matInput [placeholder]="'$25.00'">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="inventual-material-btn justify-end">
+                <button type="submit" mat-raised-button color="primary">Submit</button>
+            </div>
+        </div>
+    </div>
+</mat-dialog-content>

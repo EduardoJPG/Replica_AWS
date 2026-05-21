@@ -1,0 +1,120 @@
+<div class="inventual-dashboard-area">
+    <div class="inventual-dashboard-sidebar" [class.sidebar-enable]="menuSidebarActive">
+        <div class="inventual-header-bar-responsive" (click)="myfunction()">
+            <mat-icon>reorder</mat-icon>
+        </div>
+        <div class="inventual-menu-wrapper bg-white border-e border-b border-solid border-border py-10 px-7 lg:px-5 lg:py-8">
+            <app-menus></app-menus>
+        </div>
+        <div class="inventual-menu-overlay" (click)="myfunction()" [class.sidebar-enable]="menuSidebarActive"></div>
+    </div>
+    <div class="inventual-dashboard-main" [class.sidebar-enable]="menuSidebarActive" (click)="closeSidebar()">
+        <div class="inventual-header-area">
+            <div class="inventual-header-wrapper custom-height-70 px-7 bg-white border-b border-solid border-border">
+                <app-header></app-header>
+            </div>
+        </div>
+        <div class="inventual-breadcrumb-area px-7 py-9 bg-white mb-5">
+            <div class="inventual-breadcrumb-area-inner px-0.5">
+                <h5 class="text-[20px] text-heading font-bold mb-3">Configurar correo</h5>
+                <div class="inventual-breadcrumb-area-inner-wrap">
+                    <span class="text-[14px] text-body font-normal inline-block me-2">Configuracion</span>
+                    <span class="text-[14px] text-body font-normal inline-block me-2">></span>
+                    <span class="text-[14px] text-body font-normal inline-block me-2">Correo</span>
+                </div>
+            </div>
+        </div>
+        <div class="inventual-content-area px-7">
+            <div class="bg-white p-7 custom-shadow rounded-8 mb-5">
+                <div class="grid grid-cols-12 gap-x-7 sm:gap-x-0">
+                    <div class="col-span-6 md:col-span-12">
+                        <div class="inventual-input-field-style mb-5">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">Servidor SMTP</h5>
+                            <mat-form-field class="w-full" [floatLabel]="'always'">
+                                <mat-label class="hidden">Servidor SMTP</mat-label>
+                                <input matInput placeholder="smtp.gmail.com" [(ngModel)]="emailConfig.smtpHost">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="col-span-3 md:col-span-6 sm:col-span-12">
+                        <div class="inventual-input-field-style mb-5">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">Puerto</h5>
+                            <mat-form-field class="w-full" [floatLabel]="'always'">
+                                <mat-label class="hidden">Puerto</mat-label>
+                                <input type="number" matInput [(ngModel)]="emailConfig.smtpPort">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="col-span-3 md:col-span-6 sm:col-span-12 flex items-center pt-8">
+                        <label class="text-[15px] text-heading font-semibold">
+                            <input type="checkbox" [(ngModel)]="emailConfig.useSsl">
+                            Usar SSL/TLS
+                        </label>
+                    </div>
+                    <div class="col-span-6 md:col-span-12">
+                        <div class="inventual-input-field-style mb-5">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">Usuario SMTP</h5>
+                            <mat-form-field class="w-full" [floatLabel]="'always'">
+                                <mat-label class="hidden">Usuario SMTP</mat-label>
+                                <input matInput [(ngModel)]="emailConfig.username">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="col-span-6 md:col-span-12">
+                        <div class="inventual-input-field-style mb-5">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">Contrasena SMTP</h5>
+                            <mat-form-field class="w-full" [floatLabel]="'always'">
+                                <mat-label class="hidden">Contrasena SMTP</mat-label>
+                                <input type="password" matInput placeholder="Dejar vacio para conservar la actual" [(ngModel)]="emailConfig.password">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="col-span-6 md:col-span-12">
+                        <div class="inventual-input-field-style mb-5">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">Correo remitente</h5>
+                            <mat-form-field class="w-full" [floatLabel]="'always'">
+                                <mat-label class="hidden">Correo remitente</mat-label>
+                                <input matInput placeholder="ventas@empresa.com" [(ngModel)]="emailConfig.fromEmail">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="col-span-6 md:col-span-12">
+                        <div class="inventual-input-field-style mb-5">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">Nombre remitente</h5>
+                            <mat-form-field class="w-full" [floatLabel]="'always'">
+                                <mat-label class="hidden">Nombre remitente</mat-label>
+                                <input matInput placeholder="Sistema Inventario" [(ngModel)]="emailConfig.fromName">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="inventual-material-btn justify-end mb-7">
+                    <button mat-raised-button color="primary" (click)="saveConfig()" [disabled]="isSaving">
+                        Guardar configuracion
+                    </button>
+                </div>
+                <div class="border-t border-solid border-border pt-6">
+                    <h5 class="text-[16px] text-heading font-bold mb-4">Probar envio</h5>
+                    <div class="grid grid-cols-12 gap-x-7 sm:gap-x-0 items-end">
+                        <div class="col-span-6 md:col-span-12">
+                            <div class="inventual-input-field-style">
+                                <mat-form-field class="w-full" [floatLabel]="'always'">
+                                    <mat-label>Correo de prueba</mat-label>
+                                    <input matInput placeholder="destino@correo.com" [(ngModel)]="testEmail">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="col-span-6 md:col-span-12">
+                            <button mat-raised-button color="accent" (click)="sendTestEmail()" [disabled]="isSendingTest">
+                                Test email
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="inventual-copyright-area">
+            <app-footer></app-footer>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,198 @@
+<form #form="ngForm" (ngSubmit)="createUser(form)">
+<div class="inventual-dashboard-area">
+
+    <!-- SIDEBAR -->
+    <div class="inventual-dashboard-sidebar" [class.sidebar-enable]="menuSidebarActive">
+        <div class="inventual-header-bar-responsive" (click)="myfunction()">
+            <mat-icon>reorder</mat-icon>
+        </div>
+        <div class="inventual-menu-wrapper bg-white border-e border-b border-solid border-border py-10 px-7 lg:px-5 lg:py-8">
+            <app-menus></app-menus>
+        </div>
+
+        <div class="inventual-menu-overlay" (click)="myfunction()"></div>
+    </div>
+
+    <div class="inventual-dashboard-main" [class.sidebar-enable]="menuSidebarActive">
+
+        <!-- HEADER -->
+        <div class="inventual-header-area">
+            <div class="inventual-header-wrapper px-7 bg-white border-b">
+                <app-header></app-header>
+            </div>
+        </div>
+
+        <!-- BREADCRUMB -->
+        <div class="inventual-breadcrumb-area px-7 py-9 bg-white mb-5">
+            <div class="inventual-breadcrumb-area-inner px-0.5">
+                <h5 class="text-[20px] text-heading font-bold mb-3">Add User</h5>
+            </div>
+        </div>
+
+        <!-- FORM -->
+        <div class="inventual-content-area px-7">
+            <div class="inventual-addsupplier-area bg-white p-7 custom-shadow rounded-8 mb-5">
+                <div class="grid grid-cols-12 gap-x-7 sm:gap-x-0">
+
+                    <!-- FOTO -->
+                    <div class="col-span-12">
+                        <div class="user-photo-field">
+                            <div class="user-photo-preview">
+                                <img [src]="user.FotoPerfil || 'assets/img/icon/header-profile.svg'"
+                                    class="h-full w-full object-cover rounded"
+                                    alt="profile preview">
+                            </div>
+                            <div class="inventual-material-btn user-photo-actions">
+                                <button type="button"
+                                    mat-raised-button
+                                    color="accent"
+                                    class="user-photo-button"
+                                    (click)="fotoInput.click()">
+                                    <mat-icon>add_a_photo</mat-icon>
+                                    Seleccionar foto
+                                </button>
+                                <button type="button" mat-raised-button color="warn"
+                                    *ngIf="user.FotoPerfil"
+                                    (click)="removePhoto()">
+                                    <mat-icon>delete</mat-icon>
+                                    Quitar foto
+                                </button>
+                                <input #fotoInput id="fotoPerfil" type="file" accept="image/*" class="hidden"
+                                    (change)="onPhotoSelected($event)">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- NOMBRE -->
+                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                        <mat-form-field class="w-full">
+                            <input matInput placeholder="Full name"
+                                [(ngModel)]="user.Nombre"
+                                name="nombre"
+                                required
+                                #nombre="ngModel">
+
+                            <mat-error *ngIf="nombre.invalid && nombre.touched">
+                                El nombre es obligatorio
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <!-- TELEFONO -->
+                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                        <mat-form-field class="w-full">
+                            <input matInput placeholder="Phone"
+                                [(ngModel)]="user.Telefono" name="telefono">
+                        </mat-form-field>
+                    </div>
+
+                    <!-- EMAIL -->
+                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                        <mat-form-field class="w-full">
+                            <input type="email" matInput placeholder="Email"
+                                [(ngModel)]="user.Email"
+                                name="email"
+                                required
+                                email
+                                #email="ngModel">
+
+                            <mat-error *ngIf="email.invalid && email.touched">
+                                Email inválido
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <!-- GENERO -->
+                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                        <mat-form-field class="w-full">
+                            <mat-select placeholder="Select Gender"
+                                [(ngModel)]="user.Genero" name="genero">
+                                <mat-option value="Male">Male</mat-option>
+                                <mat-option value="Female">Female</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <!-- USERNAME -->
+                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                        <mat-form-field class="w-full">
+                            <input matInput placeholder="Username"
+                                [(ngModel)]="user.NombreUsuario"
+                                name="username"
+                                required
+                                minlength="4"
+                                #username="ngModel">
+
+                            <mat-error *ngIf="username.invalid && username.touched">
+                                El username es obligatorio (mínimo 4 caracteres)
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <!-- PASSWORD -->
+                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                        <mat-form-field class="w-full">
+                            <input matInput [type]="hide ? 'password' : 'text'"
+                                placeholder="Password"
+                                [(ngModel)]="user.Password"
+                                name="password"
+                                [required]="!isEdit"
+                                minlength="6"
+                                #password="ngModel">
+
+                            <mat-error *ngIf="password.invalid && password.touched && !isEdit">
+                                Mínimo 6 caracteres
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <!-- ROLE -->
+                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                        <mat-form-field class="w-full">
+                            <mat-select
+                                placeholder="Select Role"
+                                [(ngModel)]="user.IdRol"
+                                name="rol"
+                                required
+                                #rol="ngModel">
+
+                                <mat-option *ngFor="let role of roles" [value]="role.idRol">
+                                    {{ role.nombre }}
+                                </mat-option>
+                            </mat-select>
+
+                                <mat-error *ngIf="rol.invalid && rol.touched">
+                                    Selecciona un rol
+                                </mat-error>
+                            </mat-form-field>
+                    </div>
+
+                    <!-- BOTON -->
+                    <div class="col-span-12">
+                        <div class="inventual-material-btn pt-2.5 justify-end flex flex-wrap gap-2">
+                            <button type="button"
+                                    mat-raised-button
+                                    color="accent"
+                                    [routerLink]="['/client/userlist']">
+                                <mat-icon>list</mat-icon>
+                                Ver lista
+                            </button>
+                            <button type="submit"
+                                    mat-raised-button
+                                    color="primary">
+
+                            {{ isEdit ? 'Update User' : 'Create User' }}
+
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <app-footer></app-footer>
+    </div>
+</div>
+</form>

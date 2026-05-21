@@ -1,0 +1,28 @@
+@use '../../../../custom-palettes.scss';
+
+//sidebar menu style
+@include custom-palettes.inventualSidebarMuneStyle;
+
+.inventual-dashboard-main.sidebar-enable {
+    .apexcharts-canvas {
+        width: 100% !important;
+    }
+}
+
+.inventual-bar-chart h5 {
+    @apply left-[50%] translate-x-[-50%] bottom-[25px];
+
+    [dir="rtl"] {
+        @apply translate-x-[50%];
+    }
+}
+
+.common-blue-badge {
+    @apply h-5 text-nowrap px-2.5 bg-primary rounded inline-block text-white text-[11px] font-bold leading-5;
+}
+
+.inventual-menu-overlay-dashboard.sidebar-enable {
+    @media (max-width: 1900px) {
+        @apply fixed top-0 start-0 end-0 bottom-0 z-10 bg-black/60;
+    }
+}

@@ -1,0 +1,130 @@
+export interface CustomerReportInterfaceData {
+  id: number;
+  date: string;
+  customerCode: number;
+  customer: string;
+  products: string;
+  amount: number;
+}
+export const customerReportData: CustomerReportInterfaceData[] = [
+  {
+    id: 1,
+    date: '01 Jan 2024',
+    customerCode: 57496,
+    customer: 'Joseph Tylor',
+    products: 'Dell Laptop',
+    amount: 582.0,
+  },
+  {
+    id: 2,
+    date: '02 Jan 2024',
+    customerCode: 57497,
+    customer: 'Emily Johnson',
+    products: 'HP Desktop',
+    amount: 620.0,
+  },
+  {
+    id: 3,
+    date: '03 Jan 2024',
+    customerCode: 57498,
+    customer: 'Michael Smith',
+    products: 'Lenovo Tablet',
+    amount: 450.0,
+  },
+  {
+    id: 4,
+    date: '04 Jan 2024',
+    customerCode: 57499,
+    customer: 'Sophia Brown',
+    products: 'Samsung Phone',
+    amount: 320.0,
+  },
+  {
+    id: 5,
+    date: '05 Jan 2024',
+    customerCode: 57500,
+    customer: 'William Davis',
+    products: 'Apple MacBook',
+    amount: 890.0,
+  },
+  {
+    id: 6,
+    date: '06 Jan 2024',
+    customerCode: 57501,
+    customer: 'Olivia Miller',
+    products: 'Sony Camera',
+    amount: 550.0,
+  },
+  {
+    id: 7,
+    date: '07 Jan 2024',
+    customerCode: 57502,
+    customer: 'James Wilson',
+    products: 'Canon Printer',
+    amount: 280.0,
+  },
+  {
+    id: 8,
+    date: '08 Jan 2024',
+    customerCode: 57503,
+    customer: 'Isabella Moore',
+    products: 'Microsoft Surface',
+    amount: 640.0,
+  },
+  {
+    id: 9,
+    date: '09 Jan 2024',
+    customerCode: 57504,
+    customer: 'Benjamin Taylor',
+    products: 'LG TV',
+    amount: 750.0,
+  },
+  {
+    id: 10,
+    date: '10 Jan 2024',
+    customerCode: 57505,
+    customer: 'Amelia Anderson',
+    products: 'Google Pixel',
+    amount: 380.0,
+  },
+  {
+    id: 11,
+    date: '11 Jan 2024',
+    customerCode: 57506,
+    customer: 'Henry Martinez',
+    products: 'Amazon Echo',
+    amount: 430.0,
+  },
+  {
+    id: 12,
+    date: '12 Jan 2024',
+    customerCode: 57507,
+    customer: 'Evelyn Jackson',
+    products: 'GoPro Camera',
+    amount: 620.0,
+  },
+  {
+    id: 13,
+    date: '13 Jan 2024',
+    customerCode: 57508,
+    customer: 'Alexander Thompson',
+    products: 'Fitbit Tracker',
+    amount: 590.0,
+  },
+  {
+    id: 14,
+    date: '14 Jan 2024',
+    customerCode: 57509,
+    customer: 'Mia White',
+    products: 'Beats Headphones',
+    amount: 720.0,
+  },
+  {
+    id: 15,
+    date: '15 Jan 2024',
+    customerCode: 57510,
+    customer: 'Charlotte Harris',
+    products: 'Nintendo Switch',
+    amount: 830.0,
+  },
+];

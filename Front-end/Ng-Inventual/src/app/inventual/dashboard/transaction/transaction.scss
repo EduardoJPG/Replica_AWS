@@ -1,0 +1,50 @@
+@use '../../../../custom-palettes.scss';
+
+@include custom-palettes.inventualMaterialTableStyle;
+.inventual-dashboard-transaction-wrapper {
+    .mat-mdc-tab {
+        .mdc-tab__text-label {
+            @apply text-[15px] font-semibold text-heading font-primary transition-colors;
+        }
+        &:hover {
+            .mdc-tab__text-label {
+                @apply text-primary;
+            }
+        }
+        &.mdc-tab--active {
+            .mdc-tab__text-label {
+                @apply text-primary;
+            }
+            .mdc-tab-indicator__content--underline {
+                @apply border-primary opacity-100;
+            }
+        }
+    }
+	.mat-mdc-tab-ripple {
+		@apply hidden;
+	}
+	.mdc-tab {
+		@apply py-4 px-11 min-w-0 justify-start;
+	}
+	.mat-mdc-tab-group.mat-mdc-tab-group-stretch-tabs > .mat-mdc-tab-header .mat-mdc-tab {
+		flex-grow: initial;
+	}
+	.mat-mdc-tab-labels {
+		@apply font-primary;
+	}
+	.mat-mdc-tab {
+		font-family: "Nunito Sans", sans-serif !important;
+	}
+	.mat-mdc-tab:not(.mdc-tab--stacked) {
+		height: initial;
+	}
+	.mat-mdc-tab-list {
+		@apply border-b border-solid border-border mb-5;
+	}
+	.mat-mdc-tab-body-content {
+		@apply overflow-hidden;
+	}
+    .mat-mdc-tab.mdc-tab--active .mdc-tab__ripple::before {
+        @apply bg-primary;
+    }
+}

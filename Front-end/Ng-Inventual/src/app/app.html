@@ -1,0 +1,37 @@
+<div class="bd-theme-settings-area transition-3 settings-opened" [class.active]="isSettingsAreaActive">
+  <div class="bd-theme-wrapper">
+    <div class="bd-theme-header text-center">
+      <h4 class="bd-theme-header-title">Template Settings</h4>
+    </div>
+
+    <!--  RTL SETTINGS -->
+    <div class="bd-theme-dir">
+      <label class="bd-theme-dir-main" for="bd-dir-toggler">
+        <span class="bd-theme-dir-ltr" (click)="setDirection('ltr')" [class.active]="!isRTL">LTR</span>
+        <input type="checkbox" id="bd-dir-toggler">
+        <i class="bd-theme-dir-slide"></i>
+        <span class="bd-theme-dir-rtl" (click)="setDirection('rtl')" [class.active]="isRTL">RTL</span>
+
+      </label>
+    </div>
+
+    <!-- COLOR SETTINGS -->
+    <div class="bd-theme-settings">
+      <div class="bd-theme-settings-wrapper">
+        <div class="bd-theme-settings-open">
+          <button class="bd-theme-settings-open-btn">
+            <span class="bd-theme-settings-gear" (click)="toggleSettingsArea()">
+              <i class="far fa-cog"></i>
+            </span>
+            <span class="bd-theme-settings-close" (click)="toggleSettingsArea()">
+              <i class="far fa-times"></i>
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div [ngStyle]="{'direction': isRTL ? 'rtl' : 'ltr'}">
+  <router-outlet></router-outlet>
+</div>

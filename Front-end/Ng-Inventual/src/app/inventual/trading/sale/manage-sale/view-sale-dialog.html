@@ -1,0 +1,59 @@
+<h2 mat-dialog-title>Detalle de venta</h2>
+
+<mat-dialog-content>
+    <div class="grid grid-cols-12 gap-4 mb-6">
+        <div class="col-span-6 sm:col-span-12">
+            <strong>Referencia:</strong> {{sale.reference || sale.referencia}}
+        </div>
+        <div class="col-span-6 sm:col-span-12">
+            <strong>Fecha:</strong> {{sale.date || sale.fecha | date:'yyyy-MM-dd'}}
+        </div>
+        <div class="col-span-6 sm:col-span-12">
+            <strong>Cliente:</strong> {{sale.customer || sale.cliente}}
+        </div>
+        <div class="col-span-6 sm:col-span-12">
+            <strong>Bodega:</strong> {{sale.warehouse || sale.bodega || 'Sin bodega'}}
+        </div>
+        <div class="col-span-6 sm:col-span-12">
+            <strong>Facturador:</strong> {{sale.biller || sale.facturador || 'Sin facturador'}}
+        </div>
+        <div class="col-span-6 sm:col-span-12">
+            <strong>Pago:</strong> {{sale.estadoPago || sale.payment}}
+        </div>
+    </div>
+
+    <div class="inventual-common-table">
+        <table class="w-full">
+            <thead>
+                <tr class="bg-gray">
+                    <th class="text-start p-2">Producto</th>
+                    <th class="text-start p-2">Codigo</th>
+                    <th class="text-end p-2">Cantidad</th>
+                    <th class="text-end p-2">Precio</th>
+                    <th class="text-end p-2">Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let detail of sale.detalles">
+                    <td class="p-2">{{detail.name || detail.nombreProducto}}</td>
+                    <td class="p-2">{{detail.code || detail.codigoProducto}}</td>
+                    <td class="p-2 text-end">{{detail.quantity || detail.cantidad}}</td>
+                    <td class="p-2 text-end">${{(detail.price || detail.precioUnitario) | number:'1.2-2'}}</td>
+                    <td class="p-2 text-end">${{(detail.subTotal || detail.subtotal) | number:'1.2-2'}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="text-end mt-6">
+        <p>Subtotal: ${{sale.subtotal | number:'1.2-2'}}</p>
+        <p>Descuento: ${{sale.descuento | number:'1.2-2'}}</p>
+        <p>Impuesto: ${{sale.impuesto | number:'1.2-2'}}</p>
+        <p>Envio: ${{sale.envio | number:'1.2-2'}}</p>
+        <h3 class="text-[18px] font-bold">Total: ${{sale.total | number:'1.2-2'}}</h3>
+    </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-raised-button color="primary" mat-dialog-close>Cerrar</button>
+</mat-dialog-actions>

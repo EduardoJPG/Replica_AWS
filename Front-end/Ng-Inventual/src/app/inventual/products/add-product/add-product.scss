@@ -1,0 +1,48 @@
+@use '../../../../custom-palettes.scss';
+
+@include custom-palettes.inventualMaterialBtn;
+@include custom-palettes.inventualBtnStyle;
+@include custom-palettes.inventualSidebarMuneStyle;
+@include custom-palettes.inventualSelectFieldStyle;
+@include custom-palettes.inventualInputFieldStyle;
+@include custom-palettes.inventualCalenderFieldStyle;
+@include custom-palettes.inventualCheckboxFieldStyle;
+@include custom-palettes.inventualHeaderSearchAction;
+
+.custom-height-70 {
+    @apply h-[70px] min-h-[70px];
+}
+
+.product-image-field {
+    @apply flex items-center gap-5 flex-wrap;
+}
+
+.product-image-preview {
+    @apply h-[140px] w-[140px] rounded border border-solid border-border bg-lightest flex items-center justify-center overflow-hidden;
+    cursor: zoom-in;
+
+    img {
+        @apply h-full w-full object-cover;
+        transform-origin: var(--zoom-origin, center center);
+        transition: transform 180ms ease;
+        will-change: transform;
+    }
+
+    mat-icon {
+        @apply text-[34px] h-[34px] w-[34px] text-body;
+    }
+}
+
+.product-image-preview-zoomed {
+    img {
+        transform: scale(2.25);
+    }
+}
+
+.product-image-actions {
+    @apply flex flex-col gap-3;
+
+    label {
+        @apply text-[14px] font-semibold text-heading;
+    }
+}

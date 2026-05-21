@@ -1,0 +1,114 @@
+<mat-dialog-content>
+    <div class="popup-body">
+        <div class="inventual-popup-inner">
+            <div class="inventual-popup-header relative mb-11">
+                <div class="inventual-popup-header-title">
+                    <h4 class="text-[20px] text-heading font-bold">Add Customer</h4>
+                </div>
+                <div
+                    class="inventual-popup-header-close absolute -top-4 ltr:-right-2.5 ltr:left-auto rtl:left-0 rtl:right-auto">
+                    <mat-dialog-actions>
+                        <div class="default-light-theme">
+                            <a href="javascript:void(0)" mat-dialog-close><mat-icon>clear</mat-icon></a>
+                        </div>
+                    </mat-dialog-actions>
+                </div>
+            </div>
+            <div class="grid grid-cols-12 gap-x-7 sm:gap-x-0">
+                <div class="col-span-12">
+                    <div class="inventual-select-field mb-6">
+                        <h5 class="text-[15px] text-heading font-semibold mb-3">Name</h5>
+                        <div class="inventual-input-field-style">
+                            <mat-form-field class="w-full" [floatLabel]="'always'">
+                                <mat-label class="hidden">Customer name</mat-label>
+                                <input matInput [placeholder]="'Customer name'">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-span-6 sm:col-span-12">
+                    <div class="inventual-select-field mb-6">
+                        <h5 class="text-[15px] text-heading font-semibold mb-3">Customer Group</h5>
+                        <div class="inventual-select-field-style">
+                            <mat-form-field>
+                                <mat-select class="block" [placeholder]="'Select Group'">
+                                    <mat-option value="language-1">General</mat-option>
+                                    <mat-option value="language-2">Walk In</mat-option>
+                                    <mat-option value="language-3">Local</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-span-6 sm:col-span-12">
+                    <div class="inventual-select-field mb-6">
+                        <h5 class="text-[15px] text-heading font-semibold mb-3">Email</h5>
+                        <div class="inventual-input-field-style">
+                            <mat-form-field class="w-full" [floatLabel]="'always'">
+                                <mat-label class="hidden"></mat-label>
+                                <input type="email" matInput [placeholder]="'Type Email'">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-span-6 sm:col-span-12">
+                    <div class="inventual-select-field mb-6">
+                        <h5 class="text-[15px] text-heading font-semibold mb-3">Phone</h5>
+                        <div class="inventual-input-field-style">
+                            <mat-form-field class="w-full" [floatLabel]="'always'">
+                                <mat-label class="hidden"></mat-label>
+                                <input type="email" matInput [placeholder]="'Type phone'">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-span-6 sm:col-span-12">
+                    <div class="inventual-select-field mb-6">
+                        <h5 class="text-[15px] text-heading font-semibold mb-3">Country</h5>
+                        <div class="inventual-select-field-style">
+                            <mat-form-field>
+                                <mat-select class="block" [placeholder]="'Select Country'">
+                                    <mat-option value="language-1">United States</mat-option>
+                                    <mat-option value="language-2">Bangladesh</mat-option>
+                                    <mat-option value="language-3">India</mat-option>
+                                    <mat-option value="language-4">Pakistan</mat-option>
+                                    <mat-option value="language-5">Nepal</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-span-6 sm:col-span-12">
+                    <div class="inventual-select-field mb-6">
+                        <h5 class="text-[15px] text-heading font-semibold mb-3">City</h5>
+                        <div class="inventual-select-field-style">
+                            <mat-form-field>
+                                <mat-select class="block" [placeholder]="'Select City'">
+                                    <mat-option value="language-1">New York</mat-option>
+                                    <mat-option value="language-2">California</mat-option>
+                                    <mat-option value="language-3">Texas</mat-option>
+                                    <mat-option value="language-4">Arizona</mat-option>
+                                    <mat-option value="language-5">Florida</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-span-6 sm:col-span-12">
+                    <div class="inventual-select-field mb-6">
+                        <h5 class="text-[15px] text-heading font-semibold mb-3">Address</h5>
+                        <div class="inventual-input-field-style">
+                            <mat-form-field class="w-full" [floatLabel]="'always'">
+                                <mat-label class="hidden">Customer name</mat-label>
+                                <input matInput [placeholder]="'Address'">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="inventual-material-btn pt-1.5 justify-end">
+                <button type="submit" mat-raised-button color="primary">Create Customer</button>
+            </div>
+        </div>
+    </div>
+</mat-dialog-content>

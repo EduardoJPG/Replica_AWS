@@ -1,0 +1,121 @@
+//custom drag & drop styles
+.inventual-product-image-upload {
+    @apply relative;
+    input {
+        @apply h-[360px] w-full border border-dashed border-primary rounded-lg p-5 cursor-pointer relative text-primary/5 z-[1];
+    }
+    input::file-selector-button {
+        @apply hidden;
+    }
+    input[type="file"]::placeholder {
+        visibility: hidden;
+    }
+    &-inner {
+        @apply text-center absolute top-[60px] start-0 w-full px-1.5 cursor-pointer z-[0];
+        img {
+            @apply inline-block;
+        }
+        h4 {
+            @apply text-heading text-[20px] font-semibold leading-none;
+        }
+        span {
+            @apply text-[14px] font-medium text-body block;
+        }
+        button {
+            @apply relative z-[-1];
+        }
+    }
+    .inventual-product-image-uploaded-wrap {
+        @apply flex flex-wrap gap-2.5;
+        img {
+            @apply w-[60px];
+        }
+        .image-container {
+            @apply relative mt-5;
+            .delete-icon {
+                @apply absolute h-5 w-5 bg-border rounded-bl cursor-pointer hover:text-primary text-[12px] leading-none text-danger inline-flex justify-center items-center top-0 end-0;
+                i {
+                    @apply text-[12px];
+                }
+            }
+        }
+    }
+}
+
+//product brand image upload styles
+.inventual-brand-img-field {
+    @apply relative;
+    input {
+        @apply h-[160px] w-[200px] border border-dashed border-primary rounded-lg p-2.5 cursor-pointer relative text-primary/5 z-[1];
+    }
+    input::file-selector-button {
+        @apply hidden;
+    }
+    input[type="file"]::placeholder {
+        visibility: hidden;
+    }
+    &-inner {
+        @apply text-[14px] font-medium text-body block text-center absolute top-[50%] whitespace-nowrap start-[50%] px-1.5 cursor-pointer z-[0];
+        transform: translate(-50%, -50%);
+    }
+}
+.inventual-brand-img-uploaded-wrap {
+    @apply flex flex-wrap gap-2.5;
+    img {
+        @apply w-[60px];
+    }
+    .image-container {
+        @apply relative;
+        .delete-icon {
+            @apply absolute h-5 w-5 bg-border rounded-bl cursor-pointer hover:text-primary text-[12px] leading-none text-danger inline-flex justify-center items-center top-0 end-0;
+            i {
+                @apply text-[12px];
+            }
+        }
+    }
+}
+.file-import-btn {
+    @apply flex flex-wrap gap-2.5 items-start;
+    input {
+        @apply h-12 w-[190px] bg-primary text-primary hover:text-success rounded px-[10px] leading-[48px] relative z-[1] hover:bg-success transition-all duration-300 cursor-pointer;
+    }
+    input::file-selector-button {
+        @apply hidden;
+    }
+    input[type="file"]::placeholder {
+        visibility: hidden;
+    }
+    .file-import-btn-inner {
+        @apply absolute top-[50%] start-[50%] text-[16px] whitespace-nowrap font-semibold font-primary z-[1] cursor-pointer text-white;
+        transform: translate(-50%, -50%);
+
+        i {
+            @apply me-1;
+        }
+    }
+    .image-container {
+        @apply relative inline-block;
+
+        .delete-icon {
+            @apply absolute h-5 w-5 bg-danger/20 rounded-bl cursor-pointer text-[12px] leading-none text-danger inline-flex justify-center items-center top-0 end-0;
+
+            i {
+                @apply text-[12px];
+            }
+        }
+    }
+    .file-import-btn-uploaded-wrap {
+        @apply leading-[0px];
+    }
+}
+.file-import-btn-uploaded-wrap {
+    .file-item {
+        @apply relative bg-border py-0 px-2.5 h-12 flex justify-center items-center;
+        .delete-icon {
+            @apply h-5 w-5 cursor-pointer text-white bg-danger rounded-[50%] inline-flex justify-center items-center absolute top-0 end-0;
+            i {
+                @apply text-[14px];
+            }
+        }
+    }
+}

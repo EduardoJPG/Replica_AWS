@@ -1,0 +1,81 @@
+<form #form="ngForm" (ngSubmit)="login()">
+
+<div class="inventual-login-area flex justify-center items-center w-full min-h-screen h-full">
+    <div class="inventual-login-wrapper">
+
+        <!-- LOGO -->
+        <div class="inventual-login-logo text-center mb-12">
+            <img src="assets/img/logo/login-logo.png" alt="logo not found">
+        </div>
+
+        <!-- USERNAME -->
+        <div class="inventual-select-field mb-5">
+            <div class="inventual-input-field-style">
+                <mat-form-field class="w-full" [floatLabel]="'always'">
+
+                    <input matInput
+                        placeholder="Username"
+                        [(ngModel)]="credentials.username"
+                        name="username"
+                        required
+                        #username="ngModel">
+
+                    <mat-error *ngIf="username.invalid && username.touched">
+                        El usuario es obligatorio
+                    </mat-error>
+
+                </mat-form-field>
+
+                <caption><mat-icon>person_outline</mat-icon></caption>
+            </div>
+        </div>
+
+        <!-- PASSWORD -->
+        <div class="inventual-select-field mb-5">
+            <div class="inventual-input-field-style inventual-input-field-style-eye">
+
+                <mat-form-field appearance="fill">
+
+                    <input matInput
+                        placeholder="Password"
+                        [type]="hide ? 'password' : 'text'"
+                        [(ngModel)]="credentials.password"
+                        name="password"
+                        required
+                        #password="ngModel">
+
+                    <button mat-icon-button matSuffix (click)="hide = !hide" type="button">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+
+                    <mat-error *ngIf="password.invalid && password.touched">
+                        La contraseña es obligatoria
+                    </mat-error>
+
+                </mat-form-field>
+            </div>
+        </div>
+
+        <!-- FORGOT -->
+        <div class="inventual-login-footer-forgot mb-5">
+            <a [routerLink]="['/forgotpassword']" class="text-[16px] inline-block text-primary">
+                Forgot Password?
+            </a>
+        </div>
+
+        <!-- BUTTON -->
+        <div class="inventual-login-btn mb-7">
+            <div class="inventual-material-btn">
+
+                <button 
+                    mat-raised-button 
+                    color="primary"
+                    [disabled]="form.invalid">
+                    Log in
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</form>

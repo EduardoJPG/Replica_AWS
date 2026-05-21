@@ -1,0 +1,77 @@
+<div class="inventual-login-area flex justify-center min-h-screen items-center w-full h-full">
+    <div class="inventual-login-wrapper">
+        <div class="inventual-login-logo text-center mb-12">
+            <img src="assets/img/logo/login-logo.png" alt="logo not found">
+        </div>
+        <div class="inventual-select-field mb-5">
+            <div class="inventual-input-field-style">
+                <mat-form-field class="w-full" [floatLabel]="'always'">
+                    <mat-label class="hidden">Joseph Tylor</mat-label>
+                    <input matInput [placeholder]="'Name'">
+                </mat-form-field>
+                <caption><mat-icon>person_outline</mat-icon></caption>
+            </div>
+        </div>
+        <div class="inventual-select-field mb-5">
+            <div class="inventual-input-field-style">
+                <mat-form-field class="w-full" [floatLabel]="'always'">
+                    <mat-label class="hidden">Joseph Tylor</mat-label>
+                    <input matInput [placeholder]="'Username'">
+                </mat-form-field>
+                <caption><mat-icon>person_outline</mat-icon></caption>
+            </div>
+        </div>
+        <div class="inventual-select-field mb-5">
+            <div class="inventual-input-field-style">
+                <mat-form-field class="w-full" [floatLabel]="'always'">
+                    <mat-label class="hidden">Joseph Tylor</mat-label>
+                    <input matInput type="email" [placeholder]="'Email'">
+                </mat-form-field>
+                <caption><mat-icon>mail_outline</mat-icon></caption>
+            </div>
+        </div>
+        <div class="inventual-select-field mb-5">
+            <div class="inventual-input-field-style">
+                <mat-form-field class="w-full" [floatLabel]="'always'">
+                    <mat-label class="hidden">Joseph Tylor</mat-label>
+                    <input matInput [placeholder]="'Phone'">
+                </mat-form-field>
+                <caption><mat-icon>phone</mat-icon></caption>
+            </div>
+        </div>
+        <div class="inventual-select-field mb-5">
+            <div class="inventual-select-field-style">
+                <mat-form-field>
+                    <mat-select class="block" [placeholder]="'Select Role'">
+                        <mat-option value="language-2">Admin</mat-option>
+                        <mat-option value="language-3">Staff</mat-option>
+                        <mat-option value="language-4">Customer</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="inventual-select-field mb-5">
+            <div class="inventual-input-field-style inventual-input-field-style-eye">
+                <mat-form-field appearance="fill">
+                    <mat-label class="hidden">Enter your password</mat-label>
+                    <input matInput [placeholder]="'Password'" [type]="hide ? 'password' : 'text'" value="123456">
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="inventual-login-btn mb-7">
+            <div class="inventual-material-btn">
+                <button [routerLink]="['']" type="submit" mat-raised-button color="primary">Register</button>
+            </div>
+        </div>
+        <div class="inventual-login-footer">
+            <div class="inventual-login-footer-account text-center">
+                <span class="text-[16px] inline-block text-body">Already have an account? <a [routerLink]="['']"
+                        class="text-[16px] text-primary">Login</a></span>
+            </div>
+        </div>
+    </div>
+</div>

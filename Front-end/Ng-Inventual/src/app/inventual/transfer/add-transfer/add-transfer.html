@@ -1,0 +1,169 @@
+<div class="inventual-dashboard-area">
+    <div class="inventual-dashboard-sidebar" [class.sidebar-enable]="menuSidebarActive">
+        <div class="inventual-header-bar-responsive" (click)="myfunction()">
+            <mat-icon>reorder</mat-icon>
+        </div>
+        <div
+            class="inventual-menu-wrapper bg-white border-e border-b border-solid border-border py-10 px-7 lg:px-5 lg:py-8">
+            <app-menus></app-menus>
+        </div>
+        <div class="inventual-menu-overlay" (click)="myfunction()" [class.sidebar-enable]="menuSidebarActive"></div>
+    </div>
+    <div class="inventual-dashboard-main" [class.sidebar-enable]="menuSidebarActive">
+        <div class="inventual-header-area">
+            <div class="inventual-header-wrapper custom-height-70 px-7 bg-white border-b border-solid border-border">
+                <div class="grid grid-cols-12 items-center h-full">
+                    <div class="col-span-12">
+                        <app-header></app-header>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="inventual-breadcrumb-area px-7 py-9 bg-white mb-5">
+            <div class="inventual-breadcrumb-area-inner px-0.5">
+                <h5 class="text-[20px] text-heading font-bold mb-3">Add Transfer</h5>
+                <div class="inventual-breadcrumb-area-inner-wrap">
+                    <span class="text-[14px] text-body font-normal inline-block me-2">Transfer</span>
+                    <span class="text-[14px] text-body font-normal inline-block me-2">></span>
+                    <span class="text-[14px] text-body font-normal inline-block me-2">Add Transfer</span>
+                </div>
+            </div>
+        </div>
+        <div class="inventual-content-area px-7">
+            <div class="inventual-addsale-area bg-white p-7 custom-shadow rounded-8 mb-5">
+                <div class="grid grid-cols-12 gap-x-7 sm:gap-x-0">
+                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                        <div class="inventual-calender-field mb-5">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">Date</h5>
+                            <div class="inventual-calender-field-style">
+                                <mat-form-field appearance="fill" floatLabel="always">
+                                    <mat-label class="hidden">Choose a date</mat-label>
+                                    <input matInput [matDatepicker]="picker" [placeholder]="'MM/DD/YYYY'">
+                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                        <div class="inventual-select-field mb-5">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">Reference</h5>
+                            <div class="inventual-input-field-style">
+                                <mat-form-field class="w-full" [floatLabel]="'always'">
+                                    <mat-label class="hidden">Reference</mat-label>
+                                    <input matInput [placeholder]="'S-326564580711'">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                        <div class="inventual-select-field mb-5">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">Product Name</h5>
+                            <div class="inventual-input-field-style">
+                                <mat-form-field class="w-full" [floatLabel]="'always'">
+                                    <mat-label class="hidden">Denim Jeans</mat-label>
+                                    <input matInput [placeholder]="'Denim Jeans'">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                        <div class="inventual-select-field mb-5">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">Quantity</h5>
+                            <div class="inventual-input-field-style">
+                                <mat-form-field class="w-full" [floatLabel]="'always'">
+                                    <mat-label class="hidden">Denim Jeans</mat-label>
+                                    <input type="number" matInput [placeholder]="'1500'">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                        <div class="inventual-select-field mb-5">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">Authorized By</h5>
+                            <div class="inventual-input-field-style">
+                                <mat-form-field class="w-full" [floatLabel]="'always'">
+                                    <mat-label class="hidden">Denim Jeans</mat-label>
+                                    <input matInput [placeholder]="'Emily Johnson'">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                        <div class="inventual-select-field mb-5">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">Reason</h5>
+                            <div class="inventual-input-field-style">
+                                <mat-form-field class="w-full" [floatLabel]="'always'">
+                                    <mat-label class="hidden">Denim Jeans</mat-label>
+                                    <input matInput [placeholder]="'Stock Rebalancing'">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                        <div class="inventual-select-field mb-5">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">From Warehouse</h5>
+                            <div class="inventual-select-field-style">
+                                <mat-form-field>
+                                    <mat-select class="block" [placeholder]="'Warehouse'">
+                                        <mat-option value="language-1">United States</mat-option>
+                                        <mat-option value="language-2">Canada</mat-option>
+                                        <mat-option value="language-3">Mexico</mat-option>
+                                        <mat-option value="language-4">France</mat-option>
+                                        <mat-option value="language-5">Germany</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                        <div class="inventual-select-field mb-5">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">To Warehouse</h5>
+                            <div class="inventual-select-field-style">
+                                <mat-form-field>
+                                    <mat-select class="block" [placeholder]="'Warehouse'">
+                                        <mat-option value="language-1">United States</mat-option>
+                                        <mat-option value="language-2">Canada</mat-option>
+                                        <mat-option value="language-3">Mexico</mat-option>
+                                        <mat-option value="language-4">France</mat-option>
+                                        <mat-option value="language-5">Germany</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                        <div class="inventual-select-field mb-5">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">Status</h5>
+                            <div class="inventual-select-field-style">
+                                <mat-form-field>
+                                    <mat-select class="block" [placeholder]="'Select Status'">
+                                        <mat-option value="language-1">Completed</mat-option>
+                                        <mat-option value="language-2">Pending</mat-option>
+                                        <mat-option value="language-2">Rejected</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-12">
+                        <div class="inventual-select-field mb-5">
+                            <h5 class="text-[15px] text-heading font-semibold mb-3">Transfer Note:</h5>
+                            <div class="inventual-input-field-style relative">
+                                <textarea placeholder="Type text...."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-12">
+                        <div class="inventual-material-btn pt-2.5 justify-end">
+                            <button mat-raised-button color="primary">Create Transfer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="inventual-copyright-area">
+            <app-footer></app-footer>
+        </div>
+    </div>
+</div>

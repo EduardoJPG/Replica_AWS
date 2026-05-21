@@ -1,0 +1,35 @@
+@use '../../../../custom-palettes.scss';
+
+//sidebar menu style
+@include custom-palettes.inventualSidebarMuneStyle;
+// Select field style
+@include custom-palettes.inventualSelectFieldStyle;
+// Input field style
+@include custom-palettes.inventualInputFieldStyle;
+//calender field style
+@include custom-palettes.inventualCalenderFieldStyle;
+@include custom-palettes.inventualMaterialBtn;
+
+.custom-height-70 {
+    @apply h-[70px] min-h-[70px];
+}
+
+.inventual-select-field-nid .mat-mdc-form-field {
+    @apply inline-flex justify-center me-1 w-8;
+
+    @media (min-width: 992px) and (max-width: 1900px) {
+        @apply w-6;
+    }
+
+    @media (max-width: 767px) {
+        @apply w-6;
+    }
+
+    &::last-child {
+        @apply me-0;
+    }
+
+    .mat-mdc-input-element {
+        @apply p-0 text-center;
+    }
+}

@@ -1,0 +1,42 @@
+<mat-dialog-content>
+    <div class="popup-body">
+        <div class="inventual-popup-inner">
+            <div class="inventual-popup-header relative mb-6">
+                <div class="inventual-popup-header-title">
+                    <h4 class="text-[20px] text-heading font-bold">Select Categories</h4>
+                </div>
+                <div
+                    class="inventual-popup-header-close absolute -top-4 ltr:-right-2.5 ltr:left-auto rtl:left-0 rtl:right-auto">
+                    <mat-dialog-actions>
+                        <div class="default-light-theme">
+                            <a href="javascript:void(0)" mat-dialog-close>
+                                <mat-icon>clear</mat-icon>
+                            </a>
+                        </div>
+                    </mat-dialog-actions>
+                </div>
+            </div>
+            <div class="pos-brands pt-5 border-t border-border">
+                <div class="grid grid-cols-12 gap-5 xs:gap-x-0">
+                    <div class="col-span-3 sm:col-span-12" *ngFor="let category of categories"
+                        (click)="selectCategory(category)">
+                        <div class="pos-product-item" [class.selected]="category.selected">
+                            <div class="pos-product-item-img">
+                                <img [src]="category.image" alt="img not found">
+                            </div>
+                            <div class="pos-product-item-text">
+                                <h5>{{ category.name }}</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-12">
+                        <div class="pt-1.5 text-end">
+                            <button type="button" class="inventual-btn primary-btn" (click)="closeDialog()">Select
+                                Categories</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</mat-dialog-content>

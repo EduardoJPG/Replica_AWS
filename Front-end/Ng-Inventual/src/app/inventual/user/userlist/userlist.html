@@ -1,0 +1,213 @@
+<div class="inventual-dashboard-area">
+    <div class="inventual-dashboard-sidebar" [class.sidebar-enable]="menuSidebarActive">
+        <div class="inventual-header-bar-responsive" (click)="myfunction()">
+            <mat-icon>reorder</mat-icon>
+        </div>
+        <div
+            class="inventual-menu-wrapper bg-white border-e border-b border-solid border-border py-10 px-7 lg:px-5 lg:py-8">
+            <app-menus></app-menus>
+        </div>
+        <div class="inventual-menu-overlay" (click)="myfunction()" [class.sidebar-enable]="menuSidebarActive"></div>
+    </div>
+    <div class="inventual-dashboard-main" [class.sidebar-enable]="menuSidebarActive">
+        <div class="inventual-header-area">
+            <div class="inventual-header-wrapper custom-height-70 px-7 bg-white border-b border-solid border-border">
+                <div class="grid grid-cols-12 items-center h-full">
+                    <div class="col-span-12">
+                        <app-header></app-header>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="inventual-breadcrumb-area px-7 py-9 bg-white mb-5">
+            <div class="inventual-breadcrumb-area-inner px-0.5">
+                <h5 class="text-[20px] text-heading font-bold mb-3">User List</h5>
+                <div class="inventual-breadcrumb-area-inner-wrap">
+                    <span class="text-[14px] text-body font-normal inline-block me-2">User Management</span>
+                    <span class="text-[14px] text-body font-normal inline-block me-2">></span>
+                    <span class="text-[14px] text-body font-normal inline-block me-2">User List</span>
+                </div>
+            </div>
+        </div>
+        <div class="inventual-content-area px-7">
+            <div class="inventual-common-material-table bg-white p-7 custom-shadow rounded-8 mb-5">
+                <div class="inventual-material-btn mb-7">
+                    <button mat-raised-button color="accent"
+                        *ngIf="auth.hasPermission('Usuarios','puede_crear')"
+                        [routerLink]="['/client/adduser']"
+                        class="mb-1">
+                        <mat-icon>add_circle_outline</mat-icon> Add User
+                    </button>
+                </div>
+                <div class="inventual-table-header-search-area">
+                    <div class="grid grid-cols-12 gap-5 mb-7 pb-0.5">
+                        <div class="col-span-5 md:col-span-6 sm:col-span-12">
+                            <div class="inventual-select-field">
+                                <div class="inventual-input-field-style">
+                                    <mat-form-field class="w-full" [floatLabel]="'always'">
+                                        <mat-label class="hidden">Filter</mat-label>
+                                        <input matInput (keyup)="applyFilter($event)" placeholder="Search here" #input>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-span-7 md:col-span-6 sm:col-span-12">
+                            <div class="inventual-table-header-search-action-btn text-end sm:text-start">
+                                <button type="button" class="filter" [matMenuTriggerFor]="beforeMenuA">
+                                    <app-filter-icon></app-filter-icon> Filter
+                                </button>
+                                <mat-menu #beforeMenuA="matMenu" xPosition="before">
+                                    <button mat-menu-item>
+                                        <span>Name</span>
+                                    </button>
+                                    <button mat-menu-item>
+                                        <span>Role</span>
+                                    </button>
+                                    <button mat-menu-item>
+                                        <span>Status</span>
+                                    </button>
+                                </mat-menu>
+                                <button type="button" class="pdf">
+                                    <app-pdf-icon></app-pdf-icon>
+                                </button>
+                                <button type="button" class="csv">
+                                    <app-csv-icon></app-csv-icon>
+                                </button>
+                                <button type="button" class="printer">
+                                    <app-printer-icon></app-printer-icon>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="inventual-common-table">
+                    <table mat-table [dataSource]="dataSource" matSort>
+
+                        <!-- Checkbox Column -->
+                        <ng-container matColumnDef="select">
+                            <th mat-header-cell *matHeaderCellDef>
+                                <mat-checkbox (change)="$event ? toggleAllRows() : null"
+                                    [checked]="selection.hasValue() && isAllSelected()"
+                                    [indeterminate]="selection.hasValue() && !isAllSelected()"
+                                    [aria-label]="checkboxLabel()">
+                                </mat-checkbox>
+                            </th>
+                            <td mat-cell *matCellDef="let row">
+                                <mat-checkbox (click)="$event.stopPropagation()"
+                                    (change)="$event ? selection.toggle(row) : null"
+                                    [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)">
+                                </mat-checkbox>
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="id">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> SL </th>
+                            <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="name">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+                            <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="phone">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Phone </th>
+                            <td mat-cell *matCellDef="let row"> {{row.phone}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="email">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+                            <td mat-cell *matCellDef="let row"> {{row.email}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="role">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Role </th>
+                            <td mat-cell *matCellDef="let row"> {{row.role}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="status">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+                            <td mat-cell *matCellDef="let row">
+                                <div>
+                                    <span *ngIf="row.status === 'Online'"
+                                        class="badge-stroke badge-success">Online</span>
+                                    <span *ngIf="row.status === 'Offline'"
+                                        class="badge-stroke badge-warning">Offline</span>
+                                </div>
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="address">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Address </th>
+                            <td mat-cell *matCellDef="let row"> {{row.address}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="action">
+                            <th mat-header-cell *matHeaderCellDef> Action </th>
+                            <td mat-cell *matCellDef="let row">
+                                <div class="table-action-menu-wrap">
+                                    <button mat-icon-button [matMenuTriggerFor]="beforeMenu"
+                                        class="common-action-menu-style" aria-label="Example icon-button with a menu">
+                                        Action <mat-icon>arrow_drop_down</mat-icon>
+                                    </button>
+                                    <mat-menu #beforeMenu="matMenu" xPosition="before">
+
+                                        <!-- EDITAR -->
+                                        <button mat-menu-item
+                                            *ngIf="auth.hasPermission('Usuarios','puede_editar')"
+                                            (click)="editUser(row)">
+                                            <img src="assets/img/icon/action-2.png">
+                                            <span>Edit User</span>
+                                        </button>
+
+                                        <!-- DESACTIVAR -->
+                                        <button mat-menu-item
+                                            *ngIf="row.status === 'Online' && !isCurrentUser(row.id) && auth.hasPermission('Usuarios','puede_eliminar')"
+                                            (click)="deleteUser(row.id)">
+                                            <img src="assets/img/icon/action-6.png">
+                                            <span>Deactivate User</span>
+                                        </button>
+
+                                        <!-- REACTIVAR -->
+                                        <button mat-menu-item
+                                            *ngIf="row.status === 'Offline' && auth.hasPermission('Usuarios','puede_editar')"
+                                            (click)="reactivateUser(row.id)">
+                                            <img src="assets/img/icon/action-2.png">
+                                            <span>Reactivate User</span>
+                                        </button>
+
+                                    </mat-menu>
+                                </div>
+                            </td>
+                        </ng-container>
+
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <!-- <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr> -->
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)">
+                        </tr>
+
+                        <!-- Row shown when there is no matching data. -->
+                        <tr class="mat-row" *matNoDataRow>
+                            <td class="mat-cell" colspan="8">
+                                <div class="table-data-not-found">
+                                    <p>No data matching the filter "{{input.value}}"</p>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <mat-paginator
+                        [pageSize]="pageSize"
+                        [pageSizeOptions]="pageSizeOptions"
+                        (page)="onPageChange($event)"
+                        showFirstLastButtons
+                        aria-label="Seleccionar cantidad de usuarios por pagina">
+                    </mat-paginator>
+                </div>
+            </div>
+        </div>
+        <div class="inventual-copyright-area">
+            <app-footer></app-footer>
+        </div>
+    </div>
+</div>

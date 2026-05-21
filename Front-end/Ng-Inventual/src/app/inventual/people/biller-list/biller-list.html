@@ -1,0 +1,306 @@
+<div class="inventual-dashboard-area">
+
+    <!-- SIDEBAR -->
+    <div class="inventual-dashboard-sidebar"
+        [class.sidebar-enable]="menuSidebarActive">
+
+        <div class="inventual-header-bar-responsive"
+            (click)="myfunction()">
+
+            <mat-icon>reorder</mat-icon>
+
+        </div>
+
+        <div class="inventual-menu-wrapper bg-white border-e border-b border-solid border-border py-10 px-7 lg:px-5 lg:py-8">
+
+            <app-menus></app-menus>
+
+        </div>
+
+        <div class="inventual-menu-overlay"
+            (click)="myfunction()"
+            [class.sidebar-enable]="menuSidebarActive">
+        </div>
+
+    </div>
+
+    <!-- MAIN -->
+    <div class="inventual-dashboard-main"
+        [class.sidebar-enable]="menuSidebarActive">
+
+        <!-- HEADER -->
+        <div class="inventual-header-area">
+
+            <div class="inventual-header-wrapper custom-height-70 px-7 bg-white border-b border-solid border-border">
+
+                <div class="grid grid-cols-12 items-center h-full">
+
+                    <div class="col-span-12">
+                        <app-header></app-header>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- BREADCRUMB -->
+        <div class="inventual-breadcrumb-area px-7 py-9 bg-white mb-5">
+
+            <div class="inventual-breadcrumb-area-inner px-0.5">
+
+                <h5 class="text-[20px] text-heading font-bold mb-3">
+                    {{ translationService.translateText('Biller List') }}
+                </h5>
+
+                <div class="inventual-breadcrumb-area-inner-wrap">
+
+                    <span class="text-[14px] text-body font-normal inline-block me-2">
+                        {{ translationService.translateText('Billers') }}
+                    </span>
+
+                    <span class="text-[14px] text-body font-normal inline-block me-2">
+                        >
+                    </span>
+
+                    <span class="text-[14px] text-body font-normal inline-block me-2">
+                        {{ translationService.translateText('Biller List') }}
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- CONTENT -->
+        <div class="inventual-content-area px-7">
+
+            <div class="inventual-common-material-table bg-white p-7 custom-shadow rounded-8 mb-5">
+
+                <!-- BUTTON -->
+                <div class="inventual-material-btn mb-7">
+
+                    <button mat-raised-button
+                        color="accent"
+                        [routerLink]="['/people/addbiller']">
+
+                        <mat-icon>add_circle_outline</mat-icon>
+
+                        {{ translationService.translateText('Add Biller') }}
+
+                    </button>
+
+                </div>
+
+                <!-- SEARCH -->
+                <div class="inventual-table-header-search-area">
+
+                    <div class="grid grid-cols-12 gap-5 mb-7">
+
+                        <div class="col-span-5 md:col-span-6 sm:col-span-12">
+
+                            <mat-form-field class="w-full" [floatLabel]="'always'">
+
+                                <mat-label>{{ translationService.translateText('Filter') }}</mat-label>
+
+                                <input matInput
+                                    (keyup)="applyFilter($event)"
+                                    [placeholder]="translationService.translateText('Search biller')">
+
+                            </mat-form-field>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- TABLE -->
+                <div class="inventual-common-table">
+
+                    <table mat-table [dataSource]="dataSource" matSort>
+
+                        <!-- ID -->
+                        <ng-container matColumnDef="idFacturador">
+
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                                ID
+                            </th>
+
+                            <td mat-cell *matCellDef="let row">
+                                {{ row.idFacturador }}
+                            </td>
+
+                        </ng-container>
+
+                        <!-- NOMBRE -->
+                        <ng-container matColumnDef="nombreFacturador">
+
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                                {{ translationService.translateText('Name') }}
+                            </th>
+
+                            <td mat-cell *matCellDef="let row">
+                                {{ row.nombreFacturador }}
+                            </td>
+
+                        </ng-container>
+
+                        <!-- TELEFONO -->
+                        <ng-container matColumnDef="telefono">
+
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                                {{ translationService.translateText('Phone') }}
+                            </th>
+
+                            <td mat-cell *matCellDef="let row">
+                                {{ row.telefono }}
+                            </td>
+
+                        </ng-container>
+
+                        <!-- EMAIL -->
+                        <ng-container matColumnDef="email">
+
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                                {{ translationService.translateText('Email') }}
+                            </th>
+
+                            <td mat-cell *matCellDef="let row">
+                                {{ row.email }}
+                            </td>
+
+                        </ng-container>
+
+                        <!-- CÓDIGO -->
+                        <ng-container matColumnDef="codigoFacturador">
+
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                                {{ translationService.translateText('Biller Code') }}
+                            </th>
+
+                            <td mat-cell *matCellDef="let row">
+                                {{ row.codigoFacturador }}
+                            </td>
+
+                        </ng-container>
+
+                        <!-- DIRECCIÓN -->
+                        <ng-container matColumnDef="direccion">
+
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                                {{ translationService.translateText('Address') }}
+                            </th>
+
+                            <td mat-cell *matCellDef="let row">
+                                {{ row.direccion }}
+                            </td>
+
+                        </ng-container>
+
+                        <!-- ESTADO -->
+                        <ng-container matColumnDef="status">
+
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                                {{ translationService.translateText('Status') }}
+                            </th>
+
+                            <td mat-cell *matCellDef="let row">
+
+                                <span *ngIf="row.status === 'Online'"
+                                    class="badge-stroke badge-success">{{ translationService.translateText('Online') }}</span>
+                                <span *ngIf="row.status === 'Offline'"
+                                    class="badge-stroke badge-warning">{{ translationService.translateText('Offline') }}</span>
+
+                            </td>
+
+                        </ng-container>
+
+                        <!-- ACTION -->
+                        <ng-container matColumnDef="action">
+
+                            <th mat-header-cell *matHeaderCellDef> {{ translationService.translateText('Action') }} </th>
+
+                            <td mat-cell *matCellDef="let row">
+
+                                <div class="table-action-menu-wrap">
+
+                                    <button mat-icon-button [matMenuTriggerFor]="menu"
+                                        class="common-action-menu-style" aria-label="Example icon-button with a menu">
+                                        {{ translationService.translateText('Action') }} <mat-icon>arrow_drop_down</mat-icon>
+                                    </button>
+
+                                    <mat-menu #menu="matMenu" xPosition="before">
+
+                                        <!-- EDITAR -->
+                                        <button mat-menu-item
+                                            *ngIf="auth.hasPermission('Facturadores','puede_editar')"
+                                            (click)="editarFacturador(row)">
+                                            <img src="assets/img/icon/action-2.png" alt="icon not found">
+                                            <span>{{ translationService.translateText('Edit Biller') }}</span>
+                                        </button>
+
+                                        <!-- DESACTIVAR -->
+                                        <button mat-menu-item
+                                            *ngIf="row.status === 'Online' && auth.hasPermission('Facturadores','puede_eliminar')"
+                                            (click)="eliminarFacturador(row.idFacturador)">
+                                            <img src="assets/img/icon/action-6.png" alt="icon not found">
+                                            <span>{{ translationService.translateText('Deactivate Biller') }}</span>
+                                        </button>
+
+                                        <!-- REACTIVAR -->
+                                        <button mat-menu-item
+                                            *ngIf="row.status === 'Offline' && auth.hasPermission('Facturadores','puede_editar')"
+                                            (click)="reactivarFacturador(row.idFacturador)">
+                                            <img src="assets/img/icon/action-2.png" alt="icon not found">
+                                            <span>{{ translationService.translateText('Reactivate Biller') }}</span>
+                                        </button>
+
+                                    </mat-menu>
+
+                                </div>
+
+                            </td>
+
+                        </ng-container>
+
+                        <!-- HEADER -->
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
+                        <!-- ROW -->
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                        <!-- EMPTY -->
+                        <tr class="mat-row" *matNoDataRow>
+
+                            <td class="mat-cell" colspan="8">
+                                <div class="table-data-not-found">
+                                    {{ translationService.translateText('No billers registered') }}
+                                </div>
+                            </td>
+
+                        </tr>
+
+                    </table>
+
+                    <!-- PAGINATOR -->
+                    <mat-paginator
+                        [pageSizeOptions]="[10, 25, 100]">
+                    </mat-paginator>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- FOOTER -->
+        <div class="inventual-copyright-area">
+            <app-footer></app-footer>
+        </div>
+
+    </div>
+
+</div>

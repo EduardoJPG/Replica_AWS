@@ -1,0 +1,107 @@
+<mat-dialog-content>
+    <div class="popup-body">
+        <div class="inventual-popup-inner">
+            <div class="inventual-popup-header relative mb-11">
+                <div class="inventual-popup-header-title">
+                    <h4 class="text-[20px] text-heading font-bold">Add Payment</h4>
+                </div>
+                <div
+                    class="inventual-popup-header-close absolute -top-4 ltr:-right-2.5 ltr:left-auto rtl:left-0 rtl:right-auto">
+                    <mat-dialog-actions>
+                        <div class="default-light-theme">
+                            <a href="javascript:void(0)" mat-dialog-close>
+                                <mat-icon>clear</mat-icon>
+                            </a>
+                        </div>
+                    </mat-dialog-actions>
+                </div>
+            </div>
+            <div class="grid grid-cols-12 gap-x-7 sm:gap-x-0">
+                <div class="col-span-6 sm:col-span-12">
+                    <div class="inventual-select-field mb-6">
+                        <h5 class="text-[15px] text-heading font-semibold mb-3">Received Amount</h5>
+                        <div class="inventual-input-field-style">
+                            <mat-form-field class="w-full" [floatLabel]="'always'">
+                                <mat-label class="hidden">Customer name</mat-label>
+                                <input type="number" matInput [placeholder]="'$4595.00'">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-span-6 sm:col-span-12">
+                    <div class="inventual-select-field mb-6">
+                        <h5 class="text-[15px] text-heading font-semibold mb-3">Paying Amount</h5>
+                        <div class="inventual-input-field-style">
+                            <mat-form-field class="w-full" [floatLabel]="'always'">
+                                <mat-label class="hidden">Customer name</mat-label>
+                                <input type="number" matInput [placeholder]="'$3595.00'">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-span-6 sm:col-span-12">
+                    <div class="inventual-select-field mb-6">
+                        <h5 class="text-[15px] text-heading font-semibold mb-3">Change</h5>
+                        <div class="inventual-input-field-style">
+                            <mat-form-field class="w-full" [floatLabel]="'always'">
+                                <mat-label class="hidden">Customer name</mat-label>
+                                <input type="number" matInput [placeholder]="'0.00'">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-span-6 sm:col-span-12">
+                    <div class="inventual-select-field mb-6">
+                        <h5 class="text-[15px] text-heading font-semibold mb-3">Payment Type</h5>
+                        <div class="inventual-select-field-style">
+                            <mat-form-field>
+                                <mat-select class="block" [placeholder]="'Select Type'">
+                                    <mat-option value="language-1">Card</mat-option>
+                                    <mat-option value="language-2">Cash</mat-option>
+                                    <mat-option value="language-3">Bank</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-span-6 sm:col-span-12">
+                    <div class="inventual-select-field mb-6">
+                        <h5 class="text-[15px] text-heading font-semibold mb-3">Card Number</h5>
+                        <div class="inventual-input-field-style">
+                            <mat-form-field class="w-full" [floatLabel]="'always'">
+                                <mat-label class="hidden">Customer name</mat-label>
+                                <input matInput [placeholder]="'XXXX   XXXX   XXXX   XXXX'">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-span-6 sm:col-span-12">
+                    <div class="inventual-calender-field mb-5">
+                        <h5 class="text-[15px] text-heading font-semibold mb-3">Expired Date</h5>
+                        <div class="inventual-calender-field-style">
+                            <mat-form-field appearance="fill" floatLabel="always">
+                                <mat-label class="hidden">Choose a date</mat-label>
+                                <input matInput [matDatepicker]="picker" [placeholder]="'MM/DD/YYYY'">
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-span-12">
+                    <div class="inventual-select-field mb-6">
+                        <h5 class="text-[15px] text-heading font-semibold mb-3">Sale Note</h5>
+                        <div class="inventual-input-field-style">
+                            <textarea placeholder="Type sales note"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-span-12">
+                    <div class="inventual-material-btn pt-1.5 justify-end">
+                        <button type="submit" mat-raised-button color="primary">Pay Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</mat-dialog-content>

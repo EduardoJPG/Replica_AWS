@@ -1,0 +1,139 @@
+<div class="inventual-dashboard-area">
+    <div class="inventual-dashboard-sidebar" [class.sidebar-enable]="menuSidebarActive">
+        <div class="inventual-header-bar-responsive" (click)="myfunction()">
+            <mat-icon>reorder</mat-icon>
+        </div>
+        <div
+            class="inventual-menu-wrapper bg-white border-e border-b border-solid border-border py-10 px-7 lg:px-5 lg:py-8">
+            <app-menus></app-menus>
+        </div>
+        <div class="inventual-menu-overlay" (click)="myfunction()" [class.sidebar-enable]="menuSidebarActive"></div>
+    </div>
+    <div class="inventual-dashboard-main" [class.sidebar-enable]="menuSidebarActive">
+        <div class="inventual-header-area">
+            <div class="inventual-header-wrapper custom-height-70 px-7 bg-white border-b border-solid border-border">
+                <div class="grid grid-cols-12 items-center h-full">
+                    <div class="col-span-12">
+                        <app-header></app-header>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="inventual-breadcrumb-area px-7 py-9 bg-white mb-5">
+            <div class="inventual-breadcrumb-area-inner px-0.5">
+                <h5 class="text-[20px] text-heading font-bold mb-3">Add Brand</h5>
+                <div class="inventual-breadcrumb-area-inner-wrap">
+                    <span class="text-[14px] text-body font-normal inline-block me-2">Product</span>
+                    <span class="text-[14px] text-body font-normal inline-block me-2">></span>
+                    <span class="text-[14px] text-body font-normal inline-block me-2">Add Brand</span>
+                </div>
+            </div>
+        </div>
+        <div class="inventual-content-area px-7">
+            <div class="inventual-addbrand-area bg-white p-7 custom-shadow rounded-8 mb-5">
+                <div class="grid grid-cols-12 gap-x-7 sm:gap-x-0">
+                    <div class="col-span-3 md:col-span-12 sm:col-span-12">
+                        <div class="inventual-unit-content">
+                            <div class="inventual-addbrand-upload-area">
+                                <div class="flex flex-wrap gap-5 mb-7">
+                                    <div class="inventual-brand-img-field">
+                                        <input id="BrandImage" accept="image/*" type="file"
+                                            (change)="handleFileChange($event)" required class="bg-primary/5">
+                                        <label for="BrandImage" class="inventual-brand-img-field-inner">{{
+                                            selectedItemCount ? 'Image Uploaded' : 'Upload Brand Image' }}</label>
+                                    </div>
+                                    <div class="inventual-brand-img-uploaded-wrap" #imageContainer></div>
+                                </div>
+                                <div class="inventual-select-field mb-7 w-full">
+                                    <h5 class="text-[15px] text-heading font-semibold mb-3">Brand Name</h5>
+                                    <div class="inventual-input-field-style">
+                                        <mat-form-field class="w-full" [floatLabel]="'always'">
+                                            <mat-label class="hidden">HP</mat-label>
+                                            <input matInput [placeholder]="'HP'">
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="inventual-material-btn mb-7">
+                                <button mat-raised-button color="primary" class="mb-1">
+                                    Create Brand
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-9 md:col-span-12 sm:col-span-12">
+                        <div class="inventual-common-table">
+                            <table mat-table [dataSource]="dataSource" matSort>
+
+                                <!-- Checkbox Column -->
+                                <ng-container matColumnDef="select">
+                                    <th mat-header-cell *matHeaderCellDef>
+                                        <mat-checkbox (change)="$event ? toggleAllRows() : null"
+                                            [checked]="selection.hasValue() && isAllSelected()"
+                                            [indeterminate]="selection.hasValue() && !isAllSelected()"
+                                            [aria-label]="checkboxLabel()">
+                                        </mat-checkbox>
+                                    </th>
+                                    <td mat-cell *matCellDef="let row">
+                                        <mat-checkbox (click)="$event.stopPropagation()"
+                                            (change)="$event ? selection.toggle(row) : null"
+                                            [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)">
+                                        </mat-checkbox>
+                                    </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="image">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Image </th>
+                                    <td mat-cell *matCellDef="let row">
+                                        <div class="inline-block h-12 w-12 rounded p-2 bg-lightest my-1">
+                                            <img src={{row.image}} alt="img not found">
+                                        </div>
+                                    </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="name">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Brand Name </th>
+                                    <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="action">
+                                    <th mat-header-cell *matHeaderCellDef> Action </th>
+                                    <td mat-cell *matCellDef="let row">
+                                        <div class="table-action-menu-wrap">
+                                            <button mat-icon-button [matMenuTriggerFor]="beforeMenu"
+                                                class="common-action-menu-style"
+                                                aria-label="Example icon-button with a menu">
+                                                Action <mat-icon>arrow_drop_down</mat-icon>
+                                            </button>
+                                            <mat-menu #beforeMenu="matMenu" xPosition="before">
+                                                <button mat-menu-item>
+                                                    <img src="assets/img/icon/action-2.png" alt="icon not found">
+                                                    <span>Edit Brand</span>
+                                                </button>
+                                                <button mat-menu-item>
+                                                    <img src="assets/img/icon/action-6.png" alt="icon not found">
+                                                    <span>Delete Brand</span>
+                                                </button>
+                                            </mat-menu>
+                                        </div>
+                                    </td>
+                                </ng-container>
+
+                                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+                                    (click)="selection.toggle(row)">
+                                </tr>
+                            </table>
+
+                            <mat-paginator [pageSizeOptions]="[10, 25, 100]"
+                                aria-label="Select page of users"></mat-paginator>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="inventual-copyright-area">
+            <app-footer></app-footer>
+        </div>
+    </div>
+</div>
